@@ -2,14 +2,21 @@ package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
@@ -27,7 +34,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Home extends AppCompatActivity {
+public class Home extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private ArrayList<Services> Model;
     private ServicesAdapter adapter;
@@ -35,6 +42,10 @@ public class Home extends AppCompatActivity {
     private SearchView searchView;
     private Toolbar toolbar;
     private Preferences preferences;
+    private DrawerLayout drawerLayout;
+    private NavigationView nav_view;
+    private ActionBarDrawerToggle toggle;
+    private ImageView close;
 
     public String id;
     @Override
@@ -105,7 +116,29 @@ public class Home extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        drawerLayout = findViewById(R.id.drawer_layout);
+        nav_view = findViewById(R.id.nav_view);
+
+        toggle = new ActionBarDrawerToggle(this,drawerLayout,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
+        toggle.onDrawerStateChanged(DrawerLayout.LOCK_MODE_UNLOCKED);
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        nav_view.setNavigationItemSelectedListener(this);
+
+        View view = nav_view.getHeaderView(0);
+        close = view.findViewById(R.id.close);
+
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            }
+        });
+
+
 
         searchView=  findViewById(R.id.searchView);
         searchView.setQueryHint(Html.fromHtml("<font color = #000>" + "ابحث عن خدمه" + "</font>"));
@@ -164,25 +197,30 @@ public class Home extends AppCompatActivity {
 
     }
 
-    @Override
+    /*@Override
     public boolean onCreateOptionsMenu(Menu menu)
     {
         getMenuInflater().inflate(R.menu.home_menu,menu);
         return true;
-    }
+    }*/
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item)
     {
-        if (item.getItemId()==R.id.logout)
+        if (toggle.onOptionsItemSelected(item))
+        {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
+        /* if (item.getItemId()==R.id.logout)
         {
             LogOut();
         }else if(item.getItemId()==R.id.responce){
             Intent intent=new Intent(this,Client_Response_Orders.class);
             intent.putExtra("client_id",id);
             startActivity(intent);
-        }
-        return true;
+        }*/
     }
 
     private void LogOut()
@@ -206,9 +244,37 @@ public class Home extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        super.onBackPressed();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        startActivity(intent);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+        {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }else
+            {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                startActivity(intent);
+                super.onBackPressed();
+            }
+
+
     }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.profile_menu:
+                Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.offer_menu:
+                Toast.makeText(this, "2", Toast.LENGTH_SHORT).show();
+
+                break;
+            case R.id.logout_menu:
+                Toast.makeText(this, "3", Toast.LENGTH_SHORT).show();
+
+                break;
+        }
+        return false;
+    }
+
 }

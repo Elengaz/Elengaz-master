@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">همة انجاز</string>
-    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_profile">الملف الشخصي</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">افتح</string>
+    <string name="navigation_drawer_close">اغلق</string>
 
     <string name="chk_riad">مكتب الرياض</string>
     <string name="chk_bngasm">مكتب بن جاسم</string>
@@ -65,7 +65,7 @@
     <string name="something_went_haywire">خطأ</string>
     <string name="empty_email">أدخل البريد الإلكتروني</string>
     <string name="inv_email">البريد الإلكتروني غير صحيح</string>
-    <string name="choose_photo"></string>
+    <string name="choose_photo">اختار صورة للمف الشخصي</string>
     <string name="sel_per_photo">اختار صورة للمف الشخصي</string>
     <string name="empty_phone">أدخل رقم الجوال</string>
     <string name="inv_phone">رقم الجوال غير صحيح</string>
@@ -75,6 +75,8 @@
     <string name="title_3ch">العنوان يجب ان يحتوي علي الاقل 3 حروف</string>
     <string name="city_at_3ch">اسم المدينه يجب ان يحتوي ع الاقل 3 حروف</string>
     <string name="address_at_3">العنوان يجب ان يحتوي ع الاقل 3 حروف</string>
+    <string name="offers">العروض المقدمة</string>
+    <string name="profile">الملف الشخصي</string>
 
 
 </resources>

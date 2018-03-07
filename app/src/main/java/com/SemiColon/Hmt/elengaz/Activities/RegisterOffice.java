@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.util.Patterns;
@@ -104,11 +105,11 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
         String ocity = city.getText().toString();
         String oarea=area.getText().toString();
 
-       /* if (TextUtils.isEmpty(enCodedImage))
+        if (TextUtils.isEmpty(enCodedImage))
         {
             Toast.makeText(this, R.string.sel_per_photo, Toast.LENGTH_LONG).show();
 
-        }*/
+        }
         if (name.isEmpty() || name.length() < 3) {
             username.setError(getString(R.string.at_least_3ch));
         } else {
@@ -192,7 +193,7 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-        Call<ProfileModel> userCall = service.officeSignUp(name,pass, uemail, mobile,otitle,ocity,token_id,oarea);
+        Call<ProfileModel> userCall = service.officeSignUp(enCodedImage,name,pass, uemail, mobile,otitle,ocity,token_id,oarea);
         // startActivity(new Intent(Register.this, ListMarma.class));
 
         userCall.enqueue(new Callback<ProfileModel>() {

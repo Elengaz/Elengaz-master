@@ -52,7 +52,9 @@ public interface ServicesApi {
 
     @FormUrlEncoded
     @POST("RegisterOffice")
-    Call<ProfileModel> officeSignUp(@Field("office_user_name") String name,
+    Call<ProfileModel> officeSignUp(
+                           @Field("office_logo") String photo,
+                           @Field("office_user_name") String name,
                            @Field("office_password") String password,
                            @Field("office_email") String email,
                            @Field("office_phone") String mobile,

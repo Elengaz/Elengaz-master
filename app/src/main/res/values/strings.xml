@@ -2,8 +2,8 @@
     <string name="app_name">Hmt Engaz</string>
     <string name="title_activity_profile">Profile</string>
 
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">open</string>
+    <string name="navigation_drawer_close">close</string>
 
    <!-- <string name="chk_riad">مكتب الرياض</string>
     <string name="chk_bngasm">مكتب بن جاسم</string>
@@ -78,4 +78,6 @@
     <string name="title_3ch">at least 3 characters</string>
     <string name="city_at_3ch">at least 3 characters</string>
     <string name="address_at_3">at least 3 characters</string>
+    <string name="offers">offers</string>
+    <string name="profile">profile</string>
 </resources>
