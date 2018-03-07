@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import com.SemiColon.Hmt.elengaz.API.Model.Officces;
+import com.SemiColon.Hmt.elengaz.Model.Officces;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Search_Offices_Result;
 import com.SemiColon.Hmt.elengaz.R;
 

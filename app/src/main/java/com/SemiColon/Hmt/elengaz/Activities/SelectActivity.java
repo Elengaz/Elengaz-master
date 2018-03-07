@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.Button;
 
 import com.SemiColon.Hmt.elengaz.R;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class SelectActivity extends AppCompatActivity {
 
-    Button ameell,service;
+    private Button ameell,service;
+    private ShimmerTextView txt_shimmer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +24,11 @@ public class SelectActivity extends AppCompatActivity {
         calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
         ameell=(Button) findViewById(R.id.ameel);
         service=(Button) findViewById(R.id.service);
+        txt_shimmer = findViewById(R.id.txt_shimmer);
+        Shimmer shimmer = new Shimmer();
+        shimmer .setDuration(1500)
+                .setStartDelay(300);
+        shimmer.start(txt_shimmer);
 
 
         ameell.setOnClickListener(new View.OnClickListener() {

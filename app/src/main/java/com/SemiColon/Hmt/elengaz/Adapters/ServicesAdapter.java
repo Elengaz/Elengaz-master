@@ -7,13 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.SemiColon.Hmt.elengaz.API.Model.Services;
+
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.R;
 import com.SemiColon.Hmt.elengaz.Activities.Home;
 import com.SemiColon.Hmt.elengaz.Activities.OfficeWork;
+import com.SemiColon.Hmt.elengaz.Model.Services;
+import com.SemiColon.Hmt.elengaz.R;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -26,6 +27,8 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
     Services mmodel;
     List<Services> Array;
     Home home;
+    String client_service_id;
+    String category_id;
 
     public ServicesAdapter(Context context, List<Services> Array ) {
         this.context = context;
@@ -46,6 +49,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
         mmodel = Array.get(position);
         holder.text.setTag(position);
         holder.text.setText(mmodel.getService_title());
+        category_id=mmodel.getCategory_id();
 
     }
 
@@ -69,12 +73,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
 
             int position =getAdapterPosition();
             mmodel = Array.get(position);
-            Toast.makeText(context, mmodel.getService_id()+"", Toast.LENGTH_SHORT).show();
+         //   Toast.makeText(context, client_service_id+"", Toast.LENGTH_SHORT).show();
 
             sendData();
             Intent i = new Intent(context,OfficeWork.class);
             i.putExtra("client_id",home.id);
-            i.putExtra("service_id",mmodel.getService_id());
+            i.putExtra("service_id",client_service_id);
+            i.putExtra("category_id",category_id);
             context.startActivity(i);
 
         }
@@ -90,9 +95,10 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
         call.enqueue(new Callback<Services>() {
             @Override
             public void onResponse(Call<Services> call, Response<Services> response) {
-                if (response.body().getSuccess()==1){
+                if (response.isSuccessful()){
 
-                    Toast.makeText(context, ""+home.id+mmodel.getService_id(), Toast.LENGTH_SHORT).show();
+                    client_service_id=response.body().getClient_service_id();
+                   // Toast.makeText(context, ""+home.id+"00"+client_service_id, Toast.LENGTH_SHORT).show();
                 }
             }
 

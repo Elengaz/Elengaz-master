@@ -17,6 +17,7 @@
         android:paddingBottom="24dp">
 
         <ImageView
+            android:id="@+id/doneBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -44,125 +45,135 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="انشاء حساب "
+            android:text="@string/create_one"
             android:textColor="#fff"
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:id="@+id/location"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_photo"
+            android:layout_width="85dp"
+            android:layout_height="85dp"
             android:layout_below="@+id/name"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:textColor="#fff"
-            android:src="@drawable/user"
-            android:textSize="16sp" />
-
+            android:layout_marginTop="20dp"
+            android:src="@drawable/user_profile"
+            app:civ_border_width="1dp"
+            app:civ_border_color="@color/white"
+            android:clickable="true"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_photo"
+            android:textColor="@color/white"
+            android:layout_below="@+id/user_photo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:textSize="16sp"
+            />
 
     </RelativeLayout>
     <ScrollView
         android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" android:orientation="vertical">
-    <EditText
-        android:id="@+id/edtusername"
-        android:layout_marginTop="17dp"
-        android:singleLine="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="اسم المستخدم "
-        android:inputType="text"
-        android:padding="10dp"
-        android:drawableRight="@drawable/user"
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:textSize="17dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary">
+        android:background="@color/colorPrimary"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp"
+        >
 
-    </TextView>
+        <EditText
+            android:id="@+id/edtusername"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical|left"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:drawableLeft="@drawable/user_name"
+            android:scrollHorizontally="true"
+            android:textSize="18dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/et_bg"
+            android:padding="10dp"
+            android:textColor="#000"
+            android:textColorHint="#000"
 
-    <EditText
-        android:id="@+id/edtpass"
-        android:singleLine="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="كلمة المرور"
-android:inputType="textPassword"
-        android:layout_gravity="right"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:drawableRight="@drawable/lock"
-
-        android:textSize="17dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary">
-
-    </TextView>
-    <EditText
-        android:id="@+id/edtemail"
-        android:singleLine="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint="البريد الالكترونى "
-        android:inputType="textEmailAddress"
-
-        android:padding="10dp"
-        android:drawableRight="@drawable/mail"
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:textSize="17dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary"></TextView>
-    <EditText
-        android:id="@+id/edtphone"
-        android:singleLine="true"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint=" رقم الجوال"
-        android:inputType="phone"
-        android:padding="10dp"
-        android:textColor="#000"
-        android:textColorHint="#000"
-        android:drawableRight="@drawable/user"
-
-        android:textSize="17dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorPrimary">
+            />
 
 
+        <EditText
+            android:id="@+id/edtpass"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:drawablePadding="8dp"
+            android:gravity="center_vertical"
+            android:hint="@string/pass"
+            android:background="@drawable/et_bg"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
 
-    </TextView>
-    <Button
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:inputType="textPassword"
+            android:drawableLeft="@drawable/pass_icon"
+            android:textSize="18dp"
+            android:scrollHorizontally="true"
+            />
+        <EditText
+            android:id="@+id/edtemail"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:drawablePadding="8dp"
+            android:gravity="left"
+            android:hint="@string/email"
+            android:background="@drawable/et_bg"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/email"
+            android:textSize="18dp"
+            android:scrollHorizontally="true"
+            />
+
+        <EditText
+            android:id="@+id/edtphone"
+            android:singleLine="true"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:drawablePadding="8dp"
+            android:gravity="left"
+            android:hint="@string/phone"
+            android:background="@drawable/et_bg"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="#000"
+            android:textColorHint="#000"
+            android:inputType="phone"
+            android:drawableLeft="@drawable/phone_icon"
+            android:textSize="18dp"
+            android:scrollHorizontally="true"
+            />
+
+
+   <!-- <Button
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:textColor="#fbfdfb"
+        android:textColor="@color/colorPrimary"
         android:textSize="25dp"
-        android:background="@drawable/btn2"
-        android:text=" دخول"/>
+        android:background="@drawable/btn1"
+        android:text="@string/register"/>-->
     </LinearLayout>
     </ScrollView>
 </LinearLayout>

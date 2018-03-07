@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "320810774296",
+    "firebase_url": "https://semicolon-3dbe7.firebaseio.com",
+    "project_id": "semicolon-3dbe7",
+    "storage_bucket": "semicolon-3dbe7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:320810774296:android:82ae1bd68e6d5a65",
+        "android_client_info": {
+          "package_name": "com.SemiColon.Hmt.elengaz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "320810774296-ehbklh60e3ipag1cko9gurbu2pbbpptu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq5mcB1sJkUNfkenfO9v0I79bqHnWlEoc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

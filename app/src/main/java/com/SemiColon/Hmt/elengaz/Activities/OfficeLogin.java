@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -14,8 +15,10 @@ import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.API.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.ProfileModel;
 import com.SemiColon.Hmt.elengaz.R;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -32,6 +35,7 @@ public class OfficeLogin extends AppCompatActivity {
     Button login;
     TextView signup;
     private ProgressDialog pDialog;
+    private ShimmerTextView txt_shimmer;
 
 
 
@@ -45,6 +49,12 @@ public class OfficeLogin extends AppCompatActivity {
         password=findViewById(R.id.edt_office_pass);
         login=findViewById(R.id.btnlogin);
         signup=findViewById(R.id.txtsignup);
+        txt_shimmer = findViewById(R.id.txt_shimmer);
+
+        Shimmer shimmer = new Shimmer();
+        shimmer .setDuration(1500)
+                .setStartDelay(300);
+        shimmer.start(txt_shimmer);
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +68,17 @@ public class OfficeLogin extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginByServer();
+                if (TextUtils.isEmpty(username.getText().toString())){
+                    username.setError(getString(R.string.empty_username));
+                }
+                else if (TextUtils.isEmpty(password.getText().toString()))
+                {
+                    password.setError(getString(R.string.empty_password));
+                }else
+                    {
+                        loginByServer();
+
+                    }
 
             }
         });
@@ -67,7 +87,7 @@ public class OfficeLogin extends AppCompatActivity {
     private void loginByServer() {
         pDialog = new ProgressDialog(OfficeLogin.this);
         pDialog.setIndeterminate(true);
-        pDialog.setMessage("Loogin...");
+        pDialog.setMessage(getString(R.string.login));
         pDialog.setCancelable(false);
 
         showpDialog();
@@ -78,26 +98,37 @@ public class OfficeLogin extends AppCompatActivity {
 
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
-        Call<MSG> userCall = service.officeLogIn(user,pass);
+        Call<ProfileModel> userCall = service.officeLogIn(user,pass);
 
-        userCall.enqueue(new Callback<MSG>() {
+        userCall.enqueue(new Callback<ProfileModel>() {
             @Override
-            public void onResponse(Call<MSG> call, Response<MSG> response) {
+            public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
                 hidepDialog();
-                //onSignupSuccess();
-//                Log.d("onResponse", "" + response.body().getMessage());
-                if (response.body().getSuccess() == 1) {
-                    startActivity(new Intent(OfficeLogin.this, Profile.class));
 
-                    finish();
-                } else {
-                    Toast.makeText(OfficeLogin.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                if (response.isSuccessful())
+                {
+                    if (response.body().getSuccess()==1) {
+                        Intent intent=new Intent(OfficeLogin.this, ServiceProvider_Home.class);
+                        intent.putExtra("office_id",response.body().getOffice_id());
+                        startActivity(intent);
+
+                        finish();
+                    } else {
+                        Toast.makeText(OfficeLogin.this, R.string.faild, Toast.LENGTH_SHORT).show();
+                    }
+                }else
+                    {
+                        Toast.makeText(OfficeLogin.this, R.string.something_went_haywire, Toast.LENGTH_SHORT).show();
+
+                    }
+
             }
 
             @Override
-            public void onFailure(Call<MSG> call, Throwable t) {
+            public void onFailure(Call<ProfileModel> call, Throwable t) {
                 hidepDialog();
+                Toast.makeText(OfficeLogin.this, "something went haywire", Toast.LENGTH_SHORT).show();
+
                 Log.d("onFailure", t.toString());
             }
         });

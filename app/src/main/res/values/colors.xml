@@ -3,4 +3,9 @@
     <color name="colorPrimary">#49a059</color>
     <color name="colorPrimaryDark">#1d4d26</color>
     <color name="colorAccent">#49a059</color>
+    <color name="sp">#000000</color>
+    <color name="text">#cdd118</color>
+    <color name="ratebar">#FFD54F</color>
+    <color name="gr">#bdbdbd</color>
+    <color name="white">#ffffff</color>
 </resources>

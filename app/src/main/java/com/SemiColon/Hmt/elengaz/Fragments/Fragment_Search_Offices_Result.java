@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 
-import com.SemiColon.Hmt.elengaz.API.Model.Officces;
+import com.SemiColon.Hmt.elengaz.Model.Officces;
 import com.SemiColon.Hmt.elengaz.Adapters.OfficesAdapter_SearchResult;
 import com.SemiColon.Hmt.elengaz.R;
 
@@ -33,7 +33,7 @@ public class Fragment_Search_Offices_Result extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_search_services_result, container, false);
+        View view= inflater.inflate(R.layout.fragment_search_offices_result, container, false);
         initView(view);
         getDataFromSearch_Bundle();
         return view;
@@ -46,7 +46,7 @@ public class Fragment_Search_Offices_Result extends Fragment {
         SelectedList = new ArrayList<>();
 
         recView_searchOffice = view.findViewById(R.id.recView_searchOffice);
-        manager = new LinearLayoutManager(getActivity());
+        manager = new LinearLayoutManager(getContext());
         recView_searchOffice.setLayoutManager(manager);
         recView_searchOffice.setHasFixedSize(true);
 

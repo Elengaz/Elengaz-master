@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +14,13 @@ import android.widget.Toast;
 
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.API.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.MSG;
 import com.SemiColon.Hmt.elengaz.R;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.romainpiel.shimmer.Shimmer;
+import com.romainpiel.shimmer.ShimmerTextView;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -28,12 +33,13 @@ import retrofit2.Response;
 
 public class Login extends AppCompatActivity {
 
-    EditText username,password;
-    Button login;
-    TextView signup;
+    private EditText username,password;
+    private Button login;
+    private TextView signup;
     private ProgressDialog pDialog;
-
     String id;
+    private Preferences preferences;
+    private ShimmerTextView txt_shimmer;
 
 
     @Override
@@ -42,10 +48,9 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JannaLT-Regular.ttf", true);
-        username=findViewById(R.id.edt_user_name);
-        password=findViewById(R.id.edt_user_pass);
-        login=findViewById(R.id.btnlogin);
-        signup=findViewById(R.id.txtsignup);
+        preferences = new Preferences(this);
+        initView();
+        Log.e("ddddddddddddddddddd",FirebaseInstanceId.getInstance().getToken());
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,17 +64,42 @@ public class Login extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                loginByServer();
+
+                if (TextUtils.isEmpty(username.getText().toString())){
+                    username.setError(getString(R.string.empty_username));
+                }
+                else if (TextUtils.isEmpty(password.getText().toString()))
+                {
+                    password.setError(getString(R.string.empty_password));
+                }else
+                    {
+                        loginByServer();
+
+                    }
 
             }
         });
     }
 
+    private void initView() {
+        username=findViewById(R.id.edt_user_name);
+        password=findViewById(R.id.edt_user_pass);
+        login=findViewById(R.id.btnlogin);
+        signup=findViewById(R.id.txtsignup);
+        txt_shimmer = findViewById(R.id.txt_shimmer);
+
+        Shimmer shimmer = new Shimmer();
+        shimmer .setDuration(1500)
+                .setStartDelay(300);
+        shimmer.start(txt_shimmer);
+    }
+
     private void loginByServer() {
         pDialog = new ProgressDialog(Login.this);
         pDialog.setIndeterminate(true);
-        pDialog.setMessage("Loogin...");
-        pDialog.setCancelable(false);
+        pDialog.setMessage(getString(R.string.login));
+        pDialog.setCancelable(true);
+        pDialog.setCanceledOnTouchOutside(false);
 
         showpDialog();
 
@@ -81,28 +111,38 @@ public class Login extends AppCompatActivity {
 
         Call<MSG> userCall = service.userLogIn(user,pass);
 
-        userCall.enqueue(new Callback<MSG>() {
+        userCall.enqueue(new Callback<MSG>()
+        {
             @Override
             public void onResponse(Call<MSG> call, Response<MSG> response) {
                 hidepDialog();
-                //onSignupSuccess();
-//                Log.d("onResponse", "" + response.body().getMessage());
-                if (response.body().getSuccess() == 1) {
-                    id=response.body().getClient_id();
-                   Intent i=new Intent(Login.this, Home.class);
+                if (response.isSuccessful())
+                {
+                    if (response.body().getSuccess() == 1) {
+                        id=response.body().getClient_id();
+                        preferences.CreateSharedPref(id);
 
-                   i.putExtra("id",id);
-                   startActivity(i);
+                        Intent i=new Intent(Login.this, Home.class);
+                        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        i.putExtra("id",id);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Toast.makeText(Login.this,getString(R.string.faild), Toast.LENGTH_SHORT).show();
+                    }
+                }else
+                    {
+                        Toast.makeText(Login.this,getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
 
-                    finish();
-                } else {
-                    Toast.makeText(Login.this, "" + response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+                    }
+
             }
 
             @Override
             public void onFailure(Call<MSG> call, Throwable t) {
                 hidepDialog();
+                Toast.makeText(Login.this,getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
+
                 Log.d("onFailure", t.toString());
             }
         });
@@ -159,4 +199,12 @@ public class Login extends AppCompatActivity {
         return password;
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
+    }
 }

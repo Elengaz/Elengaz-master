@@ -1,4 +1,4 @@
-package com.SemiColon.Hmt.elengaz.API.Model;
+package com.SemiColon.Hmt.elengaz.Model;
 
 /**
  * Created by Elashry on 2/10/2018.

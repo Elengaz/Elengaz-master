@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/backsearch"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    android:id="@+id/pay"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView
+        android:id="@+id/txt_account_bank_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e12b2929"
+        android:layout_gravity="right"
+        android:layout_margin="7dp"
+        android:textSize="15dp"
+        android:text="مصرف الراجحى "/>
+    <TextView
+        android:id="@+id/txt_account_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#e12b2929"
+        android:layout_gravity="right"
+        android:layout_margin="3dp"
+        android:textSize="15dp"
+        android:text="حساب خدمات"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#e12b2929"
+            android:layout_gravity="right"
+            android:layout_margin="3dp"
+            android:textSize="15dp"
+            android:text=" رقم الحساب : "/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/txt_account_number"
+            android:layout_height="wrap_content"
+            android:textColor="#e12b2929"
+            android:layout_gravity="right"
+            android:layout_margin="3dp"
+            android:gravity="right"
+            android:textSize="15dp"
+            android:text=" 126545129668896654 "/>
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#e12b2929"
+            android:layout_gravity="right"
+            android:layout_margin="3dp"
+            android:textSize="15dp"
+            android:text="الايبان : "/>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:id="@+id/txt_account_IBAN"
+            android:layout_height="wrap_content"
+            android:textColor="#e12b2929"
+            android:layout_gravity="right"
+            android:layout_margin="3dp"
+            android:gravity="right"
+            android:textSize="15dp"
+            android:text=" 126545129668896654 "/>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

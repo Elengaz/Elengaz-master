@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.SemiColon.Hmt.elengaz.API.Model.Services;
+import com.SemiColon.Hmt.elengaz.Model.Services;
 import com.SemiColon.Hmt.elengaz.Activities.OfficeWork;
 import com.SemiColon.Hmt.elengaz.Adapters.ServicesAdapter_SearchResult;
 import com.SemiColon.Hmt.elengaz.R;
@@ -69,7 +69,7 @@ public class Fragment_Search_Services_Result extends Fragment {
     public void setPos(int pos)
     {
         Intent intent = new Intent(getActivity(), OfficeWork.class);
-        intent.putExtra("service_id",servicesList.get(pos).getService_id());
+        intent.putExtra("service_id",servicesList.get(pos).getClient_service_id());
         intent.putExtra("client_id",clientId);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         getActivity().startActivity(intent);

@@ -5,19 +5,20 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
-import com.SemiColon.Hmt.elengaz.API.Model.Officces;
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Adapters.OfficesAdapter;
+import com.SemiColon.Hmt.elengaz.Model.Officces;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.io.Serializable;
@@ -36,12 +37,16 @@ import retrofit2.Retrofit;
 public class OfficeWork extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<Officces> model;
-    OfficesAdapter adapter;
-    RecyclerView recyclerView;
-    Button add,btnsearchrate,btnsearchplace;
-    String client_id,service_id;
+    private OfficesAdapter adapter;
+    private RecyclerView recyclerView;
+    private Button add,btnsearchrate,btnsearchplace;
+    String client_id,service_id,category_id;
     ArrayList<String> ids_list;
-    SearchView searchView;
+    private SearchView searchView;
+    private Toolbar mToolBar;
+    private ImageView back;
+    String client_service_id;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +60,20 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
 
     }
     private void initView() {
+
+        mToolBar = findViewById(R.id.mToolBar);
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
         ids_list=new ArrayList<>();
         model=new ArrayList<>();
 
@@ -84,6 +103,8 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         {
             client_id= intent.getStringExtra("client_id");
             service_id= intent.getStringExtra("service_id");
+            category_id=intent.getStringExtra("category_id");
+           // Toast.makeText(this, "get data"+service_id, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -94,14 +115,17 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         switch (view.getId())
         {
             case R.id.btnadd:
+             //   Toast.makeText(this, ""+service_id, Toast.LENGTH_SHORT).show();
                 addOffices();
                 break;
             case R.id.btnsearchrate:
-                Toast.makeText(this, "toasssssss", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "toasssssss", Toast.LENGTH_SHORT).show();
                 searchByRate_Place("2");
                 break;
             case R.id.btnsearchplace:
                 searchByRate_Place("1");
+              //  Toast.makeText(this, "tos", Toast.LENGTH_SHORT).show();
+
                 break;
         }
     }
@@ -117,9 +141,10 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
             public void onResponse(Call<List<Officces>> call, Response<List<Officces>> response) {
 
                 if (response.isSuccessful()){
+                    model.clear();
                     model.addAll(response.body());
                     adapter.notifyDataSetChanged();}
-                //Toast.makeText(OfficeWork.this, ""+response.body(), Toast.LENGTH_SHORT).show();
+              //  Toast.makeText(OfficeWork.this, ""+response.body(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
@@ -134,17 +159,18 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
 
 
         ServicesApi servicesApi=APIClient.getClient().create(ServicesApi.class);
-        Call<Officces> call=servicesApi.sendoffices(ids_list,client_id,service_id);
+        Call<Officces> call=servicesApi.sendoffices(ids_list,client_id,category_id);
         call.enqueue(new Callback<Officces>() {
             @Override
             public void onResponse(Call<Officces> call, Response<Officces> response) {
 
-                if (response.body().getSuccess()==1){
-                    Toast.makeText(OfficeWork.this, ""+ids_list+" "+client_id+" "+ service_id, Toast.LENGTH_SHORT).show();
-
-
+                if (response.isSuccessful()){
+                    client_service_id=response.body().getClient_service_id();
+                  //  Toast.makeText(OfficeWork.this, ""+ids_list+" "+client_id+" "+ service_id, Toast.LENGTH_SHORT).show();
+                 //   Toast.makeText(OfficeWork.this, ""+client_service_id, Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(OfficeWork.this,AddService.class);
                     intent.putExtra("client_id",client_id);
+                    intent.putExtra("service_id",client_service_id);
                     startActivity(intent);
                 }
 
@@ -165,52 +191,53 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         {
             Toast.makeText(this,R.string.add_srv_u_want, Toast.LENGTH_SHORT).show();
         }else
-            {
-                Toast.makeText(this, ""+service+"   "+type, Toast.LENGTH_SHORT).show();
-                Map<String,String> map = new HashMap<>();
-                map.put("type",type);
-                map.put("search_evaluation_value",service);
+        {
 
-                Retrofit retrofit = APIClient.getClient();
-                ServicesApi servicesApi = retrofit.create(ServicesApi.class);
+           // Toast.makeText(this, ""+service+"   "+type, Toast.LENGTH_SHORT).show();
+            Map<String,String> map = new HashMap<>();
+             map.put("type",type);
+            map.put("search_office_place",service);
 
-                Call<List<Officces>> call=servicesApi.searchByRate(map);
+            Retrofit retrofit = APIClient.getClient();
+            ServicesApi servicesApi = retrofit.create(ServicesApi.class);
 
-                call.enqueue(new Callback<List<Officces>>() {
-                    @Override
-                    public void onResponse(Call<List<Officces>> call, Response<List<Officces>> response) {
-                        if (response.isSuccessful())
+            Call<List<Officces>> call=servicesApi.searchByRate(map);
+
+            call.enqueue(new Callback<List<Officces>>() {
+                @Override
+                public void onResponse(Call<List<Officces>> call, Response<List<Officces>> response) {
+                    if (response.isSuccessful())
+                    {
+                        List<Officces> officcesList = response.body();
+
+                       // Toast.makeText(OfficeWork.this, "انا ف ان سكسسفل", Toast.LENGTH_SHORT).show();
+                        if (officcesList.size()>0)
                         {
-                            List<Officces> officcesList = response.body();
+                         //   Toast.makeText(OfficeWork.this, "انا ف ان الاراي اكبر من صفر", Toast.LENGTH_SHORT).show();
 
-                            Toast.makeText(OfficeWork.this, "انا ف ان سكسسفل", Toast.LENGTH_SHORT).show();
-                            if (officcesList.size()>0)
-                            {
-                                Toast.makeText(OfficeWork.this, "انا ف ان الاراي اكبر من صفر", Toast.LENGTH_SHORT).show();
+                            Intent intent1 = new Intent(OfficeWork.this,Activity_Search_Results.class);
+                            intent1.putExtra("search", (Serializable) officcesList);
+                            intent1.putExtra("clientId",client_id);
+                            startActivity(intent1);
 
-                                Intent intent1 = new Intent(OfficeWork.this,Activity_Search_Results.class);
-                                intent1.putExtra("search", (Serializable) officcesList);
-                                intent1.putExtra("clientId",client_id);
-                                startActivity(intent1);
-
-                            }
-                            else
-                                {
-                                    Toast.makeText(OfficeWork.this, "empty data", Toast.LENGTH_SHORT).show();
-                                }
                         }
                         else
-                            {
-                                Toast.makeText(OfficeWork.this, "انا مبرجعش رسبونس", Toast.LENGTH_SHORT).show();
-                            }
+                        {
+                            Toast.makeText(OfficeWork.this, "empty data", Toast.LENGTH_SHORT).show();
+                        }
                     }
+                    else
+                    {
+                      //  Toast.makeText(OfficeWork.this, "انا مبرجعش رسبونس", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
-                    @Override
-                    public void onFailure(Call<List<Officces>> call, Throwable t) {
-                        Log.e("error",t.getMessage());
-                    }
-                });
-            }
+                @Override
+                public void onFailure(Call<List<Officces>> call, Throwable t) {
+//                    Log.e("error",t.getMessage());
+                }
+            });
+        }
     }
 
 

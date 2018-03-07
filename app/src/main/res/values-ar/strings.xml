@@ -26,4 +26,55 @@
     <string name="GOOGLE_MAPS_API_KEY">AIzaSyD6NHGNbSFoCY4XtdNLFx5mzi25XmujIng</string>
     <string name="search_result">نتائج البحث</string>
     <string name="add_srv_u_want">من فضلك أضف المكان الذي تريده</string>
+    <string name="logout">تسجيل الخروج</string>
+    <string name="login">تسجيل الدخول....</string>
+    <string name="offer">العروض المقدمة</string>
+    <string name="done">تم الاختيار</string>
+    <string name="office_work_service">خدمات مكتب العمل</string>
+    <string name="evaluation_search">البحث بالتقييم</string>
+    <string name="search_by_place">البحث بالمكان</string>
+    <string name="add_service">اضافة الخدمه التى تريدها</string>
+    <string name="forget_pass">هل نسيت كلمة المرور ؟</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="pass">كلمة المرور</string>
+    <string name="login_text">تسجيل الدخول</string>
+    <string name="no_account">لا امتلك حساب ؟</string>
+    <string name="create_one">انشاء حساب </string>
+    <string name="welcome">مرحبا بكم في همة الإنجاز</string>
+    <string name="remember_me">تذكرنـي</string>
+    <string name="client_need_service">عميل طالب خدمة</string>
+    <string name="service_provider">مقدم خدمة</string>
+    <string name="service">خدمات</string>
+
+    <string name="update_password">تعديل كلمة السر </string>
+    <string name="update">تعديل</string>
+    <string name="profiledescreption">"اهلا بك  , انت في تطبيق همةانجاز "</string>
+    <string name="name_client">اسم العميل </string>
+    <string name="service_name">اسم الخدمه</string>
+    <string name="email">البريد الالكترونى</string>
+    <string name="phone">رقم الجوال</string>
+    <string name="title">عنوان المكتب</string>
+    <string name="city">المدينه</string>
+    <string name="area">الحي</string>
+    <string name="register">انشاء حساب</string>
+    <string name="service_detail">تفاصيل الخدمه</string>
+    <string name="my_service">خدماتى</string>
+    <string name="empty_username">أدخل إسم المستخدم</string>
+    <string name="empty_password">أدخل كلمة المرور</string>
+    <string name="faild">خطأ</string>
+    <string name="something_went_haywire">خطأ</string>
+    <string name="empty_email">أدخل البريد الإلكتروني</string>
+    <string name="inv_email">البريد الإلكتروني غير صحيح</string>
+    <string name="choose_photo"></string>
+    <string name="sel_per_photo">اختار صورة للمف الشخصي</string>
+    <string name="empty_phone">أدخل رقم الجوال</string>
+    <string name="inv_phone">رقم الجوال غير صحيح</string>
+    <string name="add_photo">أضف صورة للملف الشخصي</string>
+    <string name="at_least_3ch">الاسم يجب ان يحتوي علي الاقل 3 حروف</string>
+    <string name="pass_bet_4_10">كلمه المرور يجب ان تكون مابين 4 ل 10 حروف او ارقام</string>
+    <string name="title_3ch">العنوان يجب ان يحتوي علي الاقل 3 حروف</string>
+    <string name="city_at_3ch">اسم المدينه يجب ان يحتوي ع الاقل 3 حروف</string>
+    <string name="address_at_3">العنوان يجب ان يحتوي ع الاقل 3 حروف</string>
+
+
 </resources>

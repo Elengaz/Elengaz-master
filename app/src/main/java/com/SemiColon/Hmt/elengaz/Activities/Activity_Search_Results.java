@@ -6,14 +6,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.SemiColon.Hmt.elengaz.API.Model.Officces;
-import com.SemiColon.Hmt.elengaz.API.Model.Services;
+import com.SemiColon.Hmt.elengaz.Model.Officces;
+import com.SemiColon.Hmt.elengaz.Model.Services;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Search_Offices_Result;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Search_Services_Result;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.io.Serializable;
 import java.util.List;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
 
 public class Activity_Search_Results extends AppCompatActivity {
 
@@ -24,6 +26,9 @@ public class Activity_Search_Results extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_results);
+        Calligrapher calligrapher=new Calligrapher(this);
+        calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
+
         initView();
         getDataFromIntentForSearch();
     }

@@ -10,7 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-//
+
 import com.SemiColon.Hmt.elengaz.R;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +19,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import me.anwarshahriar.calligrapher.Calligrapher;
+
+//
 
 public class AddPlace extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -30,6 +34,8 @@ public class AddPlace extends AppCompatActivity implements OnMapReadyCallback {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_place);
+        Calligrapher calligrapher=new Calligrapher(this);
+        calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
 
         addplace = findViewById(R.id.addplace);
         mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -40,10 +46,15 @@ public class AddPlace extends AppCompatActivity implements OnMapReadyCallback {
         addplace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               /* Intent i = new Intent(AddPlace.this, AddService.class);
+                i.putExtra("latitude",latitude);
+                i.putExtra("longitude",longitude);
+                startActivity(i);*/
                 Intent i = new Intent(AddPlace.this, AddService.class);
                 i.putExtra("latitude",latitude);
                 i.putExtra("longitude",longitude);
-                startActivity(i);
+                setResult(RESULT_OK,i);
+                finish();
             }
         });
     }

@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/container_data"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context="com.SemiColon.Hmt.elengaz.Activities.Office_Detail_Activity"
+            android:orientation="vertical"
+            android:visibility="gone"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp">
+                <android.support.design.widget.AppBarLayout
+                    android:id="@+id/appBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="112dp"
+                    android:theme="@style/ThemeOverlay.AppCompat.Light"
+                    android:layout_alignParentTop="true"
+                    >
+                    <TextView
+                        android:id="@+id/office_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="20dp"
+                        android:textColor="#fff"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="20dp"
+                        />
+
+
+                </android.support.design.widget.AppBarLayout>
+                <TextView
+                    android:id="@+id/tv"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:background="@drawable/tv_office_detail_bg"
+                    android:layout_marginTop="70dp"
+                    android:layout_centerHorizontal="true"
+
+                    />
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:gravity="center"
+                    android:layout_below="@+id/tv"
+                    android:layout_centerHorizontal="true"
+
+                    />
+
+                <TextView
+                    android:id="@+id/country"
+                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="#616161"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:layout_below="@+id/user_name"
+                    android:layout_centerHorizontal="true"
+
+
+
+                    />
+                <Button
+                    android:layout_width="180dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/country"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/backsearch2"
+                    android:text="اتصال"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:layout_marginTop="15dp"
+
+                    />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1px"
+                    android:background="#bdbdbd"
+                    android:layout_alignParentBottom="true"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/appBar"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:layout_alignParentRight="true"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تم طلب"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+
+                        />
+                    <TextView
+                        android:id="@+id/total_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="خدمه"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/appBar"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="50dp"
+                    android:orientation="vertical"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="تم إنجاز"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+
+                        />
+                    <TextView
+                        android:id="@+id/finished_service"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="خدمه"
+                        android:textSize="14sp"
+                        android:textColor="#000"
+                        android:layout_gravity="center_horizontal"
+                        />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layoutDirection="ltr"
+                >
+                <LinearLayout
+                    android:id="@+id/l1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        />
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    />
+                    <ProgressBar
+                        android:id="@+id/pb_r5"
+                        android:layout_width="130dp"
+                        android:layout_height="4dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="80"
+                        android:indeterminate="false"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:progressDrawable="@drawable/progressbar_bg"
+                        android:layout_gravity="center_vertical"
+                        />
+                </LinearLayout>
+                <LinearLayout
+
+                    android:id="@+id/l2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/l1"
+                    >
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    />
+                    <ProgressBar
+                        android:id="@+id/pb_r4"
+                        android:layout_width="130dp"
+                        android:layout_height="4dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:indeterminate="false"
+
+                        android:progress="20"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:progressDrawable="@drawable/progressbar_bg"
+                        android:layout_gravity="center_vertical"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+
+                    android:id="@+id/l3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/l2"
+                    >
+
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    />
+                    <ProgressBar
+                        android:id="@+id/pb_r3"
+                        android:layout_width="130dp"
+                        android:layout_height="4dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:progress="20"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:indeterminate="false"
+                        android:progressDrawable="@drawable/progressbar_bg"
+                        android:layout_gravity="center_vertical"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+
+                    android:id="@+id/l4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/l3"
+                    >
+
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        /> <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/rate_icon"
+                    />
+                    <ProgressBar
+                        android:id="@+id/pb_r2"
+                        android:layout_width="130dp"
+                        android:layout_height="4dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:progressDrawable="@drawable/progressbar_bg"
+                        android:layout_gravity="center_vertical"
+
+                        />
+                </LinearLayout>
+                <LinearLayout
+
+                    android:id="@+id/l5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_below="@+id/l4"
+                    >
+
+
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/rate_icon"
+                        />
+                    <ProgressBar
+                        android:id="@+id/pb_r1"
+                        android:layout_width="130dp"
+                        android:layout_height="4dp"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:progressDrawable="@drawable/progressbar_bg"
+                        android:layout_gravity="center_vertical"
+
+                        />
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/l5"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="من 5"
+                        android:textSize="15sp"
+                        android:textColor="#616161"
+                        android:layout_marginLeft="20dp"
+                        android:layout_alignParentLeft="true"
+                        />
+                    <TextView
+                        android:id="@+id/eval"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="16sp"
+                        android:textColor="#000"
+                        android:layout_marginRight="10dp"
+                        android:layout_alignParentRight="true"
+                        />
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentLeft="true"
+                    >
+                    <TextView
+                        android:id="@+id/client_rate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="30sp"
+                        android:textColor="@color/colorPrimary"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="25dp"
+                        />
+
+                </LinearLayout>
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recView_comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="10dp"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            />
+    </FrameLayout>
+
+</ScrollView>

@@ -1,4 +1,4 @@
-package com.SemiColon.Hmt.elengaz.API.Model;
+package com.SemiColon.Hmt.elengaz.Model;
 
 import java.io.Serializable;
 
@@ -10,6 +10,8 @@ public class Services implements Serializable{
     private String service_id;
     private String service_title;
     private Integer success;
+    private String client_service_id;
+    private String category_id;
 
     public Services(String service_id, String service_title) {
         this.service_id = service_id;
@@ -17,6 +19,22 @@ public class Services implements Serializable{
     }
 
     public Services() {
+    }
+
+    public String getCategory_id() {
+        return category_id;
+    }
+
+    public void setCategory_id(String category_id) {
+        this.category_id = category_id;
+    }
+
+    public String getClient_service_id() {
+        return client_service_id;
+    }
+
+    public void setClient_service_id(String client_service_id) {
+        this.client_service_id = client_service_id;
     }
 
     public Integer getSuccess() {

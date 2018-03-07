@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@drawable/back"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true"
+    >
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -9,29 +12,47 @@
         android:orientation="vertical"
         android:layout_gravity="center"
         android:layout_height="match_parent"
-        tools:context="com.SemiColon.Hmt.elengaz.Activities.Login">
+        tools:context="com.SemiColon.Hmt.elengaz.Activities.Login"
+        android:padding="15dp"
+        >
 
         <ImageView
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:layout_width="200dp"
             android:layout_height="100dp"
             android:src="@drawable/logo"
             android:layout_gravity="center"
             />
+        <com.romainpiel.shimmer.ShimmerTextView
+            android:id="@+id/txt_shimmer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/welcome"
+            android:textColor="#fff"
+            android:textSize="16sp"
+            app:reflectionColor="#d4ec4a"
+            />
         <EditText
             android:id="@+id/edt_office_name"
             android:singleLine="true"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:hint="اسم المستخدم "
+            android:gravity="center_vertical|left"
+            android:hint="@string/username"
             android:inputType="text"
+            android:drawableRight="@drawable/user_name"
+            android:scrollHorizontally="true"
+            android:textSize="18dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/et_bg"
             android:padding="10dp"
-            android:drawableRight="@drawable/user"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="18dp" />
+            android:textColor="#000"
+            android:textColorHint="#000"
+
+            />
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1dp">
@@ -40,37 +61,61 @@
         <EditText
             android:id="@+id/edt_office_pass"
             android:singleLine="true"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
-            android:hint="كلمة المرور"
+            android:hint="@string/pass"
+            android:background="@drawable/et_bg"
             android:padding="10dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
+            android:textColor="#000"
+            android:textColorHint="#000"
             android:inputType="textPassword"
-            android:drawableRight="@drawable/lock"
-            android:textSize="18dp" />
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp">
+            android:drawableRight="@drawable/pass_icon"
+            android:textSize="18dp"
+            android:scrollHorizontally="true"
+            />
 
-        </TextView>
-        <TextView
-            android:layout_margin="15dp"
-            android:textSize="15dp"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="نسيت كلمة المرور"/>
+            android:layout_marginTop="15dp"
+
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/forget_pass"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                android:textSize="15dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+
+                />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/remember_me"
+                android:textColor="#fff"
+                android:textStyle="bold"
+                app:buttonTint="#d4ec4a"
+                android:gravity="right|center"
+                android:layout_alignParentLeft="true"
+                />
+        </RelativeLayout>
+
         <Button
             android:id="@+id/btnlogin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="30dp"
-            android:textColor="#3d844a"
-            android:textSize="25dp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22dp"
             android:background="@drawable/btn1"
-            android:text=" دخول"/>
+            android:text="@string/login_text"/>
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,13 +123,14 @@
             android:layout_gravity="center"
             android:orientation="horizontal"
             >
+
             <TextView
                 android:id="@+id/login_fragment_signuptv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="لا امتلك حساب ؟"
+                android:text="@string/no_account"
                 android:textColor="#fff"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:clickable="true"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
@@ -94,10 +140,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="انشاء حساب ."
+                android:text="@string/create_one"
                 android:textColor="#d4ec4a"
                 android:id="@+id/txtsignup"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:clickable="true"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"

@@ -1,11 +1,11 @@
 <resources>
-    <string name="app_name">همة انجاز</string>
+    <string name="app_name">Hmt Engaz</string>
     <string name="title_activity_profile">Profile</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="chk_riad">مكتب الرياض</string>
+   <!-- <string name="chk_riad">مكتب الرياض</string>
     <string name="chk_bngasm">مكتب بن جاسم</string>
     <string name="chk_abofahd">مكتب ابوفهد </string>
     <string name="chk_alwkeel">مكتب الوكيل </string>
@@ -19,7 +19,7 @@
     <string name="radio_alwkeel">مكتب الوكيل </string>
     <string name="radio_elmr">مكتب المر </string>
     <string name="radio_bnamar">مكتب بن عمار </string>
-
+-->
 
     <string name="action_settings">Settings</string>
 
@@ -29,4 +29,53 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_result">Search Results</string>
     <string name="add_srv_u_want">Please add the place you want</string>
+    <string name="logout">logout</string>
+    <string name="login">Login...</string>
+    <string name="offer">Offers</string>
+    <string name="done">done</string>
+    <string name="office_work_service">Labor office services</string>
+    <string name="evaluation_search">Evaluation search</string>
+    <string name="search_by_place">Search by place</string>
+    <string name="add_service">Add service</string>
+    <string name="forget_pass">Forget Password ?</string>
+    <string name="username">Username</string>
+    <string name="pass">Password</string>
+    <string name="login_text">Log In</string>
+    <string name="no_account">Don\'t have an account yet? </string>
+    <string name="create_one">Create account</string>
+    <string name="welcome">Welcome to Hemtt el enjaz</string>
+    <string name="remember_me">Remember me</string>
+    <string name="client_need_service">client wants a service</string>
+    <string name="service_provider">Service Provider</string>
+    <string name="service">Services</string>
+
+    <string name="update_password">update password</string>
+    <string name="update">update</string>
+    <string name="profiledescreption">Hi there , I\'m using Hmt Engaz App</string>
+    <string name="name_client">client name</string>
+    <string name="email"> email</string>
+    <string name="phone">phone </string>
+    <string name="title"> office title</string>
+    <string name="city">city</string>
+    <string name="area">area</string>
+    <string name="register"> create account</string>
+    <string name="service_detail">service detail</string>
+    <string name="service_name">service name</string>
+    <string name="my_service">my services</string>
+    <string name="empty_username">user name is empty</string>
+    <string name="empty_password">password is empty</string>
+    <string name="faild">failed</string>
+    <string name="something_went_haywire">something went haywire</string>
+    <string name="empty_email">empty_email</string>
+    <string name="inv_email">invalid email address</string>
+    <string name="choose_photo">choose photo</string>
+    <string name="sel_per_photo">Select personal photo</string>
+    <string name="empty_phone">phone number is empty</string>
+    <string name="inv_phone">invalid phone number</string>
+    <string name="add_photo">Add personal photo</string>
+    <string name="at_least_3ch">at least 3 characters</string>
+    <string name="pass_bet_4_10">between 4 and 10 alphanumeric characters</string>
+    <string name="title_3ch">at least 3 characters</string>
+    <string name="city_at_3ch">at least 3 characters</string>
+    <string name="address_at_3">at least 3 characters</string>
 </resources>

@@ -12,6 +12,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <service android:name=".Notification.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".Notification.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
@@ -68,13 +79,17 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".Activities.AddPlace"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity
             android:name=".Activities.AddRate"
             android:windowSoftInputMode="stateAlwaysHidden" />
         <activity android:name=".Activities.OfficeLogin" />
         <activity android:name=".Activities.RegisterOffice" />
-        <activity android:name=".Activities.Activity_Search_Results"></activity>
+        <activity android:name=".Activities.Activity_Search_Results" />
+        <activity android:name=".Activities.Office_Detail_Activity" />
+        <activity android:name=".Activities.ServiceProvider_Home" />
+        <activity android:name=".Activities.Client_Response_Orders"></activity>
     </application>
 
 </manifest>
