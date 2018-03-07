@@ -30,7 +30,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Map<String,String> map = remoteMessage.getData();
         String message=  map.get("message");
         String title=  map.get("title");
-         subtitle=  map.get("subtitle");
+        subtitle=  map.get("subtitle");
         String tickerText=  map.get("tickerText");
 //        Log.e("subtitle",subtitle);
 

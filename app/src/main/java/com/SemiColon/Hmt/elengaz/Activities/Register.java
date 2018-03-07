@@ -221,6 +221,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         String mobile = phone.getText().toString();
         final String token_id= FirebaseInstanceId.getInstance().getToken();
 
+
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
