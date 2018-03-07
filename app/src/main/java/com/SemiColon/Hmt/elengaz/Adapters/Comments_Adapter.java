@@ -64,6 +64,7 @@ public class Comments_Adapter extends RecyclerView.Adapter<Comments_Adapter.mVie
 
         public void BindData(Comments comments)
         {
+
             service_name.setText(comments.getClient_service_name());
             m_name.setText(comments.getClient_user_name());
             m_date.setText(comments.getClient_service_date());

@@ -102,10 +102,10 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             onSignupFailed();
             return;
         }*/
-        if (TextUtils.isEmpty(enCodedImage))
+        /*if (TextUtils.isEmpty(enCodedImage))
         {
             Toast.makeText(this, R.string.sel_per_photo, Toast.LENGTH_LONG).show();
-        }
+        }*/
         if (TextUtils.isEmpty(username.getText().toString()))
         {
             username.setError(getString(R.string.empty_username));
@@ -219,12 +219,12 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         String uemail = email.getText().toString();
         String mobile = phone.getText().toString();
-        final String taken_id= FirebaseInstanceId.getInstance().getToken();
+        final String token_id= FirebaseInstanceId.getInstance().getToken();
 
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-        Call<MSG> userCall = service.userSignUp(name,pass, uemail, mobile,taken_id);
+        Call<MSG> userCall = service.userSignUp(name,pass, uemail, mobile,token_id);
         // startActivity(new Intent(Register.this, ListMarma.class));
 
         userCall.enqueue(new Callback<MSG>() {

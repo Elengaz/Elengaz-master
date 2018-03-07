@@ -138,17 +138,23 @@ ServiceProvider_Home home;
         int r4 = officeDetailsModel.getStar_4_count();
         int r5 = officeDetailsModel.getStar_5_count();
 
-        int div1 = (r1/total_eval)*100;
-        int div2 = (r2/total_eval)*100;
-        int div3 = (r3/total_eval)*100;
-        int div4 = (r4/total_eval)*100;
-        int div5 = (r5/total_eval)*100;
+        if (total_eval!=0)
+        {
+            int div1 = (r1/total_eval)*100;
+            int div2 = (r2/total_eval)*100;
+            int div3 = (r3/total_eval)*100;
+            int div4 = (r4/total_eval)*100;
+            int div5 = (r5/total_eval)*100;
 
-        pb_r5.setProgress(div1);
-        pb_r4.setProgress(div2);
-        pb_r3.setProgress(div3);
-        pb_r2.setProgress(div4);
-        pb_r1.setProgress(div5);
+            pb_r5.setProgress(div1);
+            pb_r4.setProgress(div2);
+            pb_r3.setProgress(div3);
+            pb_r2.setProgress(div4);
+            pb_r1.setProgress(div5);
+        }
+
+
+
 
 
 
