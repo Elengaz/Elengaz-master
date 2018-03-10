@@ -17,9 +17,10 @@
         android:id="@+id/addplace"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="اضافة العنوان"
+        android:text="@string/add_address"
         android:layout_margin="10dp"
         android:layout_gravity="bottom"
-        android:textSize="25dp"
+        android:textSize="18dp"
+        android:textColor="@color/white"
         android:background="@drawable/btn2"/>
 </FrameLayout>

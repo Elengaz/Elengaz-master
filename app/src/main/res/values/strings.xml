@@ -5,25 +5,9 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
-   <!-- <string name="chk_riad">مكتب الرياض</string>
-    <string name="chk_bngasm">مكتب بن جاسم</string>
-    <string name="chk_abofahd">مكتب ابوفهد </string>
-    <string name="chk_alwkeel">مكتب الوكيل </string>
-    <string name="chk_elmr">مكتب المر </string>
-    <string name="chk_bnomar">مكتب بن عمار </string>
-
-
-    <string name="radio_riad">مكتب الرياض</string>
-    <string name="radio_bngasm">مكتب بن جاسم</string>
-    <string name="radio_abofahd">مكتب ابوفهد </string>
-    <string name="radio_alwkeel">مكتب الوكيل </string>
-    <string name="radio_elmr">مكتب المر </string>
-    <string name="radio_bnamar">مكتب بن عمار </string>
--->
-
     <string name="action_settings">Settings</string>
 
-    <string name="GOOGLE_MAPS_API_KEY">AIzaSyD6NHGNbSFoCY4XtdNLFx5mzi25XmujIng</string>
+    <string name="GOOGLE_MAPS_API_KEY"> AIzaSyAYAVlT6zJ-U_yOXX5gg_arXcJiq-XO438 </string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -80,4 +64,44 @@
     <string name="address_at_3">at least 3 characters</string>
     <string name="offers">offers</string>
     <string name="profile">profile</string>
+    <string name="title_activity_main__home">Main_Home</string>
+    <string name="hi_there_i_m_here_using_hemtt_al_enjaz_app">Hi there ,i\'m here using Hemtt Al Enjaz App</string>
+    <string name="update_profile">Update profile</string>
+    <string name="connection">check network connection</string>
+    <string name="choose_office">please choose office</string>
+    <string name="contact">Contact Us</string>
+    <string name="contact_form">Contact Us</string>
+    <string name="contact_form_name">Your Name</string>
+    <string name="contact_form_email">Your Email</string>
+    <string name="contact_form_subject">Subject</string>
+    <string name="contact_form_message">Message</string>
+    <string name="contact_form_button">Send Message</string>
+    <string name="contact_posted">Your message has been successfully delivered.</string>
+    <string name="start_date"> start date</string>
+    <string name="expire_date"> end date</string>
+    <string name="cost">cost</string>
+    <string name="office_name">office name </string>
+    <string name="state"> state</string>
+    <string name="rate">rate</string>
+    <string name="order_state">order state</string>
+    <string name="trans_name">name</string>
+    <string name="trans_date">date</string>
+    <string name="trans_cost">cost</string>
+    <string name="trans_image"> Photo</string>
+    <string name="upload_img">upload photo</string>
+    <string name="trans_confirm"> confirm</string>
+    <string name="add_rate"> add rate</string>
+    <string name="add_address">add address </string>
+    <string name="about">about us</string>
+    <string name="add_here">Add service</string>
+    <string name="add_service_here">Add service here</string>
+    <string name="no_services">There are no services to display</string>
+    <string name="nochange">There are no changes occur</string>
+    <string name="add_service_details">Add service detail here</string>
+    <string name="add_phone">Add your phone number here</string>
+    <string name="add_another_phone">Add another mobile number here</string>
+    <string name="add_email">Add email address here</string>
+    <string name="location">location</string>
+    <string name="date">Date</string>
+
 </resources>

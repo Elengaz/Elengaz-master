@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.ProfileModel;
 import com.SemiColon.Hmt.elengaz.R;
@@ -36,6 +37,7 @@ public class OfficeLogin extends AppCompatActivity {
     TextView signup;
     private ProgressDialog pDialog;
     private ShimmerTextView txt_shimmer;
+    private Preferences preferences;
 
 
 
@@ -45,6 +47,7 @@ public class OfficeLogin extends AppCompatActivity {
         setContentView(R.layout.activity_office_login);
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JannaLT-Regular.ttf", true);
+        preferences = new Preferences(this);
         username=findViewById(R.id.edt_office_name);
         password=findViewById(R.id.edt_office_pass);
         login=findViewById(R.id.btnlogin);
@@ -108,9 +111,14 @@ public class OfficeLogin extends AppCompatActivity {
                 if (response.isSuccessful())
                 {
                     if (response.body().getSuccess()==1) {
+
+                        String id = response.body().getOffice_id();
                         Intent intent=new Intent(OfficeLogin.this, ServiceProvider_Home.class);
-                        intent.putExtra("office_id",response.body().getOffice_id());
+                        intent.putExtra("office_id",id);
+                        preferences.CreateSharedPref(id,"office","logged_in");
+
                         startActivity(intent);
+
 
                         finish();
                     } else {

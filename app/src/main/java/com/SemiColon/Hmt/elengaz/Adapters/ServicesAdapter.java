@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.Activities.Home;
 import com.SemiColon.Hmt.elengaz.Activities.OfficeWork;
+import com.SemiColon.Hmt.elengaz.Activities.Main_Home;
 import com.SemiColon.Hmt.elengaz.Model.Services;
 import com.SemiColon.Hmt.elengaz.R;
 
@@ -26,14 +26,14 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
     Context context;
     Services mmodel;
     List<Services> Array;
-    Home home;
+    Main_Home home;
     String client_service_id;
     String category_id;
 
     public ServicesAdapter(Context context, List<Services> Array ) {
         this.context = context;
         this.Array = Array;
-        this.home= (Home) context;
+        this.home= (Main_Home) context;
 
     }
 
@@ -80,6 +80,7 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
             i.putExtra("client_id",home.id);
             i.putExtra("service_id",client_service_id);
             i.putExtra("category_id",category_id);
+            i.putExtra("client_data",home.client_model);
             context.startActivity(i);
 
         }

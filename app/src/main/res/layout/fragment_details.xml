@@ -8,6 +8,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+
         >
 
         <LinearLayout
@@ -210,7 +211,7 @@
                         android:layout_width="130dp"
                         android:layout_height="4dp"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="80"
+                        android:progress="0"
                         android:indeterminate="false"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
@@ -253,7 +254,7 @@
                         style="?android:attr/progressBarStyleHorizontal"
                         android:indeterminate="false"
 
-                        android:progress="20"
+                        android:progress="0"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:progressDrawable="@drawable/progressbar_bg"
@@ -291,7 +292,7 @@
                         android:layout_width="130dp"
                         android:layout_height="4dp"
                         style="?android:attr/progressBarStyleHorizontal"
-                        android:progress="20"
+                        android:progress="0"
                         android:layout_marginRight="10dp"
                         android:layout_marginLeft="10dp"
                         android:indeterminate="false"

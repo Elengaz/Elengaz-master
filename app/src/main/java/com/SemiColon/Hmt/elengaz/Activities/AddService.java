@@ -8,6 +8,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,7 +18,8 @@ import android.widget.EditText;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.Client_Model;
+import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.text.SimpleDateFormat;
@@ -38,6 +40,7 @@ public class AddService extends AppCompatActivity {
     Double sLatitude,sLongitude;
     String service_id ;
     String lat,lng,sName,sDetail,sPhone,sOtherPhone,sEmail;
+    public Client_Model client_model;
     private final int PLACE_REQ =1200;
     Date c;
     @Override
@@ -65,6 +68,24 @@ public class AddService extends AppCompatActivity {
         sLatitude= intent.getDoubleExtra("latitude",1.1);
         sLongitude= intent.getDoubleExtra("longitude",1.1);
         client_id= intent.getStringExtra("client_id");
+        client_model = (Client_Model) intent.getSerializableExtra("client_data");
+
+
+        if (client_model!=null)
+        {
+            if (client_model.getClient_email()!=null|| TextUtils.isEmpty(client_model.getClient_email()))
+            {
+                email.setText(client_model.getClient_email());
+            }
+
+            if (client_model.getClient_phone()!=null|| TextUtils.isEmpty(client_model.getClient_phone()))
+            {
+                phone.setText(client_model.getClient_phone());
+            }
+        }
+
+
+
         btnDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,12 +141,12 @@ public class AddService extends AppCompatActivity {
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-        Call<MSG> userCall = service.AddOneService(sName,sDetail,sPhone,sOtherPhone,sEmail,sLatitude.toString(),sLongitude.toString(),sDate,service_id);
+        Call<Register_Client_Model> userCall = service.AddOneService(sName,sDetail,sPhone,sOtherPhone,sEmail,sLatitude.toString(),sLongitude.toString(),sDate,service_id);
         // startActivity(new Intent(Register.this, ListMarma.class));
 
-        userCall.enqueue(new Callback<MSG>() {
+        userCall.enqueue(new Callback<Register_Client_Model>() {
             @Override
-            public void onResponse(Call<MSG> call, Response<MSG> response) {
+            public void onResponse(Call<Register_Client_Model> call, Response<Register_Client_Model> response) {
                 hidepDialog();
                 //onSignupSuccess();
 //                Log.d("onResponse", "" + response.body().getMessage());
@@ -133,7 +154,7 @@ public class AddService extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                   //  if (response.body().getSuccess()==1){
-                    Intent intent1=new Intent(AddService.this, Home.class);
+                    Intent intent1=new Intent(AddService.this, Main_Home.class);
                     intent1.putExtra("service_id",service_id);
                      startActivity(intent1);
 
@@ -150,7 +171,7 @@ public class AddService extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<MSG> call, Throwable t) {
+            public void onFailure(Call<Register_Client_Model> call, Throwable t) {
                 hidepDialog();
                 Log.d("onFailure", t.toString());
             }

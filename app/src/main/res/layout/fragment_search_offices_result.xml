@@ -1,4 +1,4 @@
-<FrameLayout
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -7,7 +7,25 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recView_searchOffice"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnadd"
+        android:layout_marginBottom="5dp"
+        >
 
     </android.support.v7.widget.RecyclerView>
-</FrameLayout>
+    <Button
+        android:id="@+id/btnadd"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/btn2"
+        android:textSize="18dp"
+        android:text="@string/add_service"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="false"
+        />
+</RelativeLayout>

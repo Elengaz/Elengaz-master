@@ -16,6 +16,15 @@ public class DisplayServicesModel {
     private String office_name;
     private String state_name;
     private String client_evaluation_state;
+    private String my_order_state;
+
+    public String getMy_order_state() {
+        return my_order_state;
+    }
+
+    public void setMy_order_state(String my_order_state) {
+        this.my_order_state = my_order_state;
+    }
 
     public String getClient_service_id() {
         return client_service_id;

@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
+    android:layoutDirection="rtl"
+
     >
 
 
@@ -42,7 +44,9 @@
                     android:layout_gravity="right"
                     android:textSize="17dp"
                     android:layout_margin="7dp"
-                    android:text="  اسم المحول :  "/>
+                    android:text="@string/trans_name"
+                    android:gravity="center"
+                    />
                 <EditText
                     android:id="@+id/edt_trans_name"
                     android:layout_width="0dp"
@@ -69,9 +73,10 @@
                     android:textSize="17dp"
                     android:layout_margin="7dp"
                     android:gravity="center_vertical"
-                    android:text=" تاريخ التحويل :  "/>
+                    android:text="@string/trans_date"/>
                 <EditText
                     android:id="@+id/edt_date"
+                    android:inputType="date"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="50dp"
@@ -98,7 +103,7 @@
                     android:textSize="17dp"
                     android:layout_margin="7dp"
                     android:gravity="center_vertical"
-                    android:text=" مبلغ التحويل :  "/>
+                    android:text="@string/trans_cost"/>
                 <EditText
                     android:id="@+id/edt_cost"
                     android:layout_width="0dp"
@@ -127,13 +132,13 @@
                 android:layout_gravity="right"
                 android:textSize="17dp"
                 android:gravity="center_vertical"
-                android:text="صوره التحويل : "/>
+                android:text="@string/trans_image"/>
 
                 <Button
                     android:id="@+id/btn_upload"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="رفع صوره التحويل"
+                    android:text="@string/upload_img"
                     android:padding="5dp"
                     android:textColor="#fff"
                     android:layout_gravity="left"
@@ -146,7 +151,7 @@
                 android:textColor="#fff"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text=" تاكيد التحويل"
+                android:text="@string/trans_confirm"
                 android:layout_margin="10dp"
                 android:textSize="25dp"
                 android:background="@drawable/btn2"/>

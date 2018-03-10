@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.widget.RecyclerView;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
@@ -104,39 +104,48 @@ public class Office_Oreders_Adapter extends RecyclerView.Adapter<Office_Oreders_
 // Set up the input
             final EditText input = new EditText(context);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+            input.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_TEXT);
             builder.setView(input);
+
 
 // Set up the buttons
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     cost = input.getText().toString();
-                    ServicesApi service = APIClient.getClient().create(ServicesApi.class);
+
+                    if (TextUtils.isEmpty(cost))
+                    {
+                        Toast.makeText(context, "أدخل السعر من فضلك", Toast.LENGTH_SHORT).show();
+                    }else
+                        {
+                            ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-                    Call<office_order_model> userCall = service.AddOfficeOfferCost(cost,mmodel.getClientIdFk(),mmodel.getOrderId());
-                    // startActivity(new Intent(Register.this, ListMarma.class));
+                            Call<office_order_model> userCall = service.AddOfficeOfferCost(cost,mmodel.getClientIdFk(),mmodel.getOrderId());
+                            // startActivity(new Intent(Register.this, ListMarma.class));
 
-                    userCall.enqueue(new Callback<office_order_model>() {
-                        @Override
-                        public void onResponse(Call<office_order_model> call, Response<office_order_model> response) {
+                            userCall.enqueue(new Callback<office_order_model>() {
+                                @Override
+                                public void onResponse(Call<office_order_model> call, Response<office_order_model> response) {
 
 
-                            if (response.isSuccessful()) {
+                                    if (response.isSuccessful()) {
 
-                              //  Toast.makeText(context, ""+mmodel.getOrderId()+"  "+mmodel.getClientIdFk(), Toast.LENGTH_SHORT).show();
-                            //    Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
-                            } else {
-                             Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
-                            }
+                                        //  Toast.makeText(context, ""+mmodel.getOrderId()+"  "+mmodel.getClientIdFk(), Toast.LENGTH_SHORT).show();
+                                        //    Toast.makeText(context, "success", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, "failed", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+
+                                @Override
+                                public void onFailure(Call<office_order_model> call, Throwable t) {
+                                    Log.d("onFailure", t.toString());
+                                }
+                            });
                         }
 
-                        @Override
-                        public void onFailure(Call<office_order_model> call, Throwable t) {
-                            Log.d("onFailure", t.toString());
-                        }
-                    });
                 }
             });
             builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

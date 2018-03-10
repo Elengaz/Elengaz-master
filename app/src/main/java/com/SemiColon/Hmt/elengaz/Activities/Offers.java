@@ -37,7 +37,7 @@ public class Offers extends AppCompatActivity implements View.OnClickListener{
     private RecyclerView.LayoutManager manager;
     private RecyclerView.Adapter adapter;
     private List<OfficeOfferModel> officeOfferModelList;
-    private String service_id,office_id_fk;
+    private String service_id,office_id_fk,state;
     private Button choose;
     private ProgressDialog dialog;
     private ImageView back;
@@ -67,17 +67,10 @@ public class Offers extends AppCompatActivity implements View.OnClickListener{
                         public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                             if (response.isSuccessful())
                             {
-                                ResponseModel responseModel = response.body();
-                                if (responseModel.getSuccess()==1)
-                                {
-                                    dialog.dismiss();
-                                    Intent i=new Intent(Offers.this,TransAccount.class);
-                                    i.putExtra("service_id",service_id);
-                                    startActivity(i);
-                                }else
-                                {
-                                    dialog.dismiss();
-                                }
+                                dialog.dismiss();
+                                Intent i=new Intent(Offers.this,TransAccount.class);
+                                i.putExtra("client_service_id",service_id);
+                                startActivity(i);
                             }
                         }
 
@@ -124,6 +117,8 @@ public class Offers extends AppCompatActivity implements View.OnClickListener{
             if (intent.hasExtra("client_service_id"))
             {
                 service_id = intent.getStringExtra("client_service_id");
+                state=intent.getStringExtra("state");
+
            //     Toast.makeText(this, ""+service_id, Toast.LENGTH_SHORT).show();
             }
         }

@@ -14,9 +14,16 @@
         android:orderInCategory="200"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/service"
+        android:title="services"
+        android:icon="@drawable/my_service"
+        android:orderInCategory="100"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/order"
         android:title="order"
         android:icon="@drawable/note_icon"
         android:orderInCategory="100"
         app:showAsAction="never"/>
+
 </menu>

@@ -3,6 +3,7 @@ package com.SemiColon.Hmt.elengaz.Activities;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.net.Uri;
@@ -11,6 +12,7 @@ import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +21,7 @@ import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -32,7 +34,7 @@ public class Pay extends AppCompatActivity {
     Button trans;
     EditText name,date,cost;
     Button upload;
-    String pname,pdate,pcost, picturePath,service_id;
+    String pname,pdate,pcost, picturePath,service_id,state;
     private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,8 @@ public class Pay extends AppCompatActivity {
 
         Intent intent=getIntent();
 
-      service_id=  intent.getStringExtra("service_id");
+      service_id=  intent.getStringExtra("client_service_id");
+      state=intent.getStringExtra("state");
       //  Toast.makeText(this, ""+service_id, Toast.LENGTH_SHORT).show();
         trans =findViewById(R.id.trans);
         name=findViewById(R.id.edt_trans_name);
@@ -77,10 +80,10 @@ public class Pay extends AppCompatActivity {
                     pcost = cost.getText().toString();
 
                     ServicesApi servicesApi = APIClient.getClient().create(ServicesApi.class);
-                    Call<MSG> call = servicesApi.sendPayment(service_id, pname, pcost, pdate, picturePath);
-                    call.enqueue(new Callback<MSG>() {
+                    Call<Register_Client_Model> call = servicesApi.sendPayment(service_id, pname, pcost, pdate, picturePath);
+                    call.enqueue(new Callback<Register_Client_Model>() {
                         @Override
-                        public void onResponse(Call<MSG> call, Response<MSG> response) {
+                        public void onResponse(Call<Register_Client_Model> call, Response<Register_Client_Model> response) {
                             if (response.isSuccessful()) {
                                 show_dialog();
                                // Toast.makeText(Pay.this, "" + service_id, Toast.LENGTH_SHORT).show();
@@ -91,7 +94,7 @@ public class Pay extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onFailure(Call<MSG> call, Throwable t) {
+                        public void onFailure(Call<Register_Client_Model> call, Throwable t) {
 
                         }
                     });
@@ -159,8 +162,10 @@ public class Pay extends AppCompatActivity {
       // Set the positive button
       builder.setPositiveButton("تم",new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int id) {
+
               Intent i=new Intent(Pay.this,OrderState.class);
               i.putExtra("client_service_id",service_id);
+              i.putExtra("state",state);
 
               startActivity(i);
           }
@@ -206,5 +211,26 @@ public class Pay extends AppCompatActivity {
         return valid;
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferences pref = getSharedPreferences("user_id",MODE_PRIVATE);
+        String user_type = pref.getString("user_type","");
 
+        if (!TextUtils.isEmpty(user_type))
+        {
+            if (user_type.equals("client"))
+            {
+                String id = pref.getString("id","");
+
+                if (!TextUtils.isEmpty(id))
+                {
+                    Intent intent = new Intent(this,Client_Response_Orders.class);
+                    intent.putExtra("client_id",id);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+        }
+    }
 }

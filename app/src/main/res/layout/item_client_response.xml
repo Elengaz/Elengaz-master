@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linear"
-    android:layout_width="match_parent"
+<FrameLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn2"
+        android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -15,7 +20,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="5dp"
@@ -24,7 +29,7 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
@@ -36,31 +41,21 @@
         <TextView
             android:id="@+id/txt_client_service_name"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
             android:textSize="17dp" />
 
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:background="@color/colorPrimary"
-        android:paddingRight="5dp" />
-
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
 
@@ -68,24 +63,23 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text="تاريخ البدا"
+            android:text="@string/start_date"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_client_service_date"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
 
             android:textSize="17dp" />
@@ -105,7 +99,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
 
@@ -113,24 +107,23 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text=" تاريخ الانتهاء"
+            android:text="@string/expire_date"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_client_service_end_date"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
             android:textSize="17dp" />
 
@@ -149,7 +142,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
 
@@ -157,24 +150,23 @@
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text="سعر الخدمه"
+            android:text="@string/cost"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_client_service_cost"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
 
             android:textSize="17dp" />
@@ -195,31 +187,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text=" اسم المكتب"
+            android:text="@string/office_name"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_office_name"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
 
             android:textSize="17dp" />
@@ -240,31 +231,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text="حاله الخدمه"
+            android:text="@string/state"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_state_name"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
 
             android:textSize="17dp" />
@@ -272,7 +262,40 @@
 
     </LinearLayout>
 
-    <TextView
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="@string/order_state"
+                android:textColor="#fff"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/txt_order_state"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn1"
+                android:gravity="center_vertical"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimary"
+
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="5dp"
@@ -285,31 +308,30 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="1"
             android:background="@color/colorPrimary"
             android:gravity="center"
             android:paddingRight="5dp"
-            android:text=" التقييم"
+            android:text="@string/rate"
             android:textColor="#fff"
             android:textSize="17dp" />
 
         <TextView
             android:id="@+id/txt_client_evaluation_state"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="40dp"
             android:layout_weight="2"
-            android:background="#fff"
+            android:background="@drawable/btn1"
             android:gravity="center_vertical"
             android:paddingRight="5dp"
-            android:text=" محمد العشرى"
             android:textColor="@color/colorPrimary"
 
             android:textSize="17dp" />
@@ -326,4 +348,4 @@
         android:paddingRight="5dp" />
 
 
-</LinearLayout>
+</LinearLayout></FrameLayout>

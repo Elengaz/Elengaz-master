@@ -20,7 +20,7 @@ import me.anwarshahriar.calligrapher.Calligrapher;
 public class Activity_Search_Results extends AppCompatActivity {
 
     List<Services> servicesList;
-    String clientId;
+    String clientId,category_id,service_id;
     private ImageView back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,13 +49,18 @@ public class Activity_Search_Results extends AppCompatActivity {
 
         if (intent!=null)
         {
+            clientId = intent.getStringExtra("clientId");
+            category_id=intent.getStringExtra("category_id");
+            service_id=intent.getStringExtra("service_id");
+            servicesList = (List<Services>) intent.getSerializableExtra("servicesList");
+
             if (intent.hasExtra("servicesList"))
             {
-                servicesList = (List<Services>) intent.getSerializableExtra("servicesList");
-                clientId = intent.getStringExtra("clientId");
+
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("servicesList", (Serializable) servicesList);
                 bundle.putString("clientId",clientId);
+
                 Fragment_Search_Services_Result fssr = new Fragment_Search_Services_Result();
                 fssr.setArguments(bundle);
 
@@ -65,10 +70,15 @@ public class Activity_Search_Results extends AppCompatActivity {
             {
                 List<Officces> officcesList = (List<Officces>) intent.getSerializableExtra("search");
                 Bundle bundle = new Bundle();
+                bundle.putString("clientId",clientId);
+                bundle.putString("service_id",service_id);
+                bundle.putString("category_id",category_id);
+
                 bundle.putSerializable("search", (Serializable) officcesList);
 
                 Fragment_Search_Offices_Result fsor = new Fragment_Search_Offices_Result();
                 fsor.setArguments(bundle);
+
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_search_result,fsor).commit();
 
 

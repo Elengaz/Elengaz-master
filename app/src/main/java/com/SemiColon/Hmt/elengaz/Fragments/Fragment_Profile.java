@@ -3,9 +3,13 @@ package com.SemiColon.Hmt.elengaz.Fragments;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +21,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
+import com.SemiColon.Hmt.elengaz.API.Service.Tags;
+import com.SemiColon.Hmt.elengaz.Activities.Login;
 import com.SemiColon.Hmt.elengaz.Activities.ServiceProvider_Home;
 import com.SemiColon.Hmt.elengaz.Model.ProfileModel;
 import com.SemiColon.Hmt.elengaz.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -31,15 +41,21 @@ public class Fragment_Profile extends Fragment {
 
     TextView name,email,phone,title,city;
     Button update,update_pass,logout;
+    private Preferences preferences;
+    CircleImageView profile_img;
+    Context context;
 
     ServiceProvider_Home home;
     String oname,oemail,ophone,opass,ocity,otitle;
+    Target target;
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container, Bundle savedInstanceState) {
         View view= inflater.inflate(R.layout.fragment_profile, container, false);
         // Toast.makeText(getActivity(), "" +id, Toast.LENGTH_SHORT).show();
 
-        home= (ServiceProvider_Home) getActivity();
+        context = view.getContext();
+        preferences = new Preferences(context);
+        home= (ServiceProvider_Home) context;
         name=view.findViewById(R.id.txt_Officcer_name);
         phone=view.findViewById(R.id.txt_Officcer_phone);
         email=view.findViewById(R.id.txt_email);
@@ -47,21 +63,17 @@ public class Fragment_Profile extends Fragment {
         city=view.findViewById(R.id.txt_city);
         update=view.findViewById(R.id.btnupdate);
         update_pass=view.findViewById(R.id.btnpass);
-
+        profile_img=view.findViewById(R.id.civProfilePic);
         logout=view.findViewById(R.id.btnlogout);
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              /*  Preferense preferense=new Preferense(getContext());
-                preferense.clear();
-                Intent i=new Intent(getActivity(), Loogin.class);
-                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                getActivity().startActivity(i);
-                getActivity().finish();*/
-
+              LogOut();
             }
         });
+
+
        // Toast.makeText(getContext(), ""+home.office_id, Toast.LENGTH_SHORT).show();
 
         ServicesApi services= APIClient.getClient().create(ServicesApi.class);
@@ -76,6 +88,28 @@ public class Fragment_Profile extends Fragment {
                 email.setText(response.body().getOffice_email());
                 city.setText(response.body().getOffice_city());
                 title.setText(response.body().getOffice_title());
+
+                target = new Target() {
+                    @Override
+                    public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                        profile_img.setImageBitmap(bitmap);
+                    }
+
+                    @Override
+                    public void onBitmapFailed(Drawable errorDrawable) {
+
+                    }
+
+                    @Override
+                    public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                    }
+                };
+
+                if (!TextUtils.isEmpty(response.body().getOffice_logo()))
+                {
+                    Picasso.with(context).load(Tags.Image_Path+response.body().getOffice_logo()).into(target);
+                }
 
                 // Toast.makeText(getContext(), ""+name+phone+email, Toast.LENGTH_SHORT).show();
             }
@@ -248,5 +282,20 @@ public class Fragment_Profile extends Fragment {
 
         builder.show();
 
+    }
+
+    private void LogOut()
+    {
+        preferences.ClearSharedPref();
+        Intent intent = new Intent(context,Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        getActivity().finish();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Picasso.with(context).cancelRequest(target);
     }
 }

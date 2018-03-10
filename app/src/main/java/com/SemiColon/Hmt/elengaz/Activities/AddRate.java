@@ -2,6 +2,7 @@ package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -84,7 +85,7 @@ public class AddRate extends AppCompatActivity {
                                 if (responseModel.getSuccess()==1)
                                 {
                                     dialog.dismiss();
-                                    Intent i=new Intent(AddRate.this,Home.class);
+                                    Intent i=new Intent(AddRate.this,Main_Home.class);
                                     startActivity(i);
 
                                 }else
@@ -101,8 +102,9 @@ public class AddRate extends AppCompatActivity {
                         }
                     });
 
-                    Toast.makeText(AddRate.this, "please select offer you want", Toast.LENGTH_SHORT).show();
-                }                    }
+                   // Toast.makeText(AddRate.this, "please select offer you want", Toast.LENGTH_SHORT).show();
+                }
+            }
 
 
         });
@@ -138,5 +140,27 @@ public class AddRate extends AppCompatActivity {
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(false);
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferences pref = getSharedPreferences("user_id",MODE_PRIVATE);
+        String user_type = pref.getString("user_type","");
+
+        if (!TextUtils.isEmpty(user_type))
+        {
+            if (user_type.equals("client"))
+            {
+                String id = pref.getString("id","");
+
+                if (!TextUtils.isEmpty(id))
+                {
+                    Intent intent = new Intent(this,Client_Response_Orders.class);
+                    intent.putExtra("client_id",id);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(intent);
+                }
+            }
+        }
     }
 }

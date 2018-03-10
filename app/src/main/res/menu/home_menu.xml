@@ -9,11 +9,24 @@
         android:icon="@drawable/profile_icon"
         app:showAsAction="never"/>
 
+   
     <item
-        android:id="@+id/offer_menu"
+        android:id="@+id/myservice_menu"
         android:orderInCategory="200"
-        android:title="@string/offers"
+        android:title="@string/my_service"
 
+        android:icon="@drawable/offer_icon"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/contact_menu"
+        android:orderInCategory="200"
+        android:title="@string/contact"
+        android:icon="@drawable/offer_icon"
+        app:showAsAction="never"/>
+    <item
+        android:id="@+id/about_menu"
+        android:orderInCategory="200"
+        android:title="@string/about"
         android:icon="@drawable/offer_icon"
         app:showAsAction="never"/>
     <item

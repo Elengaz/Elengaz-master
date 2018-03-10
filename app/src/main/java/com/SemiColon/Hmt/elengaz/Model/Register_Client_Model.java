@@ -1,32 +1,17 @@
 package com.SemiColon.Hmt.elengaz.Model;
 
-public class MSG {
+public class Register_Client_Model {
 
     private Integer success;
     private String message;
     private String client_id;
 
-    /**
-     * No args constructor for use in serialization
-     */
-    public MSG() {
+    public Register_Client_Model() {
     }
 
-    /**
-     * @param message
-     * @param success
-     */
-    public MSG(Integer success, String message) {
-        super();
+    public Register_Client_Model(Integer success, String message, String client_id) {
         this.success = success;
         this.message = message;
-    }
-
-    public String getClient_id() {
-        return client_id;
-    }
-
-    public void setClient_id(String client_id) {
         this.client_id = client_id;
     }
 
@@ -46,4 +31,11 @@ public class MSG {
         this.message = message;
     }
 
+    public String getClient_id() {
+        return client_id;
+    }
+
+    public void setClient_id(String client_id) {
+        this.client_id = client_id;
+    }
 }

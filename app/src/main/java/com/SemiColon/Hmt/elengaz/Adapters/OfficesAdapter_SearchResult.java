@@ -52,7 +52,6 @@ public class OfficesAdapter_SearchResult extends RecyclerView.Adapter<OfficesAda
             super(itemView);
 
             check = itemView.findViewById(R.id.chkid);
-
             check.setOnClickListener(this);
         }
 
@@ -61,7 +60,8 @@ public class OfficesAdapter_SearchResult extends RecyclerView.Adapter<OfficesAda
 
             int position = getAdapterPosition();
 
-            fsor.setPos(check,position);
+            fsor.setPosition(check,position);
+
         }
 
         public void BindData(Officces officces)

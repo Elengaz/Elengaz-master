@@ -6,33 +6,31 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#fff"
-    tools:context="com.SemiColon.Hmt.elengaz.Activities.AddService">
+    tools:context="com.SemiColon.Hmt.elengaz.Activities.AddService"
+    android:layoutDirection="rtl"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="?actionBarSize"
         android:orientation="horizontal">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:text="اضافة خدمه"
+            android:layout_centerVertical="true"            android:gravity="center"
+            android:text="@string/add_service"
             android:textColor="#000"
             android:textSize="25dp" />
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:padding="8dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="18dp"
-            android:gravity="start"
             android:src="@drawable/back_arrow" />
 
 
@@ -45,42 +43,47 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="8dp"
+            >
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
                 android:layout_gravity="right"
-                android:layout_margin="7dp"
+                android:layout_marginTop="10dp"
                 android:textSize="20dp"
-                android:text="   اضف خدمه التى تريدها  "/>
+                android:text="@string/add_here"/>
             <EditText
                 android:id="@+id/edt_service_name"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_margin="7dp"
                 android:textColor="#cc4d4747"
                 android:textColorHint="#cc4d4747"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
+
                 android:layout_gravity="right"
                 android:textSize="17dp"
+
                 android:gravity="center_vertical"
                 android:layout_marginTop="30dp"
                 android:background="@drawable/backsearch"
-                android:hint="   اضف الخدمه هنا"/>
+                android:layout_marginBottom="15dp"
+                android:hint="@string/add_service_here"/>
             <EditText
                 android:id="@+id/edt-service_detail"
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
-                android:paddingRight="10dp"
-                android:gravity="start"
-                android:layout_margin="5dp"
+                android:padding="10dp"
                 android:background="@drawable/backsearch"
-                android:layout_gravity="right"
+                android:layout_marginBottom="15dp"
                 android:textSize="17dp"
-                android:hint="   اضف التفاصيل هنا "/>
+                android:hint="@string/add_service_details"
+                android:gravity="top"
+                />
             <EditText
                 android:id="@+id/edt_service_phone"
                 android:layout_width="match_parent"
@@ -88,41 +91,41 @@
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
                 android:inputType="phone"
-                android:layout_margin="7dp"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/backsearch"
-                android:layout_gravity="right"
+                android:layout_marginBottom="5dp"
                 android:textSize="17dp"
-                android:gravity="center_vertical"
-                android:hint="   اضافة رقم التلفون للتواصل  "/>
+                android:hint="@string/add_phone"/>
             <EditText
                 android:id="@+id/edt_service_other_phone"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
-                android:layout_margin="7dp"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:background="@drawable/backsearch"
-                android:layout_gravity="right"
                 android:textSize="17dp"
                 android:gravity="center_vertical"
                 android:inputType="phone"
-                android:hint="   اضف رقم التلفون اخر  "/>
+                android:layout_marginBottom="5dp"
+
+                android:hint="@string/add_another_phone"/>
             <EditText
                 android:id="@+id/edt_service_email"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
-                android:layout_margin="7dp"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:inputType="textEmailAddress"
                 android:background="@drawable/backsearch"
-                android:layout_gravity="right"
                 android:textSize="17dp"
+                android:layout_marginBottom="5dp"
                 android:gravity="center_vertical"
-                android:hint="   اضافة البريد الالكترونى  "/>
+                android:hint="@string/add_email"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
@@ -130,31 +133,31 @@
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="التاريخ"
+                    android:layout_height="40dp"
+                    android:text="@string/date"
                     android:layout_margin="10dp"
-                    android:textSize="25dp"
+                    android:textSize="18dp"
                     android:id="@+id/btndate"
                     android:textColor="#fff"
                     android:background="@drawable/btn2"/>
                 <Button
                     android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:text="العنوان"
+                    android:layout_height="40dp"
+                    android:text="@string/location"
                     android:id="@+id/btnplace"
                     android:layout_margin="10dp"
-                    android:textSize="25dp"
+                    android:textSize="18dp"
                     android:textColor="#fff"
                     android:background="@drawable/btn2"/>
             </LinearLayout>
             <Button
                 android:id="@+id/btn_add_service"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="اضافة خدمة"
+                android:layout_height="40dp"
+                android:text="@string/add_service"
                 android:layout_margin="10dp"
-                android:textSize="25dp"
+                android:textSize="18dp"
                 android:textColor="#fff"
 
                 android:background="@drawable/btn2"/>

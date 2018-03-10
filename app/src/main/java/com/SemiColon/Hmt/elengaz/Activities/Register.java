@@ -19,7 +19,7 @@ import android.widget.Toast;
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.Model.User;
 import com.SemiColon.Hmt.elengaz.R;
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -225,19 +225,26 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-        Call<MSG> userCall = service.userSignUp(name,pass, uemail, mobile,token_id);
-        // startActivity(new Intent(Register.this, ListMarma.class));
-
-        userCall.enqueue(new Callback<MSG>() {
+        Call<Register_Client_Model> userCall = service.userSignUp(enCodedImage,name,pass, uemail, mobile,token_id);
+        userCall.enqueue(new Callback<Register_Client_Model>() {
             @Override
-            public void onResponse(Call<MSG> call, Response<MSG> response) {
+            public void onResponse(Call<Register_Client_Model> call, Response<Register_Client_Model> response) {
                 hidepDialog();
 
                 if (response.isSuccessful())
                 {
-                    if (response.body().getSuccess() == 1) {
 
-                        startActivity(new Intent(Register.this, Home.class));
+                    if (response.body().getSuccess() == 1) {
+                        String client_id=response.body().getClient_id();
+                        Intent intent = new Intent(Register.this, Main_Home.class);
+                        intent.putExtra("id",client_id);
+
+                        preferences.CreateSharedPref(client_id,"client","logged_in");
+
+
+                        startActivity(intent);
+
+
                         //  Toast.makeText(Register.this, "email"+user.getEmail()+"10"+user.getPassword(), Toast.LENGTH_SHORT).show();
 
                         //  Toast.makeText(Register.this, ""+taken_id, Toast.LENGTH_SHORT).show();
@@ -254,7 +261,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
             }
 
             @Override
-            public void onFailure(Call<MSG> call, Throwable t) {
+            public void onFailure(Call<Register_Client_Model> call, Throwable t) {
                 hidepDialog();
                 Toast.makeText(Register.this, "" +getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
 

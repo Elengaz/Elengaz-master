@@ -1,18 +1,32 @@
 package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 
+import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Details;
+import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Officer_Services;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Orders;
 import com.SemiColon.Hmt.elengaz.Fragments.Fragment_Profile;
+import com.SemiColon.Hmt.elengaz.Model.ResponseModel;
 import com.SemiColon.Hmt.elengaz.R;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationAdapter;
+import com.google.firebase.iid.FirebaseInstanceId;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ServiceProvider_Home extends AppCompatActivity{
     private AHBottomNavigation bNav;
@@ -30,8 +44,21 @@ public class ServiceProvider_Home extends AppCompatActivity{
 
     private void get_Intent() {
         Intent intent=getIntent();
-        office_id=intent.getStringExtra("office_id");
+        if (intent!=null) {
+            if (intent.hasExtra("office_id"))
+            {
+                office_id = intent.getStringExtra("office_id");
 
+            }else
+                {
+                    SharedPreferences pref = getSharedPreferences("user_id",MODE_PRIVATE);
+                    String ofid =pref.getString("id","");
+                    if (TextUtils.isEmpty(ofid))
+                    {
+                        office_id = ofid;
+                    }
+                }
+        }
     }
 
     private void initView() {
@@ -43,7 +70,7 @@ public class ServiceProvider_Home extends AppCompatActivity{
         AHBottomNavigationAdapter adapter = new AHBottomNavigationAdapter(this, R.menu.nav_menu);
         adapter.setupWithBottomNavigation(bNav);
 
-        if (bNav.getCurrentItem()==0)
+        if (bNav.getCurrentItem()==1)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
         }
@@ -54,18 +81,21 @@ public class ServiceProvider_Home extends AppCompatActivity{
                 switch (position)
                 {
                     case 0:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Officer_Services()).commit();
                         bNav.setCurrentItem(position,false);
                         break;
                     case 1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Details()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
                         bNav.setCurrentItem(position,false);
                         break;
                     case 2:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Details()).commit();
+                        bNav.setCurrentItem(position,false);
+                        break;
+                    case 3:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Profile()).commit();
                         bNav.setCurrentItem(position,false);
                         break;
-
                 }
                 return false;
             }
@@ -73,4 +103,34 @@ public class ServiceProvider_Home extends AppCompatActivity{
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        UpdateToken();
+    }
+
+    private void UpdateToken() {
+        Map<String,String> map = new HashMap<>();
+        map.put("type","2");
+        map.put("user_id",office_id);
+        map.put("new_token_id", FirebaseInstanceId.getInstance().getId());
+        ServicesApi service = APIClient.getClient().create(ServicesApi.class);
+        Call<ResponseModel> call = service.UpdateToken(map);
+        call.enqueue(new Callback<ResponseModel>() {
+            @Override
+            public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                if (response.isSuccessful())
+                {
+                    ResponseModel responseModel = response.body();
+                        Log.e("token","token updated");
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModel> call, Throwable t) {
+                Log.e("error",t.getMessage());
+            }
+        });
+    }
 }

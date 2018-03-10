@@ -16,7 +16,7 @@ import android.widget.Toast;
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
-import com.SemiColon.Hmt.elengaz.Model.MSG;
+import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.romainpiel.shimmer.Shimmer;
@@ -109,20 +109,20 @@ public class Login extends AppCompatActivity {
 
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
-        Call<MSG> userCall = service.userLogIn(user,pass);
+        Call<Register_Client_Model> userCall = service.userLogIn(user,pass);
 
-        userCall.enqueue(new Callback<MSG>()
+        userCall.enqueue(new Callback<Register_Client_Model>()
         {
             @Override
-            public void onResponse(Call<MSG> call, Response<MSG> response) {
+            public void onResponse(Call<Register_Client_Model> call, Response<Register_Client_Model> response) {
                 hidepDialog();
                 if (response.isSuccessful())
                 {
                     if (response.body().getSuccess() == 1) {
                         id=response.body().getClient_id();
-                        preferences.CreateSharedPref(id);
+                        preferences.CreateSharedPref(id,"client","logged_in");
 
-                        Intent i=new Intent(Login.this, Home.class);
+                        Intent i=new Intent(Login.this, Main_Home.class);
                         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         i.putExtra("id",id);
                         startActivity(i);
@@ -139,7 +139,7 @@ public class Login extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<MSG> call, Throwable t) {
+            public void onFailure(Call<Register_Client_Model> call, Throwable t) {
                 hidepDialog();
                 Toast.makeText(Login.this,getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
 

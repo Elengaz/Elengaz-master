@@ -1,188 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/linear"
-    android:layout_width="match_parent"
+<FrameLayout android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
-
-
-    <LinearLayout
+    android:padding="5dp"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/linear"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn2"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
 
-        android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="@string/name_client"
+                android:textColor="#fff"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/client_name"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn1"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="@string/service_name"
+                android:textColor="#fff"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/txt_service_name"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn1"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="@string/service_detail"
+                android:textColor="#fff"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/txt_detail"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn1"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:background="@drawable/btn2"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:text="@string/phone"
+                android:textColor="#fff"
+                android:textSize="17dp" />
+
+            <TextView
+                android:id="@+id/txt_phone"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="2"
+                android:background="@drawable/btn1"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:paddingRight="5dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="17dp" />
+
+
+        </LinearLayout>
 
         <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+
             android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:paddingRight="5dp"
-            android:text="@string/name_client"
-            android:textColor="#fff"
-            android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/client_name"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingRight="5dp"
-            android:text=" محمد العشرى"
-            android:textColor="@color/colorPrimary"
-            android:textSize="17dp" />
+            android:paddingRight="5dp" />
 
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:background="@color/colorPrimary"
-        android:paddingRight="5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:paddingRight="5dp"
-            android:text="@string/service_name"
-            android:textColor="#fff"
-            android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/txt_service_name"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingRight="5dp"
-            android:text=" محمد العشرى"
-            android:textColor="@color/colorPrimary"
-
-            android:textSize="17dp" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:background="@color/colorPrimary"
-        android:paddingRight="5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:paddingRight="5dp"
-            android:text="@string/service_detail"
-            android:textColor="#fff"
-            android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/txt_detail"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingRight="5dp"
-            android:text=" محمد العشرى"
-            android:textColor="@color/colorPrimary"
-            android:textSize="17dp" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:background="@color/colorPrimary"
-        android:paddingRight="5dp" />
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:orientation="horizontal">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:paddingRight="5dp"
-            android:text="@string/phone"
-            android:textColor="#fff"
-            android:textSize="17dp" />
-
-        <TextView
-            android:id="@+id/txt_phone"
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_weight="2"
-            android:background="#fff"
-            android:gravity="center_vertical"
-            android:paddingRight="5dp"
-            android:text=" محمد العشرى"
-            android:textColor="@color/colorPrimary"
-
-            android:textSize="17dp" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-
-        android:background="@color/colorPrimary"
-        android:paddingRight="5dp" />
-
-
-</LinearLayout>
+    </LinearLayout></FrameLayout>

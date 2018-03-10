@@ -45,8 +45,7 @@ public class Fragment_Details extends Fragment {
     private RecyclerView.LayoutManager manager;
     private RecyclerView.Adapter adapter;
     private List<Comments> commentsList;
-
-ServiceProvider_Home home;
+    ServiceProvider_Home home;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

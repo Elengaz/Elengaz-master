@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.ProfileModel;
 import com.SemiColon.Hmt.elengaz.R;
@@ -42,6 +43,7 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
     private CircleImageView user_photo;
     private final int IMAGE_REQ=125;
     private String enCodedImage="";
+    private Preferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,7 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
         setContentView(R.layout.activity_register_office);
         Calligrapher calligrapher = new Calligrapher(this);
         calligrapher.setFont(this, "JannaLT-Regular.ttf", true);
+        preferences = new Preferences(this);
         username=findViewById(R.id.edtusername);
         password=findViewById(R.id.edtpass);
         email=findViewById(R.id.edtemail);
@@ -63,40 +66,11 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
         user_photo.setOnClickListener(this);
         doneBtn.setOnClickListener(this);
 
-        //register=findViewById(R.id.register);
-
-       /* register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-              *//*  Officcer officer=new Officcer(
-                        username.getText().toString(),
-                        password.getText().toString(),
-                        email.getText().toString(),
-                        phone.getText().toString(),
-                        title.getText().toString(),
-                        city.getText().toString(),
-                        area.getText().toString()
-
-
-                );*//*
-                signup();
-
-                // sendNetworkRequest(user);
-            }
-        });*/
-
-
     }
 
 
     public void signup() {
-       /* Log.d(TAG, "Signup");
 
-        if (validate() == false) {
-            onSignupFailed();
-            return;
-        }*/
         String name = username.getText().toString();
         String pass = password.getText().toString();
         String uemail = email.getText().toString();
@@ -155,24 +129,6 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
 
     }
 
-
-    public void onSignupSuccess() {
-        register.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
-
-    public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        register.setEnabled(true);
-    }
-
-   /* public boolean validate() {
-
-
-    }*/
-
     private void saveToServerDB() {
         pDialog = new ProgressDialog(RegisterOffice.this);
         pDialog.setIndeterminate(true);
@@ -194,28 +150,30 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
 
 
         Call<ProfileModel> userCall = service.officeSignUp(enCodedImage,name,pass, uemail, mobile,otitle,ocity,token_id,oarea);
-        // startActivity(new Intent(Register.this, ListMarma.class));
 
         userCall.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
                 hidepDialog();
-                //onSignupSuccess();
-//                Log.d("onResponse", "" + response.body().getMessage());
-
-
                 if (response.isSuccessful()) {
-                    startActivity(new Intent(RegisterOffice.this, OfficeLogin.class));
-                  //  Toast.makeText(RegisterOffice.this, ""+taken_id, Toast.LENGTH_SHORT).show();
+                    String office_id = response.body().getOffice_id();
+                    Intent intent = new Intent(RegisterOffice.this,ServiceProvider_Home.class);
+                    intent.putExtra("office_id",office_id);
+
+                    preferences.CreateSharedPref(office_id,"office","logged_in");
+
+                    startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(RegisterOffice.this, "failed" , Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterOffice.this, getString(R.string.something_went_haywire) , Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ProfileModel> call, Throwable t) {
                 hidepDialog();
+                Toast.makeText(RegisterOffice.this, getString(R.string.something_went_haywire) , Toast.LENGTH_SHORT).show();
+
                 Log.d("onFailure", t.toString());
             }
         });

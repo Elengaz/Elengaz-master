@@ -76,7 +76,8 @@ LinearLayout pay;
             int position =getAdapterPosition();
             mmodel = bankAccount.get(position);
             Intent i = new Intent(context,Pay.class);
-            i.putExtra("service_id", transAccount.service_id);
+            i.putExtra("client_service_id", transAccount.service_id);
+            i.putExtra("state",transAccount.state);
             context.startActivity(i);
 
 

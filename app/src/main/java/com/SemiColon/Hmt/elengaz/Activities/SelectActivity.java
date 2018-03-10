@@ -1,12 +1,15 @@
 package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.SemiColon.Hmt.elengaz.API.Service.Network;
 import com.SemiColon.Hmt.elengaz.R;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.romainpiel.shimmer.Shimmer;
@@ -48,5 +51,55 @@ public class SelectActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void CheckLogin() {
+        SharedPreferences pref = getSharedPreferences("user_id",MODE_PRIVATE);
+        String session = pref.getString("session","");
+
+        Log.e("shared",session+"\n"+pref.getString("id","")+"\n"+pref.getString("user_type",""));
+
+        if (Network.getConnection(this))
+        {
+            if (session.equals("logged_in"))
+            {
+                String user_type = pref.getString("user_type","");
+                if (!TextUtils.isEmpty(user_type))
+                {
+                    if (user_type.equals("client"))
+                    {
+                        String id = pref.getString("id","");
+                        if (!TextUtils.isEmpty(id))
+                        {
+                            Intent intent = new Intent(this,Main_Home.class);
+                            intent.putExtra("id",id);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }else if (user_type.equals("office"))
+                    {
+                        String id = pref.getString("id","");
+                        if (!TextUtils.isEmpty(id))
+                        {
+                            Intent intent = new Intent(this,ServiceProvider_Home.class);
+                            intent.putExtra("office_id",id);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                            finish();
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        CheckLogin();
+
     }
 }

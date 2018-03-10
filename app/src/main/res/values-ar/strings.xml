@@ -23,7 +23,7 @@
 
     <string name="action_settings">الاعدادات</string>
 
-    <string name="GOOGLE_MAPS_API_KEY">AIzaSyD6NHGNbSFoCY4XtdNLFx5mzi25XmujIng</string>
+    <string name="GOOGLE_MAPS_API_KEY"> AIzaSyAYAVlT6zJ-U_yOXX5gg_arXcJiq-XO438 </string>
     <string name="search_result">نتائج البحث</string>
     <string name="add_srv_u_want">من فضلك أضف المكان الذي تريده</string>
     <string name="logout">تسجيل الخروج</string>
@@ -77,6 +77,44 @@
     <string name="address_at_3">العنوان يجب ان يحتوي ع الاقل 3 حروف</string>
     <string name="offers">العروض المقدمة</string>
     <string name="profile">الملف الشخصي</string>
+    <string name="hi_there_i_m_here_using_hemtt_al_enjaz_app">مرجبا بكم انا متاح واستخدم تطبيق همة الانجاز</string>
+    <string name="update_profile">تحديث الملف الشخصي</string>
+    <string name="connection">تحقق من الاتصال بالانترنت</string>
+    <string name="choose_office">من فضلك اختر مكتب الخدمة</string>
+    <string name="contact">اتصل بنا </string>
 
+    <string name="contact_form">اتصل بنا</string>
+    <string name="contact_form_name">اسمك</string>
+    <string name="contact_form_email">ايميلك</string>
+    <string name="contact_form_subject">العنوان</string>
+    <string name="contact_form_message">الرساله</string>
+    <string name="contact_form_button">ارسال</string>
+    <string name="contact_posted">تم ارسال الرساله بنجاح</string>
+    <string name="start_date">تاريخ البدا</string>
+    <string name="expire_date">تاريخ الانتهاء</string>
+    <string name="cost">السعر</string>
+    <string name="office_name">اسم المكتب</string>
+    <string name="state">حاله الخدمه</string>
+    <string name="rate">التقييم</string>
+    <string name="order_state">حاله الطلب</string>
+    <string name="trans_name">اسم المحول :</string>
+    <string name="trans_date">تاريخ التحويل :</string>
+    <string name="trans_cost">مبلغ التحويل :</string>
+    <string name="trans_image">صوره التحويل :</string>
+    <string name="upload_img">رفع صوره التحويل</string>
+    <string name="trans_confirm">تاكيد التحويل</string>
+    <string name="add_rate">اضافة تقييم</string>
+    <string name="add_address">اضف العنوان</string>
+    <string name="about">من نحن</string>
+    <string name="add_here">اضف الخدمه التى تريدها</string>
+    <string name="add_service_here">اضف الخدمه هنا</string>
+    <string name="no_services">لا توجد خدمات لعرضها</string>
+    <string name="nochange">لاتوجد اي تغييرات</string>
+    <string name="add_service_details">اضف التفاصيل هنا</string>
+    <string name="add_phone">اضافة رقم التلفون للتواصل</string>
+    <string name="add_another_phone">اضف رقم محمول اخر</string>
+    <string name="add_email">اضافة البريد الالكترونى</string>
+    <string name="location">موقعك</string>
+    <string name="date">التاريخ</string>
 
 </resources>
