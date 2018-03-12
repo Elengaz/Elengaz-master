@@ -1,6 +1,7 @@
 package com.SemiColon.Hmt.elengaz.API.Service;
 
 
+import com.SemiColon.Hmt.elengaz.Model.AddServicesResponse;
 import com.SemiColon.Hmt.elengaz.Model.Bank_Account_Model;
 import com.SemiColon.Hmt.elengaz.Model.Client_Model;
 import com.SemiColon.Hmt.elengaz.Model.ContactModel;
@@ -101,7 +102,19 @@ public interface ServicesApi {
     Call<Officces> sendoffices(@Field("office_id[]") ArrayList<String> office_id,
                                @Field("client_id") String client_id,
                                @Field("category_id")String category_id);
-
+    @FormUrlEncoded
+    @POST("NewService")
+    Call <AddServicesResponse> AddAllServiceData(@Field("office_id[]") List<String> office_id,
+                                          @Field("client_id") String client_id,
+                                          @Field("category_id")String category_id,
+                                          @Field("service_name")String service_name,
+                                          @Field("service_details")String service_details,
+                                          @Field("service_date")String service_date,
+                                          @Field("phone_number")String phone_number,
+                                          @Field("other_phone")String other_phone,
+                                          @Field("email")String email,
+                                          @Field("google_lat")String google_lat,
+                                          @Field("google_lng")String google_lng);
 
     @FormUrlEncoded
     @POST("AddOneService")

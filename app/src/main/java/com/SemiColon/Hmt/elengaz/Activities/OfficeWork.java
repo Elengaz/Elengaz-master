@@ -152,8 +152,24 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         switch (view.getId())
         {
             case R.id.btnadd:
+                if (ids_list.size()>0)
+                {
+                    Intent intent=new Intent(OfficeWork.this,AddService.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("client_id",client_id);
+                    intent.putExtra("category_id",category_id);
+                    intent.putExtra("offices_ids_list",ids_list);
+                    intent.putExtra("client_data",client_model);
+                    dialog.dismiss();
+                    startActivity(intent);
+                    finish();
+                }else
+                    {
+                        Toast.makeText(this, "please choose office", Toast.LENGTH_SHORT).show();
+                    }
+
              //   Toast.makeText(this, ""+service_id, Toast.LENGTH_SHORT).show();
-                addOffices();
+                //addOffices();
                 break;
             case R.id.btnsearchrate:
              //   Toast.makeText(this, "toasssssss", Toast.LENGTH_SHORT).show();
@@ -195,7 +211,7 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         });
     }
 
-    private void addOffices()
+   /* private void addOffices()
     {
         if (ids_list.size()>0)
         {
@@ -211,11 +227,13 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
                         //  Toast.makeText(OfficeWork.this, ""+ids_list+" "+client_id+" "+ service_id, Toast.LENGTH_SHORT).show();
                         //   Toast.makeText(OfficeWork.this, ""+client_service_id, Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(OfficeWork.this,AddService.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         intent.putExtra("client_id",client_id);
                         intent.putExtra("service_id",client_service_id);
                         intent.putExtra("client_data",client_model);
                         dialog.dismiss();
                         startActivity(intent);
+                        finish();
                     }
 
                 }
@@ -234,7 +252,7 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
             }
 
 
-    }
+    }*/
 
     private void searchByRate_Place(String type)
     {
@@ -302,6 +320,15 @@ public class OfficeWork extends AppCompatActivity implements View.OnClickListene
         }else {
             ids_list.remove(model.get(position).getOffice_id());
         }
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent intent = new Intent(this,SelectActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 
 }

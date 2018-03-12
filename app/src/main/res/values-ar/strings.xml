@@ -116,5 +116,13 @@
     <string name="add_email">اضافة البريد الالكترونى</string>
     <string name="location">موقعك</string>
     <string name="date">التاريخ</string>
+    <string name="service_details">لمعرفه تفاصيل الخدمه اضغط هنا</string>
+    <string name="ser_name">اسم الخدمة</string>
+    <string name="serv_details">تفاصيل الخدمة</string>
+    <string name="serv_sd">تاريخ بدأ الخدمة</string>
+    <string name="serv_ed">تاريخ انتهاء الخدمة</string>
+    <string name="off_name">مكتب الخدمة</string>
+    <string name="serv_cost">التكلفة</string>
+    <string name="ch_off_serv">إختار مكتب الخدمة</string>
 
 </resources>

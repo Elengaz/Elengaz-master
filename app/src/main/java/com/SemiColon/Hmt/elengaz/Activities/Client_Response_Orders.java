@@ -65,7 +65,8 @@ public class Client_Response_Orders extends AppCompatActivity {
         }
     }
 
-    private void initView() {
+    private void initView()
+    {
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +93,8 @@ public class Client_Response_Orders extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
     }
 
-    private void DisplayAllServices() {
+    private void DisplayAllServices()
+    {
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
         Call<List<DisplayServicesModel>> call = service.Display_AllServiceOrder(client_id);
         call.enqueue(new Callback<List<DisplayServicesModel>>() {

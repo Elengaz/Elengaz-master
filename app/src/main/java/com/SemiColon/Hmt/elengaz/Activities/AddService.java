@@ -15,16 +15,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
+import com.SemiColon.Hmt.elengaz.Model.AddServicesResponse;
 import com.SemiColon.Hmt.elengaz.Model.Client_Model;
-import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
@@ -34,12 +37,17 @@ import retrofit2.Response;
 
 public class AddService extends AppCompatActivity {
     private ProgressDialog pDialog;
+    private AlertDialog alertDialog;
     Button btnDatePicker, btnplace,add;
     EditText serviseName,detail,phone,otherPhone,email;
     String sDate,client_id,formattedDate;
     Double sLatitude,sLongitude;
-    String service_id ;
-    String lat,lng,sName,sDetail,sPhone,sOtherPhone,sEmail;
+    String service_id ,category_id;
+
+    private List<String> offices_ids_list;
+    ImageView back;
+    String sName,sDetail,sPhone,sOtherPhone,sEmail;
+    double lat,lng;
     public Client_Model client_model;
     private final int PLACE_REQ =1200;
     Date c;
@@ -50,6 +58,33 @@ public class AddService extends AppCompatActivity {
         Calligrapher calligrapher=new Calligrapher(this);
         calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
 
+        alertDialog = new AlertDialog.Builder(this)
+        .setTitle("تهانيا")
+        .setMessage("تم إضافة الخدمة بنجاح")
+        .setCancelable(true)
+        .setPositiveButton("تم", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent intent = new Intent(AddService.this,Main_Home.class);
+                intent.putExtra("id",client_id);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                alertDialog.dismiss();
+                startActivity(intent);
+
+                finish();
+            }
+        }).create();
+
+        back = findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(AddService.this,OfficeWork.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+                finish();
+            }
+        });
         serviseName=findViewById(R.id.edt_service_name);
         detail=findViewById(R.id.edt_service_detail);
         phone=findViewById(R.id.edt_service_phone);
@@ -63,12 +98,10 @@ public class AddService extends AppCompatActivity {
 
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         formattedDate = df.format(c);
-        Intent intent=getIntent();
-        service_id = intent.getStringExtra("service_id");
-        sLatitude= intent.getDoubleExtra("latitude",1.1);
-        sLongitude= intent.getDoubleExtra("longitude",1.1);
-        client_id= intent.getStringExtra("client_id");
-        client_model = (Client_Model) intent.getSerializableExtra("client_data");
+
+        getDataFromIntent();
+
+
 
 
         if (client_model!=null)
@@ -123,13 +156,61 @@ public class AddService extends AppCompatActivity {
         }
     });}
 
+    private void getDataFromIntent() {
+        Intent intent=getIntent();
+        if (intent!=null)
+        {
+            offices_ids_list = (List<String>) intent.getSerializableExtra("offices_ids_list");
+            category_id= intent.getStringExtra("category_id");
+            client_id = intent.getStringExtra("client_id");
+            client_model = (Client_Model) intent.getSerializableExtra("client_data");
+        }
+
+        //sLatitude= intent.getDoubleExtra("latitude",1.1);
+        //sLongitude= intent.getDoubleExtra("longitude",1.1);
+
+    }
+
     private void sendService() {
         pDialog = new ProgressDialog(AddService.this);
         pDialog.setIndeterminate(true);
         pDialog.setMessage("Waiting for adding service data...");
         pDialog.setCancelable(false);
-
         showpDialog();
+
+        sName = serviseName.getText().toString();
+        sDetail = detail.getText().toString();
+        sPhone = phone.getText().toString();
+        sOtherPhone = otherPhone.getText().toString();
+        sEmail = email.getText().toString();
+        ServicesApi service = APIClient.getClient().create(ServicesApi.class);
+        Call<AddServicesResponse> call = service.AddAllServiceData(offices_ids_list, client_id, category_id, sName, sDetail, sDate, sPhone, sOtherPhone, sEmail, String.valueOf(lat), String.valueOf(lng));
+
+        call.enqueue(new Callback<AddServicesResponse>() {
+            @Override
+            public void onResponse(Call<AddServicesResponse> call, Response<AddServicesResponse> response) {
+
+                if (response.isSuccessful())
+                {
+                    AddServicesResponse servicesResponse = response.body();
+
+                    if (servicesResponse.getSuccess()==1)
+                    {
+                        alertDialog.show();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddServicesResponse> call, Throwable t) {
+                Log.e("error",t.getMessage());
+                Toast.makeText(AddService.this, getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        Log.e("All Data",client_id+"\n"+category_id+"\n"+offices_ids_list.get(0)+"\n"+lat+"\n"+lng+"\n"+sName+"\n"+sDetail+"\n"+sPhone+"\n"+sOtherPhone+"\n"+sEmail+"\n"+sDate);
+ /*
+
 
          sName = serviseName.getText().toString();
          sDetail = detail.getText().toString();
@@ -175,7 +256,7 @@ public class AddService extends AppCompatActivity {
                 hidepDialog();
                 Log.d("onFailure", t.toString());
             }
-        });
+        });*/
     }
 
     private void showpDialog() {
@@ -284,9 +365,18 @@ public class AddService extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==PLACE_REQ && resultCode == RESULT_OK && data!=null)
         {
-            lat = data.getStringExtra("latitude");
-            lng = data.getStringExtra("longitude");
+            lat = data.getDoubleExtra("latitude",0);
+            lng = data.getDoubleExtra("longitude",0);
         }
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this,OfficeWork.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+        finish();
     }
 }

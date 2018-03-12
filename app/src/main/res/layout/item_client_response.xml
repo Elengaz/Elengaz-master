@@ -1,15 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="match_parent"
+
+<android.support.v7.widget.CardView android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="5dp"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/linear"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="10dp"
+    android:layout_margin="5dp"
+    >
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn2"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp"
+        android:layoutDirection="rtl"
+
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <FrameLayout
+        android:layout_width="0dp"
+        android:layout_weight=".3"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        >
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/logo"
+        android:layout_gravity="center"
+        />
+    </FrameLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight=".7"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="5dp"
+        >
+        <TextView
+            android:id="@+id/service_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLines="1"
+            />
+        <TextView
+            android:id="@+id/service_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:padding="5dp"
+            android:gravity="center"
+            android:textColor="#000"
+            android:maxLines="1"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight=".3"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+        <TextView
+            android:id="@+id/service_startDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_gravity="left"
+            android:layout_marginTop="5dp"
+            android:textSize="11sp"
+            android:textColor="#9e9e9e"
+            android:maxLines="1"/>
+
+        <TextView
+            android:id="@+id/not_office_counts"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/not_bg"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/service_details"
+        android:textSize="11sp"
+        android:padding="5dp"
+        android:textColor="@color/colorPrimary"
+        android:maxLines="1"
+        android:layout_marginTop="5dp"
+        />
+
+
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginLeft="5dp"
@@ -346,6 +451,7 @@
 
         android:background="@color/colorPrimary"
         android:paddingRight="5dp" />
+-->
 
-
-</LinearLayout></FrameLayout>
+</LinearLayout>
+</android.support.v7.widget.CardView>

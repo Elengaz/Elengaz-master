@@ -77,11 +77,13 @@ public class ServicesAdapter extends RecyclerView.Adapter<ServicesAdapter.Holder
 
             sendData();
             Intent i = new Intent(context,OfficeWork.class);
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             i.putExtra("client_id",home.id);
             i.putExtra("service_id",client_service_id);
             i.putExtra("category_id",category_id);
             i.putExtra("client_data",home.client_model);
             context.startActivity(i);
+            home.finish();
 
         }
 

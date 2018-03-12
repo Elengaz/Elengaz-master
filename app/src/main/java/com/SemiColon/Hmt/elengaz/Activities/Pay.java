@@ -4,16 +4,17 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,9 @@ import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,10 +35,10 @@ import retrofit2.Response;
 
 public class Pay extends AppCompatActivity {
 
-    Button trans;
     EditText name,date,cost;
-    Button upload;
+    Button upload,trans;
     String pname,pdate,pcost, picturePath,service_id,state;
+    private Bitmap bitmap;
     private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +60,11 @@ public class Pay extends AppCompatActivity {
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(
-                        Intent.ACTION_PICK,
-                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-                startActivityForResult(i, RESULT_LOAD_IMAGE);
-            }
+                Intent intent1 = new Intent(Intent.ACTION_GET_CONTENT);
+                intent1.setType("image/*");
+                startActivityForResult(intent1.createChooser(intent1,getString(R.string.choose_photo)),RESULT_LOAD_IMAGE);
+                         }
         });
 
         trans.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +81,7 @@ public class Pay extends AppCompatActivity {
                     pname = name.getText().toString();
                     pdate = date.getText().toString();
                     pcost = cost.getText().toString();
+
 
                     ServicesApi servicesApi = APIClient.getClient().create(ServicesApi.class);
                     Call<Register_Client_Model> call = servicesApi.sendPayment(service_id, pname, pcost, pdate, picturePath);
@@ -111,18 +115,14 @@ public class Pay extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && null != data) {
+        if (requestCode == RESULT_LOAD_IMAGE && resultCode == RESULT_OK && data!=null) {
             Uri selectedImage = data.getData();
-            String[] filePathColumn = {MediaStore.Images.Media.DATA};
-
-            Cursor cursor = getContentResolver().query(selectedImage,
-                    filePathColumn, null, null, null);
-            cursor.moveToFirst();
-
-            int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-            picturePath = cursor.getString(columnIndex);
-            cursor.close();
+            try {
+                bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
+                picturePath = encodeImage(bitmap);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
             //  img=findViewById(R.id.img);
 
             //  img.setImageBitmap(BitmapFactory.decodeFile(picturePath));
@@ -131,7 +131,16 @@ public class Pay extends AppCompatActivity {
         }
     }
 
-  private void show_dialog(){
+    private String encodeImage(Bitmap bitmap) {
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.JPEG,90,outputStream);
+
+        byte [] bytes = outputStream.toByteArray();
+        return Base64.encodeToString(bytes,Base64.DEFAULT);
+
+    }
+
+    private void show_dialog(){
 
 
 

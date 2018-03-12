@@ -86,6 +86,7 @@
                 android:layout_height="40dp"
                 android:layout_margin="7dp"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
                 android:layout_gravity="right"
@@ -102,6 +103,7 @@
                 android:textColorHint="#cc4d4747"
                 android:textColor="#cc4d4747"
                 android:paddingRight="10dp"
+                android:paddingLeft="10dp"
 
                 android:gravity="start"
                 android:layout_margin="5dp"

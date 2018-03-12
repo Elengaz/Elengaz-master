@@ -103,5 +103,13 @@
     <string name="add_email">Add email address here</string>
     <string name="location">location</string>
     <string name="date">Date</string>
+    <string name="service_details">Show service details</string>
+    <string name="ser_name">Service name </string>
+    <string name="serv_details">Service details</string>
+    <string name="serv_sd">Start date</string>
+    <string name="serv_ed">End date</string>
+    <string name="off_name">Office name</string>
+    <string name="serv_cost">Service cost</string>
+    <string name="ch_off_serv">choose office</string>
 
 </resources>

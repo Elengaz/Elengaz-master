@@ -2,9 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.SemiColon.Hmt.elengaz">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
@@ -33,9 +33,7 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/GOOGLE_MAPS_API_KEY" />
 
-        <activity android:name=".Activities.MainActivity">
-
-        </activity>
+        <activity android:name=".Activities.MainActivity" />
         <activity
             android:name=".Activities.SelectActivity"
             android:windowSoftInputMode="stateAlwaysHidden">
@@ -98,9 +96,9 @@
             android:name=".Activities.Main_Home"
             android:label="@string/title_activity_main__home"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Activities.Client_Profile_Activity"></activity>
-        <activity android:name=".Activities.Contact"></activity>
+        <activity android:name=".Activities.Client_Profile_Activity" />
+        <activity android:name=".Activities.Contact" />
+        <activity android:name=".ServiceDetailsActivity"></activity>
     </application>
-
 
 </manifest>
