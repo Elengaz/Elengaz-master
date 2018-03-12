@@ -280,6 +280,7 @@ public class Pay extends AppCompatActivity {
 
         if (ccost.isEmpty() || ccost.length() < 2) {
             cost.setError(getString(R.string.enter_cost));
+
             valid = false;
         } else {
             cost.setError(null);
