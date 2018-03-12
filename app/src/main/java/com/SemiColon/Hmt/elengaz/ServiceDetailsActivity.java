@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.SemiColon.Hmt.elengaz.Activities.AddRate;
 import com.SemiColon.Hmt.elengaz.Activities.Offers;
 import com.SemiColon.Hmt.elengaz.Model.DisplayServicesModel;
 
@@ -68,7 +69,33 @@ public class ServiceDetailsActivity extends AppCompatActivity {
                      Intent intent = new Intent(ServiceDetailsActivity.this, Offers.class);
                      intent.putExtra("client_service_id", servicesModel.getClient_service_id());
                      intent.putExtra("state",servicesModel.getState_name());
-                 startActivity(intent);
+                     startActivity(intent);
+                }else if (servicesModel.getClient_service_status().equals("1"))
+                {
+                    if (servicesModel.getTransfer_status().equals("1"))
+                    {
+                        Toast.makeText(this, "يمكنك المتابعة مع مقدم الخدمة", Toast.LENGTH_SHORT).show();
+
+                    }else
+                        {
+                            Toast.makeText(this, "لم يتم التحويل", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(ServiceDetailsActivity.this, Offers.class);
+                            intent.putExtra("client_service_id", servicesModel.getClient_service_id());
+                            intent.putExtra("state",servicesModel.getState_name());
+                            startActivity(intent);
+                        }
+                }else if (servicesModel.getClient_service_status().equals("2"))
+                {
+                    if (servicesModel.getClient_evaluation().equals("0"))
+                    {
+                        Toast.makeText(ServiceDetailsActivity.this, "لم يتم التقييم", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(ServiceDetailsActivity.this, AddRate.class);
+                        intent.putExtra("client_service_id", servicesModel.getClient_service_id());
+                        startActivity(intent);
+                    }else
+                        {
+                            Toast.makeText(this, "تم انهاء الخدمة", Toast.LENGTH_SHORT).show();
+                        }
                 }
 
             }
