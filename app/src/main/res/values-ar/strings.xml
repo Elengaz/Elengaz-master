@@ -124,5 +124,7 @@
     <string name="off_name">مكتب الخدمة</string>
     <string name="serv_cost">التكلفة</string>
     <string name="ch_off_serv">إختار مكتب الخدمة</string>
+    <string name="add_serv_cost">أضف تكلفة الخدمة</string>
+    <string name="end_serv">إنهاء الخدمة</string>
 
 </resources>

@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +28,6 @@ import retrofit2.Response;
 
 public class Office_Oreders_Adapter extends RecyclerView.Adapter<Office_Oreders_Adapter.Holder> {
     Context context;
-    office_order_model mmodel;
     List<office_order_model> Array;
 
     String cost;
@@ -46,15 +44,20 @@ public class Office_Oreders_Adapter extends RecyclerView.Adapter<Office_Oreders_
     }
 
     @Override
-    public void onBindViewHolder(Holder holder, int position) {
-        mmodel = Array.get(position);
+    public void onBindViewHolder(final Holder holder, int position) {
+        office_order_model mmodel = Array.get(position);
 
-        holder.lingrand.setTag(position);
-
-        holder.username.setText(mmodel.getClientUserName());
+       // holder.username.setText(mmodel.getClientUserName());
         holder.servicename.setText(mmodel.getClientServiceName());
         holder.detail.setText(mmodel.getClientServiceDetails());
         holder.phone.setText(mmodel.getClientPhoneNumber());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.add_cost(holder.getAdapterPosition());
+            }
+        });
 
 
     }
@@ -64,40 +67,26 @@ public class Office_Oreders_Adapter extends RecyclerView.Adapter<Office_Oreders_
         return Array.size();
     }
 
-    class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView username, servicename, detail, phone;
-        LinearLayout lingrand;
+    class Holder extends RecyclerView.ViewHolder {
+        TextView  servicename, detail,phone;
 
         public Holder(View itemView) {
             super(itemView);
 
-            username = itemView.findViewById(R.id.client_name);
+            //username = itemView.findViewById(R.id.client_name);
             servicename = itemView.findViewById(R.id.txt_service_name);
             detail = itemView.findViewById(R.id.txt_detail);
             phone = itemView.findViewById(R.id.txt_phone);
-            lingrand = itemView.findViewById(R.id.linear);
-            lingrand.setOnClickListener(this);
-
-
-        }
-
-        @Override
-        public void onClick(View view) {
-
-            int position = (int) view.getTag();
-
-            mmodel = Array.get(position);
-
-
-            add_cost();
-           // Toast.makeText(context, mmodel.getOrderId() + cost, Toast.LENGTH_SHORT).show();
+            //lingrand = itemView.findViewById(R.id.linear);
+            //lingrand.setOnClickListener(this);
 
 
         }
 
 
-        private void add_cost() {
 
+        private void add_cost(int pos) {
+            final office_order_model order_model =Array.get(pos);
             AlertDialog.Builder builder = new AlertDialog.Builder(context);
             builder.setTitle("ادخل السعر");
 
@@ -122,7 +111,7 @@ public class Office_Oreders_Adapter extends RecyclerView.Adapter<Office_Oreders_
                             ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-                            Call<office_order_model> userCall = service.AddOfficeOfferCost(cost,mmodel.getClientIdFk(),mmodel.getOrderId());
+                            Call<office_order_model> userCall = service.AddOfficeOfferCost(cost,order_model.getClientIdFk(),order_model.getOrderId());
                             // startActivity(new Intent(Register.this, ListMarma.class));
 
                             userCall.enqueue(new Callback<office_order_model>() {

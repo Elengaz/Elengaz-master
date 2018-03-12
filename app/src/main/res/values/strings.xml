@@ -118,5 +118,7 @@
 
     <string name="order">order :</string>
     <string name="order_date"> date :</string>
+    <string name="add_serv_cost">Add Service Cost</string>
+    <string name="end_serv">End Service</string>
 
 </resources>
