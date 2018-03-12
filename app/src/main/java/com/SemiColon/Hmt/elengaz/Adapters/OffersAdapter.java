@@ -22,6 +22,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Holder> {
     List<OfficeOfferModel> officeOfferModelList;
     private int lastSelectedPos= -1;
     private Offers offers;
+   public static String offer_cost;
 
     OfficeWork officeWork;
     public OffersAdapter(Context context, List<OfficeOfferModel> officeOfferModelList) {
@@ -91,6 +92,7 @@ public class OffersAdapter extends RecyclerView.Adapter<OffersAdapter.Holder> {
         public void BindData(OfficeOfferModel officeOfferModel)
         {
             cost.setText(officeOfferModel.getOffice_service_cost()+" "+"ريال");
+            offer_cost=cost.getText().toString();
             title.setText(officeOfferModel.getOffice_title());
             Log.e("sssssssss","ssssssssssss");
         }

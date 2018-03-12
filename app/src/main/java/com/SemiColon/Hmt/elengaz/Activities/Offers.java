@@ -31,6 +31,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+import static com.SemiColon.Hmt.elengaz.Adapters.OffersAdapter.offer_cost;
+
 public class Offers extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView recView_offers;
@@ -61,21 +63,22 @@ public class Offers extends AppCompatActivity implements View.OnClickListener{
                     dialog.show();
                     Retrofit retrofit = APIClient.getClient();
                     ServicesApi service  = retrofit.create(ServicesApi.class);
-                    Call<ResponseModel> call = service.Send_OfficesOffersDone(service_id, office_id_fk);
-                    call.enqueue(new Callback<ResponseModel>() {
+                    Call<OfficeOfferModel> call = service.Send_OfficesOffersDone(service_id,offer_cost ,office_id_fk);
+                    call.enqueue(new Callback<OfficeOfferModel>() {
                         @Override
-                        public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
+                        public void onResponse(Call<OfficeOfferModel> call, Response<OfficeOfferModel> response) {
                             if (response.isSuccessful())
                             {
                                 dialog.dismiss();
                                 Intent i=new Intent(Offers.this,TransAccount.class);
                                 i.putExtra("client_service_id",service_id);
+                           //     Toast.makeText(Offers.this, ""+offer_cost, Toast.LENGTH_SHORT).show();
                                 startActivity(i);
                             }
                         }
 
                         @Override
-                        public void onFailure(Call<ResponseModel> call, Throwable t) {
+                        public void onFailure(Call<OfficeOfferModel> call, Throwable t) {
                             Toast.makeText(Offers.this, "Error  something haywire, check network connection", Toast.LENGTH_SHORT).show();
                             dialog.dismiss();
                         }

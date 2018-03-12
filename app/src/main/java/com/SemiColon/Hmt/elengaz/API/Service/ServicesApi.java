@@ -158,7 +158,9 @@ public interface ServicesApi {
 
         @FormUrlEncoded
         @POST("OfficeOffers/{client_service_id}")
-        Call<ResponseModel> Send_OfficesOffersDone(@Path("client_service_id") String client_service_id, @Field("office_id_fk") String office_id_fk);
+        Call<OfficeOfferModel> Send_OfficesOffersDone(@Path("client_service_id") String client_service_id,
+                                                   @Field("office_service_cost") String office_service_cost,
+                                                   @Field("office_id_fk") String office_id_fk);
 
         @FormUrlEncoded
         @POST("AddEvaluation")
