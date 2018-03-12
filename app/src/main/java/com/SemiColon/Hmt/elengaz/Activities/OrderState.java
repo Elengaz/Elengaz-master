@@ -8,13 +8,20 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.TextView;
 
+import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
+import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
+import com.SemiColon.Hmt.elengaz.Model.Order_State_Model;
+import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class OrderState extends AppCompatActivity {
 
-    TextView txtrate;
+    TextView order_name,order_date,order_state,office_name,rate;
     private String client_service_id,state;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,11 +30,12 @@ public class OrderState extends AppCompatActivity {
 
         Calligrapher calligrapher=new Calligrapher(this);
         calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
-        txtrate=findViewById(R.id.txtrate);
 
+        initView();
         getDateFromIntent();
+        getDateFromServer();
 
-        txtrate.setOnClickListener(new View.OnClickListener() {
+        rate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(OrderState.this,AddRate.class);
@@ -35,6 +43,40 @@ public class OrderState extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+    private void initView() {
+        rate=findViewById(R.id.txt_rate);
+        order_name=findViewById(R.id.txtorder);
+        order_date=findViewById(R.id.txt_date);
+        order_state=findViewById(R.id.txt_state);
+        office_name=findViewById(R.id.txt_officename);
+
+    }
+
+    private void getDateFromServer() {
+
+
+        ServicesApi servicesApi = APIClient.getClient().create(ServicesApi.class);
+        Call<Order_State_Model> call = servicesApi.ViewServiceState(client_service_id);
+        call.enqueue(new Callback<Order_State_Model>() {
+            @Override
+            public void onResponse(Call<Order_State_Model> call, Response<Order_State_Model> response) {
+                if(response.isSuccessful()){
+                    rate.setText(response.body().getClient_evaluation_state());
+                    order_name.setText(response.body().getClient_service_name());
+                    order_date.setText(response.body().getClient_service_date());
+                    order_state.setText(response.body().getState_name());
+                    office_name.setText(response.body().getOffice_name());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Order_State_Model> call, Throwable t) {
+
+            }
+        });
+
     }
 
     private void getDateFromIntent() {

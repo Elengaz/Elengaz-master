@@ -112,4 +112,7 @@
     <string name="serv_cost">Service cost</string>
     <string name="ch_off_serv">choose office</string>
 
+    <string name="order">order :</string>
+    <string name="order_date"> date :</string>
+
 </resources>

@@ -10,6 +10,7 @@ import com.SemiColon.Hmt.elengaz.Model.Officces;
 import com.SemiColon.Hmt.elengaz.Model.OfficeDetailsModel1;
 import com.SemiColon.Hmt.elengaz.Model.OfficeOfferModel;
 import com.SemiColon.Hmt.elengaz.Model.Office_Service_Model;
+import com.SemiColon.Hmt.elengaz.Model.Order_State_Model;
 import com.SemiColon.Hmt.elengaz.Model.ProfileModel;
 import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.Model.ResponseModel;
@@ -225,6 +226,9 @@ public interface ServicesApi {
                                               @Field("client_email") String client_email,
                                               @Field("client_phone") String client_phone ,
                                               @Field("client_img")String client_img);
+
+    @GET("ViewServiceState/{client_service_id}")
+    Call<Order_State_Model> ViewServiceState(@Path("client_service_id") String client_service_id);
 
 }
 
