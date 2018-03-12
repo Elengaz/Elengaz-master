@@ -126,5 +126,9 @@
     <string name="ch_off_serv">إختار مكتب الخدمة</string>
     <string name="add_serv_cost">أضف تكلفة الخدمة</string>
     <string name="end_serv">إنهاء الخدمة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="ok">نعم</string>
+    <string name="not">الاشعارات</string>
+    <string name="services">الخدمات</string>
 
 </resources>

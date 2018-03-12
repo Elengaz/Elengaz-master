@@ -1,9 +1,12 @@
 package com.SemiColon.Hmt.elengaz.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +66,45 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
         //holder.state.setText(mmodel.getClient_service_status());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
+                Office_Service_Model office_service_model = Array.get(holder.getAdapterPosition());
+
+                if (office_service_model.getClient_service_status().equals("2"))
+                {
+                    Toast.makeText(context, "تمت الخدمة", Toast.LENGTH_SHORT).show();
+                }else
+                    {
+                        CreateDialog(holder);
+
+                    }
+
+
+            }
+        });
+
+
+    }
+
+    private void CreateDialog(final Holder holder) {
+        Log.e("holder",""+holder.getAdapterPosition());
+
+        final AlertDialog.Builder dialog = new AlertDialog.Builder(context);
+
+        dialog.setCancelable(true);
+        dialog.setMessage(context.getString(R.string.end_serv));
+        dialog.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                AlertDialog dialog1 = dialog.create();
+                dialog1.dismiss();
+            }
+        });
+        dialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
                 Office_Service_Model office_service_model = Array.get(holder.getAdapterPosition());
                 ServicesApi service= APIClient.getClient().create(ServicesApi.class);
                 Call<Office_Service_Model> call=service.EndService(office_service_model.getClient_service_id());
@@ -73,7 +113,8 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
                     public void onResponse(Call<Office_Service_Model> call, Response<Office_Service_Model> response) {
                         if (response.isSuccessful()){
                             Toast.makeText(context, " service ended", Toast.LENGTH_SHORT).show();
-
+                            AlertDialog dialog1 = dialog.create();
+                            dialog1.dismiss();
                         }else {
 
                         }
@@ -84,11 +125,12 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
 
                     }
                 });
+
             }
         });
-
-
+        dialog.show();
     }
+
 
     @Override
     public int getItemCount() {
