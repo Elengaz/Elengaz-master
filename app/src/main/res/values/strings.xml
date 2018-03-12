@@ -111,5 +111,9 @@
     <string name="off_name">Office name</string>
     <string name="serv_cost">Service cost</string>
     <string name="ch_off_serv">choose office</string>
+    <string name="pay">payment</string>
+    <string name="add_date">Add date</string>
+    <string name="enter_date">enter date</string>
+    <string name="enter_cost">enter cost</string>
 
 </resources>

@@ -1,6 +1,8 @@
 package com.SemiColon.Hmt.elengaz.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -15,9 +17,13 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
@@ -27,6 +33,10 @@ import com.SemiColon.Hmt.elengaz.R;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 import retrofit2.Call;
@@ -35,8 +45,10 @@ import retrofit2.Response;
 
 public class Pay extends AppCompatActivity {
 
-    EditText name,date,cost;
-    Button upload,trans;
+    EditText name,cost;
+    TextView date;
+    ImageView trans_photo;
+    Button upload,trans,add_date;
     String pname,pdate,pcost, picturePath,service_id,state;
     private Bitmap bitmap;
     private static int RESULT_LOAD_IMAGE = 1;
@@ -55,7 +67,9 @@ public class Pay extends AppCompatActivity {
         trans =findViewById(R.id.trans);
         name=findViewById(R.id.edt_trans_name);
         date=findViewById(R.id.edt_date);
+        add_date = findViewById(R.id.add_date);
         cost=findViewById(R.id.edt_cost);
+        trans_photo = findViewById(R.id.trans_photo);
         upload=findViewById(R.id.btn_upload);
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,9 +123,60 @@ public class Pay extends AppCompatActivity {
             }
         });
 
+        add_date.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DateDialog();
+            }
+        });
+
 
     }
+    public void DateDialog() {
 
+        final Calendar calendar = Calendar.getInstance();
+        final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(Pay.this, new DatePickerDialog.OnDateSetListener() {
+
+            @SuppressLint("ResourceAsColor")
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                Calendar newDate = Calendar.getInstance();
+                newDate.set(year, monthOfYear, dayOfMonth);
+                String sDate = dateFormatter.format(newDate.getTime());
+
+                date.setText(sDate+"");
+                Date dateSpecified = newDate.getTime();
+                Date c = Calendar.getInstance().getTime();
+                if (dateSpecified.before(c)) {
+                    final AlertDialog.Builder alertadd = new AlertDialog.Builder(Pay.this);
+                    LayoutInflater factory = LayoutInflater.from(Pay.this);
+                    final View viewu = factory.inflate(R.layout.sample, null);
+                    alertadd.setView(viewu);
+
+                    alertadd.setNeutralButton("OK!", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dlg, int sumthin) {
+                            DateDialog();
+
+
+                        }
+                    });
+                    AlertDialog dialog = alertadd.create();
+                    dialog.getWindow().getAttributes().windowAnimations = R.style.CustomAnimations_slide; //style id
+
+                    dialog.show();
+
+                    //dateall.setText("Choose date");
+
+                } else {
+                    //   dateall.setText(date);
+
+                }
+
+            }
+
+        }, calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DAY_OF_MONTH));
+        datePickerDialog.show();
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -119,6 +184,7 @@ public class Pay extends AppCompatActivity {
             Uri selectedImage = data.getData();
             try {
                 bitmap = BitmapFactory.decodeStream(getContentResolver().openInputStream(selectedImage));
+                trans_photo.setImageBitmap(bitmap);
                 picturePath = encodeImage(bitmap);
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -131,7 +197,8 @@ public class Pay extends AppCompatActivity {
         }
     }
 
-    private String encodeImage(Bitmap bitmap) {
+    private String encodeImage(Bitmap bitmap)
+    {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG,90,outputStream);
 
@@ -139,8 +206,8 @@ public class Pay extends AppCompatActivity {
         return Base64.encodeToString(bytes,Base64.DEFAULT);
 
     }
-
-    private void show_dialog(){
+    private void show_dialog()
+    {
 
 
 
@@ -187,7 +254,8 @@ public class Pay extends AppCompatActivity {
       // Finally, display the alert dialog
       dialog.show();
   }
-    public boolean validate() {
+    public boolean validate()
+    {
         boolean valid = true;
         String cname = name.getText().toString();
         String cdate = date.getText().toString();
@@ -196,7 +264,7 @@ public class Pay extends AppCompatActivity {
 
 
         if (cname.isEmpty() || cname.length()<4) {
-            name.setError("enter a valid email address");
+            name.setError(getString(R.string.trans_name));
             valid = false;
         } else {
             name.setError(null);
@@ -204,14 +272,14 @@ public class Pay extends AppCompatActivity {
 
 
         if (cdate.isEmpty() ) {
-            date.setError("between 4 and 10 alphanumeric characters");
+            date.setError(getString(R.string.enter_date));
             valid = false;
         } else {
             date.setError(null);
         }
 
         if (ccost.isEmpty() || ccost.length() < 2) {
-            cost.setError("phone Do not match");
+            cost.setError(getString(R.string.enter_cost));
             valid = false;
         } else {
             cost.setError(null);
@@ -219,9 +287,9 @@ public class Pay extends AppCompatActivity {
 
         return valid;
     }
-
     @Override
-    public void onBackPressed() {
+    public void onBackPressed()
+    {
         super.onBackPressed();
         SharedPreferences pref = getSharedPreferences("user_id",MODE_PRIVATE);
         String user_type = pref.getString("user_type","");
