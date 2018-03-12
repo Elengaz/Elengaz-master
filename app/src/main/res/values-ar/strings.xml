@@ -124,9 +124,5 @@
     <string name="off_name">مكتب الخدمة</string>
     <string name="serv_cost">التكلفة</string>
     <string name="ch_off_serv">إختار مكتب الخدمة</string>
-    <string name="pay">الدفع</string>
-    <string name="add_date">اختار التاريخ</string>
-    <string name="enter_date">اختار التاريخ</string>
-    <string name="enter_cost">أدخل التكلفة</string>
 
 </resources>

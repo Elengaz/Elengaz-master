@@ -116,4 +116,7 @@
     <string name="enter_date">enter date</string>
     <string name="enter_cost">enter cost</string>
 
+    <string name="order">order :</string>
+    <string name="order_date"> date :</string>
+
 </resources>

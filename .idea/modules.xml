@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://C:\Users\moham\Desktop\Elengaz-master\Elengaz.iml" filepath="C:\Users\moham\Desktop\Elengaz-master\Elengaz.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Elengaz-master.iml" filepath="$PROJECT_DIR$/Elengaz-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Elengaz-master.iml" filepath="$PROJECT_DIR$/.idea/Elengaz-master.iml" />
+      <module fileurl="file://G:\android\Elengaz-master\Elengaz-master.iml" filepath="G:\android\Elengaz-master\Elengaz-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://G:\android\Elengaz-master\app\app.iml" filepath="G:\android\Elengaz-master\app\app.iml" />
     </modules>
   </component>
 </project>
