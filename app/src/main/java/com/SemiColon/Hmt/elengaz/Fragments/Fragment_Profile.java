@@ -82,7 +82,7 @@ public class Fragment_Profile extends Fragment {
         call.enqueue(new Callback<ProfileModel>() {
             @Override
             public void onResponse(Call<ProfileModel> call, Response<ProfileModel> response) {
-            //    Toast.makeText(getContext(), "in"+home.office_id, Toast.LENGTH_SHORT).show();
+            // Toast.makeText(getContext(), "in"+home.office_id, Toast.LENGTH_SHORT).show();
                 name.setText(response.body().getOffice_user_name());
                 phone.setText(response.body().getOffice_phone());
                 email.setText(response.body().getOffice_email());

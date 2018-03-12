@@ -299,9 +299,8 @@ public class Main_Home extends AppCompatActivity
     }
     private void UpdateToken() {
         Map<String,String> map = new HashMap<>();
-        map.put("type","1");
-        map.put("user_id",id);
-        map.put("new_token_id", FirebaseInstanceId.getInstance().getId());
+        map.put("client_id",id);
+        map.put("new_token_id", FirebaseInstanceId.getInstance().getToken());
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
         Call<ResponseModel> call = service.UpdateToken(map);
         call.enqueue(new Callback<ResponseModel>() {
@@ -309,7 +308,10 @@ public class Main_Home extends AppCompatActivity
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if (response.isSuccessful())
                 {
-
+                    if (response.body().getSuccess()==1)
+                    {
+                        Log.e("client_token","updated successfully");
+                    }
                 }
             }
 

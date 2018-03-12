@@ -208,8 +208,12 @@ public interface ServicesApi {
 
 
     @FormUrlEncoded
-    @POST("UpdateToken")
+    @POST("UpdateClientToken")
     Call<ResponseModel> UpdateToken(@FieldMap Map<String,String> map);
+
+    @FormUrlEncoded
+    @POST("UpdateOfficeToken")
+    Call<ResponseModel> UpdateOfficeToken(@FieldMap Map<String,String> map);
 
     @GET("OfficeService/{office_id}")
     Call<List<Office_Service_Model>> Display_OfficeService(@Path("office_id") String office_id);

@@ -111,18 +111,20 @@ public class ServiceProvider_Home extends AppCompatActivity{
 
     private void UpdateToken() {
         Map<String,String> map = new HashMap<>();
-        map.put("type","2");
-        map.put("user_id",office_id);
-        map.put("new_token_id", FirebaseInstanceId.getInstance().getId());
+        map.put("office_id",office_id);
+        map.put("new_token_id", FirebaseInstanceId.getInstance().getToken());
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
-        Call<ResponseModel> call = service.UpdateToken(map);
+        Call<ResponseModel> call = service.UpdateOfficeToken(map);
         call.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if (response.isSuccessful())
                 {
-                    ResponseModel responseModel = response.body();
-                        Log.e("token","token updated");
+                    if (response.body().getSuccess()==1)
+                    {
+                        Log.e("office_token","updated successfully");
+
+                    }
 
                 }
             }
