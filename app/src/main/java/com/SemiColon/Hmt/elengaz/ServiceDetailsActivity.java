@@ -57,10 +57,6 @@ public class ServiceDetailsActivity extends AppCompatActivity {
         // service no replay
         if (servicesModel.getMy_order_state()==0)
         {
-            /*Intent intent = new Intent(ServiceDetailsActivity.this, Offers.class);
-            intent.putExtra("client_service_id", servicesModel.getClient_service_id());
-            intent.putExtra("state",servicesModel.getState_name());
-            startActivity(intent);*/
             Toast.makeText(this, "لم يتم الرد", Toast.LENGTH_SHORT).show();
         }else
             {
@@ -72,13 +68,14 @@ public class ServiceDetailsActivity extends AppCompatActivity {
                      startActivity(intent);
                 }else if (servicesModel.getClient_service_status().equals("1"))
                 {
-                    if (servicesModel.getTransfer_status().equals("1"))
+
+                    if (servicesModel.getService_closed().equals("1"))
                     {
-                        Toast.makeText(this, "يمكنك المتابعة مع مقدم الخدمة", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "الخدمة جارية", Toast.LENGTH_SHORT).show();
 
                     }else
                         {
-                            Toast.makeText(this, "لم يتم التحويل", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "لم يتم التحويل سعر الخدمه", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(ServiceDetailsActivity.this, Offers.class);
                             intent.putExtra("client_service_id", servicesModel.getClient_service_id());
                             intent.putExtra("state",servicesModel.getState_name());
@@ -94,7 +91,7 @@ public class ServiceDetailsActivity extends AppCompatActivity {
                         startActivity(intent);
                     }else
                         {
-                            Toast.makeText(this, "تم انهاء الخدمة", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "تم إنجاز الخدمة", Toast.LENGTH_SHORT).show();
                         }
                 }
 

@@ -3,25 +3,25 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/profile"
-        android:title="profile"
+        android:title="@string/profile"
         android:icon="@drawable/profile_icon"
-        android:orderInCategory="300"
+        android:orderInCategory="400"
         app:showAsAction="never"/>
     <item
         android:id="@+id/detail"
-        android:title="detail"
+        android:title="@string/detail"
         android:icon="@drawable/detail_icon"
-        android:orderInCategory="200"
+        android:orderInCategory="300"
         app:showAsAction="never"/>
     <item
         android:id="@+id/service"
-        android:title="services"
+        android:title="@string/services"
         android:icon="@drawable/my_service"
-        android:orderInCategory="100"
+        android:orderInCategory="200"
         app:showAsAction="never"/>
     <item
         android:id="@+id/order"
-        android:title="order"
+        android:title="@string/orders"
         android:icon="@drawable/note_icon"
         android:orderInCategory="100"
         app:showAsAction="never"/>

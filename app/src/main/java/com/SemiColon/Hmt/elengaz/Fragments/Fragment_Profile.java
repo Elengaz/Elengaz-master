@@ -39,7 +39,7 @@ import retrofit2.Response;
 
 public class Fragment_Profile extends Fragment {
 
-    TextView name,email,phone,title,city;
+    TextView name,email,phone,title,city,total_service_cost,total_service_done;
     Button update,update_pass,logout;
     private Preferences preferences;
     CircleImageView profile_img;
@@ -61,6 +61,8 @@ public class Fragment_Profile extends Fragment {
         email=view.findViewById(R.id.txt_email);
         title=view.findViewById(R.id.txt_title);
         city=view.findViewById(R.id.txt_city);
+        total_service_cost = view.findViewById(R.id.total_service_cost);
+        total_service_done = view.findViewById(R.id.total_service_done);
         update=view.findViewById(R.id.btnupdate);
         update_pass=view.findViewById(R.id.btnpass);
         profile_img=view.findViewById(R.id.civProfilePic);
@@ -88,6 +90,8 @@ public class Fragment_Profile extends Fragment {
                 email.setText(response.body().getOffice_email());
                 city.setText(response.body().getOffice_city());
                 title.setText(response.body().getOffice_title());
+                total_service_cost.setText(String.valueOf(response.body().getTotal_service()));
+                total_service_done.setText(String.valueOf(response.body().getTotal_service_remain()));
 
                 target = new Target() {
                     @Override

@@ -130,5 +130,8 @@
     <string name="ok">نعم</string>
     <string name="not">الاشعارات</string>
     <string name="services">الخدمات</string>
+    <string name="no_order">لا توجد طلبات لعرضها</string>
+    <string name="detail">التفاصيل</string>
+    <string name="orders">الطلبات</string>
 
 </resources>

@@ -15,10 +15,13 @@ public class ProfileModel {
     private String office_title;
     private Integer success;
     private String office_logo;
+    private int total_service;
+    private int total_service_remain;
+
     public ProfileModel() {
     }
 
-    public ProfileModel(String office_id, String office_user_name, String office_password, String office_email, String office_phone, String office_city, String office_title, Integer success, String office_logo) {
+    public ProfileModel(String office_id, String office_user_name, String office_password, String office_email, String office_phone, String office_city, String office_title, Integer success, String office_logo, int total_service, int total_service_remain) {
         this.office_id = office_id;
         this.office_user_name = office_user_name;
         this.office_password = office_password;
@@ -28,6 +31,24 @@ public class ProfileModel {
         this.office_title = office_title;
         this.success = success;
         this.office_logo = office_logo;
+        this.total_service = total_service;
+        this.total_service_remain = total_service_remain;
+    }
+
+    public int getTotal_service() {
+        return total_service;
+    }
+
+    public void setTotal_service(int total_service) {
+        this.total_service = total_service;
+    }
+
+    public int getTotal_service_remain() {
+        return total_service_remain;
+    }
+
+    public void setTotal_service_remain(int total_service_remain) {
+        this.total_service_remain = total_service_remain;
     }
 
     public String getOffice_logo() {

@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.SemiColon.Hmt.elengaz.Activities.AddRate;
 import com.SemiColon.Hmt.elengaz.Model.DisplayServicesModel;
 import com.SemiColon.Hmt.elengaz.R;
 import com.SemiColon.Hmt.elengaz.ServiceDetailsActivity;
@@ -56,15 +54,11 @@ public class Client_Oreders_Adapter extends RecyclerView.Adapter<Client_Oreders_
 
                 }else if (mmodel.getClient_service_status().equals("1"))
                 {
-                    holder.order_state.setText("الخدمة جاريه");
-                    holder.not_office_counts.setVisibility(View.GONE);
-
+                    holder.order_state.setText("الخدمة جارية");
 
                 }else if (mmodel.getClient_service_status().equals("2"))
                 {
-                    holder.order_state.setText("تم انهاء الخدمه");
-                    holder.not_office_counts.setVisibility(View.GONE);
-
+                    holder.order_state.setText("تم إنجاز الخدمة");
 
                 }
             }
@@ -75,10 +69,13 @@ public class Client_Oreders_Adapter extends RecyclerView.Adapter<Client_Oreders_
             @Override
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
+                DisplayServicesModel servicesModel = Array.get(position);
 
-                mmodel = Array.get(position);
+                Intent intent =new Intent(context, ServiceDetailsActivity.class);
+                intent.putExtra("service_details",servicesModel);
+                context.startActivity(intent);
 
-                if (mmodel.getMy_order_state()==0)
+                /*if (mmodel.getMy_order_state()==0)
                 {
                     holder.order_state.setText("لم يتم الرد");
                     Toast.makeText(context, "لم يتم الرد", Toast.LENGTH_SHORT).show();
@@ -141,7 +138,7 @@ public class Client_Oreders_Adapter extends RecyclerView.Adapter<Client_Oreders_
 
                     }
                 }
-
+*/
 
 
            /* if (mmodel.getMy_order_state().equals("1") && mmodel.getState_name().equals("جارية")) {

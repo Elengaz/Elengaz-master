@@ -24,11 +24,12 @@ public class DisplayServicesModel implements Serializable {
     private int my_order_state;
     private String transfer_status;
     private String total_send;
+    private String service_closed;
 
     public DisplayServicesModel() {
     }
 
-    public DisplayServicesModel(String client_service_id, String client_service_name, String client_service_date, String client_service_end_date, String client_service_details, String client_service_cost, String client_service_status, String client_evaluation, String office_name, String state_name, String client_evaluation_state, int my_order_state, String transfer_status, String total_send) {
+    public DisplayServicesModel(String client_service_id, String client_service_name, String client_service_date, String client_service_end_date, String client_service_details, String client_service_cost, String client_service_status, String client_evaluation, String office_name, String state_name, String client_evaluation_state, int my_order_state, String transfer_status, String total_send, String service_closed) {
         this.client_service_id = client_service_id;
         this.client_service_name = client_service_name;
         this.client_service_date = client_service_date;
@@ -43,6 +44,15 @@ public class DisplayServicesModel implements Serializable {
         this.my_order_state = my_order_state;
         this.transfer_status = transfer_status;
         this.total_send = total_send;
+        this.service_closed = service_closed;
+    }
+
+    public String getService_closed() {
+        return service_closed;
+    }
+
+    public void setService_closed(String service_closed) {
+        this.service_closed = service_closed;
     }
 
     public String getClient_service_id() {

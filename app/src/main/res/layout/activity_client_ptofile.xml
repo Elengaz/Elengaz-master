@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:scrollbars="none"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,6 +16,7 @@
 
     >
     <RelativeLayout
+        android:id="@+id/rc"
         android:layout_width="match_parent"
         android:layout_height="400dp">
 
@@ -111,6 +118,73 @@
             android:textAllCaps="false"
             />
     </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/rc"
+        android:padding="10dp"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="اجمالي سعر الخدمات"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:background="@color/colorPrimary"
+                />
+            <TextView
+                android:id="@+id/total_service_cost"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:background="@color/white"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:layout_marginTop="2dp"
+            >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="مستحق الدفع"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:background="@color/colorPrimary"
+                />
+            <TextView
+                android:id="@+id/total_service_remain"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:textColor="@color/colorPrimary"
+                android:gravity="center"
+                android:textSize="16sp"
+                android:background="@color/white"
+                />
+        </LinearLayout>
+    </LinearLayout>
     <TextView
 
         android:layout_width="wrap_content"
@@ -123,3 +197,4 @@
         android:textColor="@color/colorPrimary"
         />
 </RelativeLayout>
+</ScrollView>

@@ -69,8 +69,8 @@ public class ServiceProvider_Home extends AppCompatActivity{
         bNav.setInactiveColor(Color.parseColor("#9E9E9E"));
         AHBottomNavigationAdapter adapter = new AHBottomNavigationAdapter(this, R.menu.nav_menu);
         adapter.setupWithBottomNavigation(bNav);
-
-        if (bNav.getCurrentItem()==1)
+        bNav.setCurrentItem(0);
+        if (bNav.getCurrentItem()==0)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
         }
@@ -81,11 +81,11 @@ public class ServiceProvider_Home extends AppCompatActivity{
                 switch (position)
                 {
                     case 0:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Officer_Services()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
                         bNav.setCurrentItem(position,false);
                         break;
                     case 1:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Orders()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Fragment_Officer_Services()).commit();
                         bNav.setCurrentItem(position,false);
                         break;
                     case 2:

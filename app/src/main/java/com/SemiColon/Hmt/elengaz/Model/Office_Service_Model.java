@@ -15,8 +15,28 @@ public class Office_Service_Model {
     private String client_service_status;
     private String client_phone_number;
     private String state_name;
+    private String service_closed;
 
     public Office_Service_Model() {
+    }
+
+    public Office_Service_Model(String client_service_id, String client_service_name, String client_service_details, String client_service_cost, String client_service_status, String client_phone_number, String state_name, String service_closed) {
+        this.client_service_id = client_service_id;
+        this.client_service_name = client_service_name;
+        this.client_service_details = client_service_details;
+        this.client_service_cost = client_service_cost;
+        this.client_service_status = client_service_status;
+        this.client_phone_number = client_phone_number;
+        this.state_name = state_name;
+        this.service_closed = service_closed;
+    }
+
+    public String getService_closed() {
+        return service_closed;
+    }
+
+    public void setService_closed(String service_closed) {
+        this.service_closed = service_closed;
     }
 
     public String getClient_service_id() {

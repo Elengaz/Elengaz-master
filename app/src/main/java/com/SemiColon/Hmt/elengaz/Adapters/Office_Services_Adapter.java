@@ -47,13 +47,24 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
     public void onBindViewHolder(final Holder holder, int position) {
         mmodel = Array.get(position);
 
+
+
         if (mmodel.getClient_service_status().equals("2"))
         {
-            holder.txt.setText("تمت الخدمة");
+            holder.txt.setText("تم إنجاز الخدمة");
         }else
             {
-                holder.txt.setText("إنهاء الخدمة");
-                holder.card.setCardBackgroundColor(ContextCompat.getColor(context,R.color.card));
+                if (mmodel.getService_closed().equals("0"))
+                {
+                    holder.txt.setText("الخدمة جارية");
+                    holder.card.setCardBackgroundColor(ContextCompat.getColor(context,R.color.card));
+
+                }else
+                    {
+                        holder.txt.setText("إنهاء الخدمة");
+                        holder.card.setCardBackgroundColor(ContextCompat.getColor(context,R.color.card));
+
+                    }
             }
 
         //holder.state.setTag(position);
@@ -71,12 +82,22 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
             public void onClick(View view) {
                 Office_Service_Model office_service_model = Array.get(holder.getAdapterPosition());
 
+
                 if (office_service_model.getClient_service_status().equals("2"))
                 {
                     Toast.makeText(context, "تمت الخدمة", Toast.LENGTH_SHORT).show();
                 }else
                     {
-                        CreateDialog(holder);
+                        if (office_service_model.getService_closed().equals("0"))
+                        {
+                            Toast.makeText(context, "لم يتم تحويل سعر الخدمة المطلوبة", Toast.LENGTH_SHORT).show();
+
+                        }else
+                            {
+                                CreateDialog(holder);
+
+                            }
+
 
                     }
 

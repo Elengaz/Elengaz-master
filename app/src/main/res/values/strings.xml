@@ -124,5 +124,8 @@
     <string name="ok">Ok</string>
     <string name="not">Notification</string>
     <string name="services">Services</string>
+    <string name="no_order">There are no orders to display</string>
+    <string name="detail">detail</string>
+    <string name="orders">orders</string>
 
 </resources>

@@ -1,14 +1,18 @@
 package com.SemiColon.Hmt.elengaz.Fragments;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
@@ -32,10 +36,11 @@ import retrofit2.Response;
 
 public class Fragment_Orders extends Fragment {
     ArrayList<office_order_model> model;
-    Office_Oreders_Adapter adapter;
-    RecyclerView recyclerView;
+    private Office_Oreders_Adapter adapter;
+    private RecyclerView recyclerView;
     private LinearLayoutManager mLayoutManager;
-
+    private ProgressBar progressBar;
+    private LinearLayout no_order_container;
     //String id;
     ServiceProvider_Home home;
     @Nullable
@@ -46,9 +51,9 @@ public class Fragment_Orders extends Fragment {
         home= (ServiceProvider_Home) getActivity();
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JannaLT-Regular.ttf", true);
-
-
-
+        progressBar = view.findViewById(R.id.progressBar);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(),R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        no_order_container = view.findViewById(R.id.container_no_order);
 
         recyclerView = view.findViewById(R.id.recyc_office_orders);
         model = new ArrayList<>();
@@ -73,6 +78,15 @@ public class Fragment_Orders extends Fragment {
                 model.clear();
                 model.addAll(response.body());
 
+                if (model.size()>0)
+                {
+                    no_order_container.setVisibility(View.GONE);
+                    progressBar.setVisibility(View.GONE);
+                }else
+                    {
+                        progressBar.setVisibility(View.GONE);
+                        no_order_container.setVisibility(View.VISIBLE);
+                    }
            //    if (response.body().get(0).getMessage().equals("no result"))
              //  {
                 //   Toast.makeText(getContext(), "no result", Toast.LENGTH_SHORT).show();
@@ -91,8 +105,9 @@ public class Fragment_Orders extends Fragment {
             @Override
             public void onFailure(Call<List<office_order_model>> call, Throwable t) {
 
-                Log.e("mm",t+"");
-                  Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Error",t.getMessage()+"");
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), getActivity().getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
 
             }
         });

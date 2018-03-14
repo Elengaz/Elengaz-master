@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
@@ -40,6 +41,8 @@ public class Client_Profile_Activity extends AppCompatActivity implements View.O
     private Client_Model client_model;
     private ImageView back,doneBtn;
     private Button updateBtn;
+    private TextView total_service_cost,total_service_remain;
+
     private Target target;
     private Bitmap old_bitmap_img,new_bitmap_img;
 
@@ -70,6 +73,9 @@ public class Client_Profile_Activity extends AppCompatActivity implements View.O
         doneBtn    = findViewById(R.id.doneBtn);
         updateBtn  = findViewById(R.id.updateBtn);
 
+        total_service_cost = findViewById(R.id.total_service_cost);
+        total_service_remain = findViewById(R.id.total_service_remain);
+
         user_photo.setEnabled(false);
         user_photo.setOnClickListener(this);
         back.setOnClickListener(this);
@@ -94,7 +100,8 @@ public class Client_Profile_Activity extends AppCompatActivity implements View.O
     private void Update_UI(Client_Model client_model) {
         user_email.setText(client_model.getClient_email());
         user_phone.setText(client_model.getClient_phone());
-
+        total_service_cost.setText(String.valueOf(client_model.getTotal_service()));
+        total_service_remain.setText(String.valueOf(client_model.getTotal_service_remain()));
         target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {

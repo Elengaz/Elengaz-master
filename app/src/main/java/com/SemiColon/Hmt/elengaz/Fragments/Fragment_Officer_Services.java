@@ -1,23 +1,25 @@
 package com.SemiColon.Hmt.elengaz.Fragments;
 
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Activities.ServiceProvider_Home;
-import com.SemiColon.Hmt.elengaz.Adapters.Office_Oreders_Adapter;
 import com.SemiColon.Hmt.elengaz.Adapters.Office_Services_Adapter;
 import com.SemiColon.Hmt.elengaz.Model.Office_Service_Model;
-import com.SemiColon.Hmt.elengaz.Model.office_order_model;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.util.ArrayList;
@@ -32,9 +34,11 @@ import retrofit2.Response;
 
 public class Fragment_Officer_Services extends Fragment {
     ArrayList<Office_Service_Model> model;
-    Office_Services_Adapter adapter;
-    RecyclerView recyclerView;
+    private Office_Services_Adapter adapter;
+    private RecyclerView recyclerView;
     private LinearLayoutManager mLayoutManager;
+    private LinearLayout no_order_container;
+    private ProgressBar progressBar;
 
     //String id;
     ServiceProvider_Home home;
@@ -46,7 +50,9 @@ public class Fragment_Officer_Services extends Fragment {
         home= (ServiceProvider_Home) getActivity();
         Calligrapher calligrapher = new Calligrapher(getContext());
         calligrapher.setFont(getActivity(), "JannaLT-Regular.ttf", true);
-
+        progressBar = view.findViewById(R.id.progressBar);
+        progressBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(getActivity(),R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        no_order_container = view.findViewById(R.id.container_no_serv);
 
 
 
@@ -76,8 +82,16 @@ public class Fragment_Officer_Services extends Fragment {
                    model.addAll(response.body());
                    adapter.notifyDataSetChanged();
 
-               }else {
-                   Toast.makeText(getActivity(), "failed", Toast.LENGTH_SHORT).show();
+                   if (model.size()>0)
+                   {
+                       no_order_container.setVisibility(View.GONE);
+                       progressBar.setVisibility(View.GONE);
+                   }else
+                       {
+                           progressBar.setVisibility(View.GONE);
+                           no_order_container.setVisibility(View.VISIBLE);
+                       }
+
                }
 
 
@@ -86,8 +100,9 @@ public class Fragment_Officer_Services extends Fragment {
             @Override
             public void onFailure(Call<List<Office_Service_Model>> call, Throwable t) {
 
-                Log.e("mm",t+"");
-                  Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("mm",t.getMessage()+"");
+                progressBar.setVisibility(View.GONE);
+                Toast.makeText(getActivity(), getActivity().getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
 
             }
         });
