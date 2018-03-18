@@ -5,22 +5,6 @@
     <string name="navigation_drawer_open">افتح</string>
     <string name="navigation_drawer_close">اغلق</string>
 
-    <string name="chk_riad">مكتب الرياض</string>
-    <string name="chk_bngasm">مكتب بن جاسم</string>
-    <string name="chk_abofahd">مكتب ابوفهد </string>
-    <string name="chk_alwkeel">مكتب الوكيل </string>
-    <string name="chk_elmr">مكتب المر </string>
-    <string name="chk_bnomar">مكتب بن عمار </string>
-
-
-    <string name="radio_riad">مكتب الرياض</string>
-    <string name="radio_bngasm">مكتب بن جاسم</string>
-    <string name="radio_abofahd">مكتب ابوفهد </string>
-    <string name="radio_alwkeel">مكتب الوكيل </string>
-    <string name="radio_elmr">مكتب المر </string>
-    <string name="radio_bnamar">مكتب بن عمار </string>
-
-
     <string name="action_settings">الاعدادات</string>
 
     <string name="GOOGLE_MAPS_API_KEY"> AIzaSyAYAVlT6zJ-U_yOXX5gg_arXcJiq-XO438 </string>
@@ -122,6 +106,13 @@
     <string name="serv_sd">تاريخ بدأ الخدمة</string>
     <string name="serv_ed">تاريخ انتهاء الخدمة</string>
     <string name="off_name">مكتب الخدمة</string>
+    <string name="order">الطلب</string>
+    <string name="order_date"> التاريخ</string>
+    <string name="add_date">أضف تاريخ</string>
+    <string name="pay">الدفع</string>
+    <string name="enter_date">enter date</string>
+    <string name="enter_cost">enter cost</string>
+
     <string name="serv_cost">التكلفة</string>
     <string name="ch_off_serv">إختار مكتب الخدمة</string>
     <string name="add_serv_cost">أضف تكلفة الخدمة</string>
@@ -133,5 +124,6 @@
     <string name="no_order">لا توجد طلبات لعرضها</string>
     <string name="detail">التفاصيل</string>
     <string name="orders">الطلبات</string>
+    <string name="done2">تم</string>
 
 </resources>

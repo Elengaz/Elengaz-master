@@ -1,12 +1,14 @@
 package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -95,6 +97,9 @@ public class Login extends AppCompatActivity {
     }
 
     private void loginByServer() {
+        InputMethodManager methodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        methodManager.hideSoftInputFromWindow(password.getWindowToken(),0);
+
         pDialog = new ProgressDialog(Login.this);
         pDialog.setIndeterminate(true);
         pDialog.setMessage(getString(R.string.login));

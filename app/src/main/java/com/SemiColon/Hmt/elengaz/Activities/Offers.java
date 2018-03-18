@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,7 +21,6 @@ import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Adapters.OffersAdapter;
 import com.SemiColon.Hmt.elengaz.Model.OfficeOfferModel;
-import com.SemiColon.Hmt.elengaz.Model.ResponseModel;
 import com.SemiColon.Hmt.elengaz.R;
 
 import java.util.List;
@@ -72,6 +72,7 @@ public class Offers extends AppCompatActivity implements View.OnClickListener{
                                 dialog.dismiss();
                                 Intent i=new Intent(Offers.this,TransAccount.class);
                                 i.putExtra("client_service_id",service_id);
+                                Log.e("cooooooooooost",offer_cost);
                            //     Toast.makeText(Offers.this, ""+offer_cost, Toast.LENGTH_SHORT).show();
                                 startActivity(i);
                             }

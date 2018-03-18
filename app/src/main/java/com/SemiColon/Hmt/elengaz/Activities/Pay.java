@@ -3,26 +3,32 @@ package com.SemiColon.Hmt.elengaz.Activities;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +57,7 @@ public class Pay extends AppCompatActivity {
     Button upload,trans,add_date;
     String pname,pdate,pcost, picturePath,service_id,state;
     private Bitmap bitmap;
+    private ProgressDialog dialog;
     private static int RESULT_LOAD_IMAGE = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +78,18 @@ public class Pay extends AppCompatActivity {
         cost=findViewById(R.id.edt_cost);
         trans_photo = findViewById(R.id.trans_photo);
         upload=findViewById(R.id.btn_upload);
+
+        dialog = new ProgressDialog(this);
+        dialog.setMessage("جاري الدفع..");
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.setCancelable(true);
+        ProgressBar bar = new ProgressBar(this);
+        Drawable drawable = bar.getIndeterminateDrawable().mutate();
+        drawable.setColorFilter(ContextCompat.getColor(this,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        dialog.setIndeterminateDrawable(drawable);
+
+
+
         upload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -91,7 +110,7 @@ public class Pay extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "transfer failed", Toast.LENGTH_LONG).show();
                     return;
                 }else {
-
+                    dialog.show();
                     pname = name.getText().toString();
                     pdate = date.getText().toString();
                     pcost = cost.getText().toString();
@@ -103,6 +122,7 @@ public class Pay extends AppCompatActivity {
                         @Override
                         public void onResponse(Call<Register_Client_Model> call, Response<Register_Client_Model> response) {
                             if (response.isSuccessful()) {
+                                dialog.dismiss();
                                 show_dialog();
                                // Toast.makeText(Pay.this, "" + service_id, Toast.LENGTH_SHORT).show();
 
@@ -113,7 +133,9 @@ public class Pay extends AppCompatActivity {
 
                         @Override
                         public void onFailure(Call<Register_Client_Model> call, Throwable t) {
-
+                            dialog.dismiss();
+                            Toast.makeText(Pay.this, getString(R.string.something_went_haywire), Toast.LENGTH_SHORT).show();
+                            Log.e("Error",t.getMessage());
                         }
                     });
 

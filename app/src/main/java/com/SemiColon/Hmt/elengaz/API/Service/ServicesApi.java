@@ -234,7 +234,7 @@ public interface ServicesApi {
                                               @Field("client_img")String client_img);
 
     @GET("ViewServiceState/{client_service_id}")
-    Call<Order_State_Model> ViewServiceState(@Path("client_service_id") String client_service_id);
+    Call<List<Order_State_Model>> ViewServiceState(@Path("client_service_id") String client_service_id);
 
 }
 

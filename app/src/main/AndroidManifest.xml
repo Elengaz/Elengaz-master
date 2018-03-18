@@ -94,7 +94,6 @@
         <activity android:name=".Activities.Client_Response_Orders" />
         <activity
             android:name=".Activities.Main_Home"
-            android:label="@string/title_activity_main__home"
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.Client_Profile_Activity" />
         <activity android:name=".Activities.Contact" />

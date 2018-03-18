@@ -43,7 +43,7 @@ public class AddService extends AppCompatActivity {
     String sDate,client_id,formattedDate;
     Double sLatitude,sLongitude;
     String service_id ,category_id;
-
+    private ProgressDialog dialog;
     private List<String> offices_ids_list;
     ImageView back;
     String sName,sDetail,sPhone,sOtherPhone,sEmail;
@@ -57,7 +57,6 @@ public class AddService extends AppCompatActivity {
         setContentView(R.layout.activity_add_service);
         Calligrapher calligrapher=new Calligrapher(this);
         calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
-
         alertDialog = new AlertDialog.Builder(this)
         .setTitle("تهانيا")
         .setMessage("تم إضافة الخدمة بنجاح")
@@ -140,6 +139,7 @@ public class AddService extends AppCompatActivity {
                 if (validate() == false) {
                     return;
                 }else {
+
 
                     sendService();
 

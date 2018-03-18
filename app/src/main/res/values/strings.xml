@@ -10,7 +10,6 @@
     <string name="GOOGLE_MAPS_API_KEY"> AIzaSyAYAVlT6zJ-U_yOXX5gg_arXcJiq-XO438 </string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="search_result">Search Results</string>
     <string name="add_srv_u_want">Please add the place you want</string>
     <string name="logout">logout</string>
@@ -64,7 +63,6 @@
     <string name="address_at_3">at least 3 characters</string>
     <string name="offers">offers</string>
     <string name="profile">profile</string>
-    <string name="title_activity_main__home">Main_Home</string>
     <string name="hi_there_i_m_here_using_hemtt_al_enjaz_app">Hi there ,i\'m here using Hemtt Al Enjaz App</string>
     <string name="update_profile">Update profile</string>
     <string name="connection">check network connection</string>
@@ -116,8 +114,8 @@
     <string name="enter_date">enter date</string>
     <string name="enter_cost">enter cost</string>
 
-    <string name="order">order :</string>
-    <string name="order_date"> date :</string>
+    <string name="order">Order</string>
+    <string name="order_date"> Date</string>
     <string name="add_serv_cost">Add Service Cost</string>
     <string name="end_serv">End Service</string>
     <string name="cancel">Cancel</string>
@@ -127,5 +125,6 @@
     <string name="no_order">There are no orders to display</string>
     <string name="detail">detail</string>
     <string name="orders">orders</string>
+    <string name="done2">Done</string>
 
 </resources>

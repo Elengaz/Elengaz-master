@@ -42,28 +42,31 @@
                     android:layout_margin="6dp"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="center"
+                        android:gravity="center"
                         android:layout_margin="3dp"
                         android:textSize="15dp"
                         android:text="@string/order"/>
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:id="@+id/txtorder"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
+                        android:layout_gravity="left|center_vertical"
                         android:layout_margin="3dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:textSize="15dp"
-                        android:text=" عمل تجديد اقامه "/>
+                        />
 
                 </LinearLayout>
 
@@ -73,28 +76,30 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="center"
                         android:layout_margin="3dp"
                         android:textSize="15dp"
                         android:text="@string/order_date"/>
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:id="@+id/txt_date"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
+                        android:layout_gravity="left|center_vertical"
                         android:layout_margin="3dp"
-                        android:gravity="right
-"
+                        android:gravity="center"
                         android:textSize="15dp"
-                        android:text=" 1/1/2018 "/>
+                        />
 
 
 
@@ -106,29 +111,32 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="center"
                         android:layout_margin="3dp"
                         android:textSize="15dp"
                         android:text="@string/order_state"/>
 
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:id="@+id/txt_state"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
+                        android:layout_gravity="left|center_vertical"
                         android:layout_margin="3dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:textSize="15dp"
-                        android:text=" تم التنفيذ "/>
+                        />
 
 
                 </LinearLayout>
@@ -139,27 +147,30 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="center"
                         android:layout_margin="3dp"
                         android:textSize="15dp"
                         android:text="@string/office_name"/>
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="1"
+                        android:layout_weight="1.5"
                         android:id="@+id/txt_officename"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
+                        android:layout_gravity="left|center_vertical"
                         android:layout_margin="3dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:textSize="15dp"
-                        android:text=" مكتب الرياض "/>
+                        />
 
 
 
@@ -171,34 +182,49 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    >
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
+                        android:layout_weight=".5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
-                        android:gravity="center_vertical"
+                        android:layout_gravity="right|center_vertical"
+                        android:gravity="center"
                         android:layout_margin="3dp"
                         android:textSize="15dp"
                         android:text="@string/rate"/>
                     <TextView
+                        android:id="@+id/order_rate"
                         android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:id="@+id/txt_rate"
+                        android:layout_weight="1.5"
                         android:layout_height="wrap_content"
                         android:textColor="#e12b2929"
-                        android:layout_gravity="right"
+                        android:layout_gravity="left|center_vertical"
                         android:layout_margin="3dp"
-                        android:gravity="center_vertical"
+                        android:gravity="center"
                         android:textSize="15dp"
-                        android:text=" تم التقييم"/>
+                        />
 
 
 
                 </LinearLayout>
 
-            </LinearLayout>
 
+            </LinearLayout>
+            <Button
+                android:id="@+id/doneBtn"
+                android:layout_width="150dp"
+                android:layout_height="35dp"
+                android:text="@string/done2"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:background="@drawable/btn2"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
