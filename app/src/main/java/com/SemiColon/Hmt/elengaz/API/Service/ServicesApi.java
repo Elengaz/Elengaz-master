@@ -1,6 +1,7 @@
 package com.SemiColon.Hmt.elengaz.API.Service;
 
 
+import com.SemiColon.Hmt.elengaz.Model.AboutUsModel;
 import com.SemiColon.Hmt.elengaz.Model.AddServicesResponse;
 import com.SemiColon.Hmt.elengaz.Model.Bank_Account_Model;
 import com.SemiColon.Hmt.elengaz.Model.Client_Model;
@@ -236,6 +237,8 @@ public interface ServicesApi {
     @GET("ViewServiceState/{client_service_id}")
     Call<List<Order_State_Model>> ViewServiceState(@Path("client_service_id") String client_service_id);
 
+    @GET("AboutUs")
+    Call<AboutUsModel> GetAboutUs();
 }
 
 
