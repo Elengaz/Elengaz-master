@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.SemiColon.Hmt.elengaz.Model.DisplayServicesModel;
 import com.SemiColon.Hmt.elengaz.R;
-import com.SemiColon.Hmt.elengaz.ServiceDetailsActivity;
+import com.SemiColon.Hmt.elengaz.Activities.ServiceDetailsActivity;
 
 import java.util.List;
 
