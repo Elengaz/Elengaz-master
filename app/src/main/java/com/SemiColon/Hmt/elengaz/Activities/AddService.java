@@ -174,7 +174,7 @@ public class AddService extends AppCompatActivity {
     private void sendService() {
         pDialog = new ProgressDialog(AddService.this);
         pDialog.setIndeterminate(true);
-        pDialog.setMessage("Waiting for adding service data...");
+        pDialog.setMessage(getString(com.SemiColon.Hmt.elengaz.R.string.adding_serv));
         pDialog.setCancelable(false);
         showpDialog();
 

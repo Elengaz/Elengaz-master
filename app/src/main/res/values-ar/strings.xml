@@ -110,8 +110,8 @@
     <string name="order_date"> التاريخ</string>
     <string name="add_date">أضف تاريخ</string>
     <string name="pay">الدفع</string>
-    <string name="enter_date">enter date</string>
-    <string name="enter_cost">enter cost</string>
+    <string name="enter_date">أدخل التاريخ</string>
+    <string name="enter_cost">أدخل السعر</string>
 
     <string name="serv_cost">التكلفة</string>
     <string name="ch_off_serv">إختار مكتب الخدمة</string>
@@ -125,5 +125,6 @@
     <string name="detail">التفاصيل</string>
     <string name="orders">الطلبات</string>
     <string name="done2">تم</string>
+    <string name="adding_serv">جار إضافة الخدمة...</string>
 
 </resources>

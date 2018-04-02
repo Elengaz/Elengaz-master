@@ -51,12 +51,12 @@ public class Office_Services_Adapter extends RecyclerView.Adapter<Office_Service
 
         if (mmodel.getClient_service_status().equals("2"))
         {
-            holder.txt.setText("تم إنجاز الخدمة");
+            holder.txt.setText("تم إجراء الخدمة");
         }else
             {
                 if (mmodel.getService_closed().equals("0"))
                 {
-                    holder.txt.setText("الخدمة جارية");
+                    holder.txt.setText("الخدمة تحت الإجراء");
                     holder.card.setCardBackgroundColor(ContextCompat.getColor(context,R.color.card));
 
                 }else

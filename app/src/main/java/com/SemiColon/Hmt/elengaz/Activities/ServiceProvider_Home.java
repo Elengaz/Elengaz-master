@@ -120,11 +120,11 @@ public class ServiceProvider_Home extends AppCompatActivity{
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 if (response.isSuccessful())
                 {
-                    if (response.body().getSuccess()==1)
+                    /*if (response.body().getSuccess()==1)
                     {
                         Log.e("office_token","updated successfully");
 
-                    }
+                    }*/
 
                 }
             }
