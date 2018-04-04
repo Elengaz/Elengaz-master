@@ -131,10 +131,11 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }else
             {
                 phone.setError(null);
+                saveToServerDB();
+
             }
 
 
-            saveToServerDB();
 
 
 

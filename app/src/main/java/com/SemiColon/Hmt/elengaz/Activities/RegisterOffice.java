@@ -124,8 +124,9 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
             area.setError(getString(R.string.address_at_3));
         } else {
             area.setError(null);
+            saveToServerDB();
         }
-        saveToServerDB();
+
 
     }
 
