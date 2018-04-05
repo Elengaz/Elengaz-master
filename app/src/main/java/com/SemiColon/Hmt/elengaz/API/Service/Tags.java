@@ -5,6 +5,6 @@ package com.SemiColon.Hmt.elengaz.API.Service;
  */
 
 public class Tags {
-    public static final String Image_Path ="http://engaz.semicolonsoft.com/uploads/images/";
+    public static final String Image_Path ="http://khadmat-sa.com/uploads/images/";
 }
 
