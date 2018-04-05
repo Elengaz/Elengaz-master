@@ -97,7 +97,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.Client_Profile_Activity" />
         <activity android:name=".Activities.Contact" />
-        <activity android:name=".ServiceDetailsActivity"></activity>
+        <activity android:name=".Activities.ServiceDetailsActivity"></activity>
     </application>
 
 </manifest>

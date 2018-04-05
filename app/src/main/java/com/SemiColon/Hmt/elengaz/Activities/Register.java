@@ -96,16 +96,7 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
 
     public void signup() {
-       /* Log.d(TAG, "Signup");
 
-        if (validate() == false) {
-            onSignupFailed();
-            return;
-        }*/
-        /*if (TextUtils.isEmpty(enCodedImage))
-        {
-            Toast.makeText(this, R.string.sel_per_photo, Toast.LENGTH_LONG).show();
-        }*/
         if (TextUtils.isEmpty(username.getText().toString()))
         {
             username.setError(getString(R.string.empty_username));
@@ -140,70 +131,16 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         }else
             {
                 phone.setError(null);
+                saveToServerDB();
+
             }
 
 
-            saveToServerDB();
-
-            //signup();
 
 
 
     }
 
-
-    public void onSignupSuccess() {
-        //register.setEnabled(true);
-        setResult(RESULT_OK, null);
-        finish();
-    }
-
-   /* public void onSignupFailed() {
-        Toast.makeText(getBaseContext(), "Login failed", Toast.LENGTH_LONG).show();
-
-        register.setEnabled(true);
-    }
-
-    public boolean validate() {
-        boolean valid = true;
-
-        String name = username.getText().toString();
-        String uemail = email.getText().toString();
-        String pass = password.getText().toString();
-        String mobile = phone.getText().toString();
-
-        if (name.isEmpty() || name.length() < 3) {
-            username.setError("at least 3 characters");
-            valid = false;
-        } else {
-            username.setError(null);
-        }
-
-
-        if (uemail.isEmpty() || !android.util.Patterns.EMAIL_ADDRESS.matcher(uemail).matches()) {
-            email.setError("enter a valid email address");
-            valid = false;
-        } else {
-            email.setError(null);
-        }
-
-
-        if (pass.isEmpty() || pass.length() < 4 || pass.length() > 10) {
-            password.setError("between 4 and 10 alphanumeric characters");
-            valid = false;
-        } else {
-            password.setError(null);
-        }
-
-        if (mobile.isEmpty() || mobile.length() < 8 || mobile.length() > 13) {
-            phone.setError("phone Do not match");
-            valid = false;
-        } else {
-            phone.setError(null);
-        }
-
-        return valid;
-    }*/
 
     private void saveToServerDB() {
         pDialog = new ProgressDialog(Register.this);
@@ -325,28 +262,5 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
 
         return Base64.encodeToString(bytes,Base64.DEFAULT);
     }
-    /*private void sendNetworkRequest(User user){
-        Retrofit.Builder builder=new Retrofit.Builder()
-                .baseUrl("http://clup.alatheertech.com/Api/")
-                .addConverterFactory(GsonConverterFactory.create());
-        Retrofit retrofit=builder.build();
-        ServicesApi client=retrofit.create(ServicesApi.class);
-       Call<User>call= client.createAccount(user);
-       call.enqueue(new Callback<User>() {
-           @Override
-           public void onResponse(Call<User> call, Response<User> response) {
-               Toast.makeText(Register.this, "Yeah ,User Id ", Toast.LENGTH_SHORT).show();
-               Intent i=new Intent(Register.this,ListMarma.class);
-               startActivity(i);
-           }
 
-           @Override
-           public void onFailure(Call<User> call, Throwable t) {
-
-               Toast.makeText(Register.this, "somthing wrong", Toast.LENGTH_SHORT).show();
-
-           }
-       });
-
-    }*/
 }

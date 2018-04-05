@@ -1,4 +1,4 @@
-package com.SemiColon.Hmt.elengaz;
+package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,9 +9,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.SemiColon.Hmt.elengaz.Activities.AddRate;
-import com.SemiColon.Hmt.elengaz.Activities.Offers;
 import com.SemiColon.Hmt.elengaz.Model.DisplayServicesModel;
+import com.SemiColon.Hmt.elengaz.R;
 
 public class ServiceDetailsActivity extends AppCompatActivity {
 

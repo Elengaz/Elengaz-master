@@ -124,8 +124,9 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
             area.setError(getString(R.string.address_at_3));
         } else {
             area.setError(null);
+            saveToServerDB();
         }
-        saveToServerDB();
+
 
     }
 
@@ -139,7 +140,6 @@ public class RegisterOffice extends AppCompatActivity implements View.OnClickLis
 
         String name = username.getText().toString();
         String pass = password.getText().toString();
-
         String uemail = email.getText().toString();
         String mobile = phone.getText().toString();
         String otitle = title.getText().toString();
