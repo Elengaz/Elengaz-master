@@ -3,8 +3,8 @@ package com.SemiColon.Hmt.elengaz.Activities;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
@@ -14,13 +14,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.Preferences;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.Register_Client_Model;
 import com.SemiColon.Hmt.elengaz.R;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -52,7 +50,7 @@ public class Login extends AppCompatActivity {
         calligrapher.setFont(this, "JannaLT-Regular.ttf", true);
         preferences = new Preferences(this);
         initView();
-        Log.e("ddddddddddddddddddd",FirebaseInstanceId.getInstance().getToken());
+        //Log.e("ddddddddddddddddddd",FirebaseInstanceId.getInstance().getToken());
 
         signup.setOnClickListener(new View.OnClickListener() {
             @Override

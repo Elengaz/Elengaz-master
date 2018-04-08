@@ -1,7 +1,5 @@
 package com.SemiColon.Hmt.elengaz.Notification;
 
-import android.util.Log;
-
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
@@ -20,7 +18,7 @@ public class MyFirebaseInstanceIdService extends FirebaseInstanceIdService {
         String refreshedToken = FirebaseInstanceId.getInstance().getToken();
 
         //Displaying token in logcat
-        Log.e(TAG, "Refreshed token: " + refreshedToken);
+        //Log.e(TAG, "Refreshed token: " + refreshedToken);
         sendRegistrationToServer(refreshedToken);
 
     }

@@ -11,7 +11,6 @@ import android.widget.Button;
 
 import com.SemiColon.Hmt.elengaz.API.Service.Network;
 import com.SemiColon.Hmt.elengaz.R;
-import com.google.firebase.iid.FirebaseInstanceId;
 import com.romainpiel.shimmer.Shimmer;
 import com.romainpiel.shimmer.ShimmerTextView;
 
@@ -36,7 +35,7 @@ public class SelectActivity extends AppCompatActivity {
         shimmer.start(txt_shimmer);
 
 
-        Log.e("token", FirebaseInstanceId.getInstance().getToken());
+        //Log.e("token", FirebaseInstanceId.getInstance().getToken());
         ameell.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
