@@ -16,6 +16,8 @@ import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.AboutUsModel;
 import com.SemiColon.Hmt.elengaz.R;
 
+import java.util.List;
+
 import me.anwarshahriar.calligrapher.Calligrapher;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,26 +61,26 @@ public class About extends AppCompatActivity implements View.OnClickListener {
     private void GetDataFromServer() {
 
         ServicesApi servicesApi = APIClient.getClient().create(ServicesApi.class);
-        Call<AboutUsModel> call = servicesApi.GetAboutUs();
-        call.enqueue(new Callback<AboutUsModel>() {
+        Call<List<AboutUsModel>> call = servicesApi.GetAboutUs();
+        call.enqueue(new Callback<List<AboutUsModel>>() {
             @Override
-            public void onResponse(Call<AboutUsModel> call, Response<AboutUsModel> response) {
+            public void onResponse(Call<List<AboutUsModel>> call, Response<List<AboutUsModel>> response) {
 
                 if (response.isSuccessful()) {
 
-                    title.setText(response.body().getTitle());
-                    content.setText(response.body().getContent());
-                    facebook_url = response.body().getFacebook_url();
-                    twitter_url = response.body().getTwitter_url();
-                    instgram_url = response.body().getInstgram_url();
-                    google_url = response.body().getGoogle_url();
+                    title.setText(response.body().get(0).getTitle());
+                    content.setText(response.body().get(0).getContent());
+                    facebook_url = response.body().get(4).getFacebook_url();
+                    twitter_url = response.body().get(4).getTwitter_url();
+                    instgram_url = response.body().get(4).getInstgram_url();
+                    google_url = response.body().get(4).getGoogle_url();
 
                 }
 
             }
 
             @Override
-            public void onFailure(Call<AboutUsModel> call, Throwable t) {
+            public void onFailure(Call<List<AboutUsModel>> call, Throwable t) {
                 Log.e("error",t.getMessage());
             }
         });
@@ -92,9 +94,18 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.img_facebook:
                 if (facebook_url!=null|| !TextUtils.isEmpty(facebook_url))
                 {
-                    Intent i = new Intent(Intent.ACTION_VIEW);
-                    i.setData(Uri.parse(facebook_url));
-                    startActivity(i);
+                    if (facebook_url.startsWith("https://")){
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url",facebook_url);
+                        startActivity(intent);
+                    }
+                    else {
+
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url","https://"+facebook_url);
+                        startActivity(intent);
+                    }
+
                 }else
                     {
                         Toast.makeText(this, "لا يوجد إيميل فيس بوك", Toast.LENGTH_SHORT).show();
@@ -104,9 +115,17 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.img_twitter:
                 if (twitter_url!=null|| !TextUtils.isEmpty(twitter_url))
                 {
-                    Intent i2 = new Intent(Intent.ACTION_VIEW);
-                    i2.setData(Uri.parse(twitter_url));
-                    startActivity(i2);
+                    if (twitter_url.startsWith("https://")){
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url",twitter_url);
+                        startActivity(intent);
+                    }
+                    else {
+
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url","https://"+twitter_url);
+                        startActivity(intent);
+                    }
                 }else
                 {
                     Toast.makeText(this, "لا يوجد إيميل تويتر", Toast.LENGTH_SHORT).show();
@@ -116,9 +135,17 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.img_instgram:
                 if (instgram_url!=null|| !TextUtils.isEmpty(instgram_url))
                 {
-                    Intent i3 = new Intent(Intent.ACTION_VIEW);
-                    i3.setData(Uri.parse(instgram_url));
-                    startActivity(i3);
+                    if (instgram_url.startsWith("https://")){
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url",instgram_url);
+                        startActivity(intent);
+                    }
+                    else {
+
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url","https://"+instgram_url);
+                        startActivity(intent);
+                    }
                 }else
                 {
                     Toast.makeText(this, "لا يوجد إيميل إنستجرام", Toast.LENGTH_SHORT).show();
@@ -128,9 +155,17 @@ public class About extends AppCompatActivity implements View.OnClickListener {
             case R.id.img_google:
                 if (google_url!=null|| !TextUtils.isEmpty(google_url))
                 {
-                    Intent i4 = new Intent(Intent.ACTION_VIEW);
-                    i4.setData(Uri.parse(google_url));
-                    startActivity(i4);
+                    if (google_url.startsWith("https://")){
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url",google_url);
+                        startActivity(intent);
+                    }
+                    else {
+
+                        Intent intent=new Intent(About.this,WebViewActivity.class);
+                        intent.putExtra("url","https://"+google_url);
+                        startActivity(intent);
+                    }
                 }else
                 {
                     Toast.makeText(this, "لا يوجد إيميل جوجل", Toast.LENGTH_SHORT).show();

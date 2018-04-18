@@ -96,9 +96,13 @@
             android:name=".Activities.Main_Home"
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.Client_Profile_Activity" />
-        <activity android:name=".Activities.Contact" />
+        <activity
+            android:name=".Activities.Contact"
+            android:theme="@style/AppTheme" />
         <activity android:name=".Activities.ServiceDetailsActivity" />
-        <activity android:name=".Activities.ForgetPasswordActivity"></activity>
+        <activity android:name=".Activities.ForgetPasswordActivity" />
+        <activity android:name=".Activities.WebViewActivity" />
+        <activity android:name=".Activities.TermsActivity"></activity>
     </application>
 
 </manifest>

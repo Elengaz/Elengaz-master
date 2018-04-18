@@ -1,6 +1,7 @@
 package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -30,11 +31,9 @@ public class Contact extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
         final EditText your_name        =  findViewById(R.id.your_name);
-        final EditText your_email       =  findViewById(R.id.your_email);
+       // final EditText your_email       =  findViewById(R.id.your_email);
         final EditText your_subject     =  findViewById(R.id.your_subject);
         final EditText your_message     =  findViewById(R.id.your_message);
-
-
 
         Button bemail =  findViewById(R.id.post_message);
         bemail.setOnClickListener(new View.OnClickListener() {
@@ -42,7 +41,7 @@ public class Contact extends AppCompatActivity {
             public void onClick(View v) {
 
                  name      = your_name.getText().toString();
-                 email     = your_email.getText().toString();
+               //  email     = your_email.getText().toString();
                  subject   = your_subject.getText().toString();
                  message   = your_message.getText().toString();
                 if (TextUtils.isEmpty(name)){
@@ -52,11 +51,11 @@ public class Contact extends AppCompatActivity {
                 }
 
                 Boolean onError = false;
-                if (!isValidEmail(email)) {
+              /*  if (!isValidEmail(email)) {
                     onError = true;
                     your_email.setError("Invalid Email");
                     return;
-                }
+                }*/
 
                 if (TextUtils.isEmpty(subject)){
                     your_subject.setError("Enter Your Subject");
@@ -70,8 +69,16 @@ public class Contact extends AppCompatActivity {
                     return;
                 }
 
-
                 sendDataToServer();
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/rfc822");
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"mohamedelashry323@gmail.com"});
+                intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                intent.putExtra(Intent.EXTRA_TEXT, message);
+
+                startActivity(Intent.createChooser(intent, "Send Email"));
+                finish();
             }
         });
     }
@@ -81,7 +88,7 @@ public class Contact extends AppCompatActivity {
         ServicesApi service = APIClient.getClient().create(ServicesApi.class);
 
 
-        Call<ContactModel> userCall = service.ContactUs(name,email,subject,message);
+        Call<ContactModel> userCall = service.ContactUs(name,subject,message);
         // startActivity(new Intent(Register.this, ListMarma.class));
 
         userCall.enqueue(new Callback<ContactModel>() {
@@ -90,7 +97,7 @@ public class Contact extends AppCompatActivity {
 
                 if (response.isSuccessful())
                 {
-                    Toast.makeText(Contact.this, "success", Toast.LENGTH_SHORT).show();
+                  //  Toast.makeText(Contact.this, "success", Toast.LENGTH_SHORT).show();
                 }else
                 {
                     Toast.makeText(Contact.this, "failed", Toast.LENGTH_SHORT).show();

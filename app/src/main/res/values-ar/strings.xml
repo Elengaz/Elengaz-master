@@ -128,5 +128,6 @@
     <string name="adding_serv">جار إضافة الخدمة...</string>
     <string name="send">أرسال</string>
     <string name="send_data">جارى ارسال البيانات</string>
+    <string name="Terms_and_Conditions"> الشروط والأحكام </string>
 
 </resources>

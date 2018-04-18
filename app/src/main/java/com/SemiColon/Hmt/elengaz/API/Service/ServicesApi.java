@@ -205,7 +205,6 @@ public interface ServicesApi {
     @FormUrlEncoded
     @POST("ContactUs")
     Call<ContactModel> ContactUs(@Field("name") String name,
-                                 @Field("email") String email,
                                  @Field("subject") String subject,
                                  @Field("message") String message);
 
@@ -240,7 +239,7 @@ public interface ServicesApi {
 
 
     @GET("AboutUs")
-    Call<AboutUsModel> GetAboutUs();
+    Call<List<AboutUsModel>> GetAboutUs();
 
     @FormUrlEncoded
     @POST("RestMyPass")

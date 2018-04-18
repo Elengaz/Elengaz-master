@@ -385,6 +385,10 @@ public class Main_Home extends AppCompatActivity
             Intent intent = new Intent(Main_Home.this, About.class);
             startActivity(intent);
         }
+        else if (item.getItemId() == R.id.Terms_menu) {
+            Intent intent = new Intent(Main_Home.this, TermsActivity.class);
+            startActivity(intent);
+        }
         else if (item.getItemId() == R.id.logout_menu) {
             LogOut();
         }

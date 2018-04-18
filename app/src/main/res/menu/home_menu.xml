@@ -14,13 +14,19 @@
         android:id="@+id/myservice_menu"
         android:orderInCategory="200"
         android:title="@string/my_service"
-
         android:icon="@drawable/offer_icon"
         app:showAsAction="never"/>
     <item
         android:id="@+id/contact_menu"
         android:orderInCategory="200"
         android:title="@string/contact"
+        android:icon="@drawable/offer_icon"
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/Terms_menu"
+        android:orderInCategory="200"
+        android:title="@string/Terms_and_Conditions"
         android:icon="@drawable/offer_icon"
         app:showAsAction="never"/>
     <item

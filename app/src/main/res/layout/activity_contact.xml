@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    >
-
-    <ScrollView
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:background="@android:color/white"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
@@ -21,8 +12,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:contentInsetStart="0dp"
+                    app:contentInsetLeft="0dp"
+                    app:contentInsetRight="0dp"
+                    app:contentInsetEnd="0dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/contact"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        />
+
+
+                </android.support.v7.widget.Toolbar>
+            </android.support.design.widget.AppBarLayout>
 
             <TextView
+                android:layout_marginTop="10dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="3dp"
@@ -37,24 +52,6 @@
                 android:layout_height="38dp"
                 android:layout_marginBottom="20dp"
                 android:inputType="text"
-                android:singleLine="true"
-                android:textSize="14sp" />
-
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:paddingLeft="3dp"
-                android:text="@string/contact_form_email"
-                android:textAllCaps="true"
-                android:textColor="@color/colorPrimary"
-                android:textSize="12sp" />
-
-            <EditText
-                android:id="@+id/your_email"
-                android:layout_width="fill_parent"
-                android:layout_height="38dp"
-                android:layout_marginBottom="20dp"
-                android:inputType="textEmailAddress"
                 android:singleLine="true"
                 android:textSize="14sp" />
 
@@ -98,9 +95,10 @@
 
             <Button
                 android:id="@+id/post_message"
-                android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:layout_gravity="bottom"
                 android:background="@color/colorPrimary"
                 android:paddingBottom="1dp"
                 android:paddingLeft="15dp"
@@ -109,8 +107,7 @@
                 android:text="@string/contact_form_button"
                 android:textAllCaps="true"
                 android:textColor="@android:color/white"
-                android:textSize="13sp" />
+                android:textSize="15sp" />
         </LinearLayout>
     </ScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
