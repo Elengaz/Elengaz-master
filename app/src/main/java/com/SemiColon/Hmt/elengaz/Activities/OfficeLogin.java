@@ -36,7 +36,7 @@ public class OfficeLogin extends AppCompatActivity {
 
     EditText username,password;
     Button login;
-    TextView signup;
+    TextView signup,forget_pass;
     private ProgressDialog pDialog;
     private ShimmerTextView txt_shimmer;
     private Preferences preferences;
@@ -54,6 +54,7 @@ public class OfficeLogin extends AppCompatActivity {
         password=findViewById(R.id.edt_office_pass);
         login=findViewById(R.id.btnlogin);
         signup=findViewById(R.id.txtsignup);
+        forget_pass=findViewById(R.id.txt_forget_pass);
         txt_shimmer = findViewById(R.id.txt_shimmer);
 
         Shimmer shimmer = new Shimmer();
@@ -69,6 +70,15 @@ public class OfficeLogin extends AppCompatActivity {
         });
 
 
+        forget_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(OfficeLogin.this,ForgetPasswordActivity.class);
+                intent.putExtra("usertype","2");
+
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

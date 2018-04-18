@@ -242,6 +242,12 @@ public interface ServicesApi {
     @GET("AboutUs")
     Call<AboutUsModel> GetAboutUs();
 
+    @FormUrlEncoded
+    @POST("RestMyPass")
+    Call<ResponseModel> RestMyPass(@Field("user_type") String user_type,
+                                   @Field("user_name") String user_name,
+                                   @Field("user_email") String user_email);
+
 }
 
 

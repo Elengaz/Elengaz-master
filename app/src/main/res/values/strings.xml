@@ -127,5 +127,7 @@
     <string name="orders">orders</string>
     <string name="done2">Done</string>
     <string name="adding_serv">Waiting for adding service data...</string>
+    <string name="send">send</string>
+    <string name="send_data">sending data ..</string>
 
 </resources>

@@ -97,7 +97,8 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".Activities.Client_Profile_Activity" />
         <activity android:name=".Activities.Contact" />
-        <activity android:name=".Activities.ServiceDetailsActivity"></activity>
+        <activity android:name=".Activities.ServiceDetailsActivity" />
+        <activity android:name=".Activities.ForgetPasswordActivity"></activity>
     </application>
 
 </manifest>

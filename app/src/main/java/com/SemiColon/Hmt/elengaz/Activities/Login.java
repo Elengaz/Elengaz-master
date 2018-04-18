@@ -35,7 +35,7 @@ public class Login extends AppCompatActivity {
 
     private EditText username,password;
     private Button login;
-    private TextView signup;
+    private TextView signup,forget_pass;
     private ProgressDialog pDialog;
     String id;
     private Preferences preferences;
@@ -59,7 +59,14 @@ public class Login extends AppCompatActivity {
             }
         });
 
-
+        forget_pass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Login.this,ForgetPasswordActivity.class);
+                intent.putExtra("usertype","1");
+                startActivity(intent);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,6 +94,7 @@ public class Login extends AppCompatActivity {
         login=findViewById(R.id.btnlogin);
         signup=findViewById(R.id.txtsignup);
         txt_shimmer = findViewById(R.id.txt_shimmer);
+        forget_pass=findViewById(R.id.txt_forget_pass);
 
         Shimmer shimmer = new Shimmer();
         shimmer .setDuration(1500)

@@ -126,5 +126,7 @@
     <string name="orders">الطلبات</string>
     <string name="done2">تم</string>
     <string name="adding_serv">جار إضافة الخدمة...</string>
+    <string name="send">أرسال</string>
+    <string name="send_data">جارى ارسال البيانات</string>
 
 </resources>

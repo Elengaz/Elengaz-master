@@ -76,7 +76,7 @@
             android:scrollHorizontally="true"
             />
 
-        <!--<RelativeLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
@@ -84,6 +84,7 @@
             >
 
             <TextView
+                android:id="@+id/txt_forget_pass"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/forget_pass"
@@ -95,7 +96,7 @@
                 android:layout_centerVertical="true"
 
                 />
-            <CheckBox
+           <!-- <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/remember_me"
@@ -104,8 +105,8 @@
                 app:buttonTint="#d4ec4a"
                 android:gravity="right|center"
                 android:layout_alignParentLeft="true"
-                />
-        </RelativeLayout>-->
+                />-->
+        </RelativeLayout>
 
         <Button
             android:id="@+id/btnlogin"
