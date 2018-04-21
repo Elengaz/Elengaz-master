@@ -130,5 +130,6 @@
     <string name="send">send</string>
     <string name="send_data">sending data ..</string>
     <string name="Terms_and_Conditions">Terms and Conditions</string>
+    <string name="success">sending data success</string>
 
 </resources>
