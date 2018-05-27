@@ -73,7 +73,7 @@ public class Contact extends AppCompatActivity {
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/rfc822");
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"mohamedelashry323@gmail.com"});
+                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{"enjaz.team0@gmail.com"});
                 intent.putExtra(Intent.EXTRA_SUBJECT, subject);
                 intent.putExtra(Intent.EXTRA_TEXT, message);
 

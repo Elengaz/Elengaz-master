@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -58,10 +59,10 @@ public class AddService extends AppCompatActivity {
         Calligrapher calligrapher=new Calligrapher(this);
         calligrapher.setFont(this,"JannaLT-Regular.ttf",true);
         alertDialog = new AlertDialog.Builder(this)
-        .setTitle("تهانيا")
-        .setMessage("تم إضافة الخدمة بنجاح")
+        .setTitle(getString(R.string.cong))
+        .setMessage(R.string.sas)
         .setCancelable(true)
-        .setPositiveButton("تم", new DialogInterface.OnClickListener() {
+        .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 Intent intent = new Intent(AddService.this,Main_Home.class);
@@ -136,14 +137,65 @@ public class AddService extends AppCompatActivity {
             public void onClick(View view) {
 //                Intent i=new Intent(AddService.this,Notification1.class);
 //                startActivity(i);
-                if (validate() == false) {
-                    return;
-                }else {
 
+                String sserviseName = serviseName.getText().toString();
+                String sdetail = detail.getText().toString();
+                String mobile = phone.getText().toString();
+                String mobile2 = otherPhone.getText().toString();
+                String uemail = email.getText().toString();
 
-                    sendService();
+                if (TextUtils.isEmpty(sserviseName))
+                {
+                    serviseName.setError("Enter service name");
+                }else if (TextUtils.isEmpty(sdetail))
+                {
+                    serviseName.setError(null);
+                    detail.setError("Enter service detail");
+                }else if (TextUtils.isEmpty(mobile))
+                {
+                    detail.setError(null);
+                    phone.setError("Enter phone");
+                }else if (!Patterns.PHONE.matcher(mobile).matches())
+                {
+                    detail.setError(null);
+                    phone.setError("Invalid phone");
 
                 }
+                else if (TextUtils.isEmpty(mobile2))
+                {
+                    phone.setError(null);
+                    otherPhone.setError("Enter another phone");
+                }else if (!Patterns.PHONE.matcher(mobile2).matches())
+                {
+                    phone.setError(null);
+                    otherPhone.setError("Invalid phone");
+
+                }else if (TextUtils.isEmpty(uemail))
+                {
+                    otherPhone.setError(null);
+                    email.setError("Enter email");
+
+                }else if (!Patterns.EMAIL_ADDRESS.matcher(uemail).matches())
+                {
+                    otherPhone.setError(null);
+                    email.setError("Invalid email");
+
+                }else if (TextUtils.isEmpty(sDate))
+                {
+                    Toast.makeText(AddService.this,R.string.ed, Toast.LENGTH_LONG).show();
+                }else if (lat==0.0 && lng==0.0)
+                {
+                    Toast.makeText(AddService.this,"Select your location", Toast.LENGTH_LONG).show();
+
+                }else
+                    {
+                        sendService();
+
+                    }
+
+
+
+
 
             }
         });
@@ -365,8 +417,8 @@ public class AddService extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode==PLACE_REQ && resultCode == RESULT_OK && data!=null)
         {
-            lat = data.getDoubleExtra("latitude",0);
-            lng = data.getDoubleExtra("longitude",0);
+            lat = data.getDoubleExtra("latitude",0.0);
+            lng = data.getDoubleExtra("longitude",0.0);
         }
 
     }

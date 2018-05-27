@@ -130,5 +130,13 @@
     <string name="send">send</string>
     <string name="send_data">sending data ..</string>
     <string name="Terms_and_Conditions">Terms and Conditions</string>
+    <string name="cong">Congratulation</string>
+    <string name="paying">paying...</string>
+    <string name="en">Enter name</string>
+    <string name="ed">Enter date</string>
+    <string name="etf">Enter transfer amount</string>
+    <string name="eti">Choose Transfer image</string>
+    <string name="ts">The transfer has been successful. Thank you for your trust in our services</string>
+    <string name="sas">Service successfully added</string>
 
 </resources>

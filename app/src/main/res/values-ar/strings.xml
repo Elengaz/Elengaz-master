@@ -129,5 +129,13 @@
     <string name="send">أرسال</string>
     <string name="send_data">جارى ارسال البيانات</string>
     <string name="Terms_and_Conditions"> الشروط والأحكام </string>
+    <string name="cong">تهانينا</string>
+    <string name="paying">جاري الدفع..</string>
+    <string name="en">أدخل الاسم</string>
+    <string name="ed">إختر التاريخ</string>
+    <string name="etf">أدخل مبلغ التحويل</string>
+    <string name="eti">أدخل صورة التحويل</string>
+    <string name="ts">لقد تم التحويل بنجاح نشكرك على ثقتك فى خدمات</string>
+    <string name="sas">تم إضافة الخدمة بنجاح</string>
 
 </resources>

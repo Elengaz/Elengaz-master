@@ -80,7 +80,7 @@ public class Pay extends AppCompatActivity {
         upload=findViewById(R.id.btn_upload);
 
         dialog = new ProgressDialog(this);
-        dialog.setMessage("جاري الدفع..");
+        dialog.setMessage(getString(R.string.paying));
         dialog.setCanceledOnTouchOutside(false);
         dialog.setCancelable(true);
         ProgressBar bar = new ProgressBar(this);
@@ -105,17 +105,30 @@ public class Pay extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
+                pname = name.getText().toString();
+                pdate = date.getText().toString();
+                pcost = cost.getText().toString();
 
-                if (validate() == false) {
-                    Toast.makeText(getBaseContext(), "transfer failed", Toast.LENGTH_LONG).show();
-                    return;
-                }else {
+                   // Toast.makeText(getBaseContext(), "transfer failed", Toast.LENGTH_LONG).show();
+                if(TextUtils.isEmpty(pname)){
+                    name.setError(getString(R.string.en));
+
+                }else if (TextUtils.isEmpty(pdate))
+                {
+                    name.setError(null);
+                    date.setError(getString(R.string.ed));
+                }else if (TextUtils.isEmpty(pcost))
+                {
+                    date.setError(null);
+                    cost.setError(getString(R.string.etf));
+                }else if (TextUtils.isEmpty(picturePath))
+                {
+                    cost.setError(null);
+
+                    Toast.makeText(Pay.this, R.string.eti, Toast.LENGTH_LONG).show();
+                }
+                else {
                     dialog.show();
-                    pname = name.getText().toString();
-                    pdate = date.getText().toString();
-                    pcost = cost.getText().toString();
-
-
                     ServicesApi servicesApi = APIClient.getClient().create(ServicesApi.class);
                     Call<Register_Client_Model> call = servicesApi.sendPayment(service_id, pname, pcost, pdate, picturePath);
                     call.enqueue(new Callback<Register_Client_Model>() {
@@ -175,7 +188,7 @@ public class Pay extends AppCompatActivity {
                     final View viewu = factory.inflate(R.layout.sample, null);
                     alertadd.setView(viewu);
 
-                    alertadd.setNeutralButton("OK!", new DialogInterface.OnClickListener() {
+                    alertadd.setNeutralButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dlg, int sumthin) {
                             DateDialog();
 
@@ -236,7 +249,7 @@ public class Pay extends AppCompatActivity {
       AlertDialog.Builder builder = new AlertDialog.Builder(Pay.this, AlertDialog.THEME_HOLO_LIGHT);
 
 
-      String titleText = "تهانينا";
+      String titleText = getString(R.string.cong);
 
       // Initialize a new foreground color span instance
       ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(Color.GREEN);
@@ -256,9 +269,9 @@ public class Pay extends AppCompatActivity {
       builder.setTitle(ssBuilder);
 
       // Show a message on alert dialog
-      builder.setMessage("لقد تم التحويل بنجاح نشكرك على ثقتك فى خدمات");
+      builder.setMessage(R.string.ts);
       // Set the positive button
-      builder.setPositiveButton("تم",new DialogInterface.OnClickListener() {
+      builder.setPositiveButton(getString(R.string.ok),new DialogInterface.OnClickListener() {
           public void onClick(DialogInterface dialog, int id) {
 
               Intent i=new Intent(Pay.this,OrderState.class);
@@ -276,7 +289,7 @@ public class Pay extends AppCompatActivity {
       // Finally, display the alert dialog
       dialog.show();
   }
-    public boolean validate()
+    /*public boolean validate()
     {
         boolean valid = true;
         String cname = name.getText().toString();
@@ -309,7 +322,7 @@ public class Pay extends AppCompatActivity {
         }
 
         return valid;
-    }
+    }*/
     @Override
     public void onBackPressed()
     {
