@@ -138,5 +138,13 @@
     <string name="eti">Choose Transfer image</string>
     <string name="ts">The transfer has been successful. Thank you for your trust in our services</string>
     <string name="sas">Service successfully added</string>
+    <string name="esn">Enter service name</string>
+    <string name="esd">Enter service detail</string>
+    <string name="ep">Enter phone</string>
+    <string name="inv_ph">Invalid phone</string>
+    <string name="eap">Enter another phone</string>
+    <string name="ee">Enter email</string>
+    <string name="inv_e">Invalid email</string>
+    <string name="sl">Select your location</string>
 
 </resources>

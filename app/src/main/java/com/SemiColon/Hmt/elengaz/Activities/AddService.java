@@ -146,46 +146,46 @@ public class AddService extends AppCompatActivity {
 
                 if (TextUtils.isEmpty(sserviseName))
                 {
-                    serviseName.setError("Enter service name");
+                    serviseName.setError(getString(R.string.esn));
                 }else if (TextUtils.isEmpty(sdetail))
                 {
                     serviseName.setError(null);
-                    detail.setError("Enter service detail");
+                    detail.setError(getString(R.string.esd));
                 }else if (TextUtils.isEmpty(mobile))
                 {
                     detail.setError(null);
-                    phone.setError("Enter phone");
+                    phone.setError(getString(R.string.ep));
                 }else if (!Patterns.PHONE.matcher(mobile).matches())
                 {
                     detail.setError(null);
-                    phone.setError("Invalid phone");
+                    phone.setError(getString(R.string.inv_ph));
 
                 }
                 else if (TextUtils.isEmpty(mobile2))
                 {
                     phone.setError(null);
-                    otherPhone.setError("Enter another phone");
+                    otherPhone.setError(getString(R.string.eap));
                 }else if (!Patterns.PHONE.matcher(mobile2).matches())
                 {
                     phone.setError(null);
-                    otherPhone.setError("Invalid phone");
+                    otherPhone.setError(getString(R.string.inv_ph));
 
                 }else if (TextUtils.isEmpty(uemail))
                 {
                     otherPhone.setError(null);
-                    email.setError("Enter email");
+                    email.setError(getString(R.string.ee));
 
                 }else if (!Patterns.EMAIL_ADDRESS.matcher(uemail).matches())
                 {
                     otherPhone.setError(null);
-                    email.setError("Invalid email");
+                    email.setError(getString(R.string.inv_e));
 
                 }else if (TextUtils.isEmpty(sDate))
                 {
                     Toast.makeText(AddService.this,R.string.ed, Toast.LENGTH_LONG).show();
                 }else if (lat==0.0 && lng==0.0)
                 {
-                    Toast.makeText(AddService.this,"Select your location", Toast.LENGTH_LONG).show();
+                    Toast.makeText(AddService.this, R.string.sl, Toast.LENGTH_LONG).show();
 
                 }else
                     {

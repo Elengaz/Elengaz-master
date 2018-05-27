@@ -137,5 +137,13 @@
     <string name="eti">أدخل صورة التحويل</string>
     <string name="ts">لقد تم التحويل بنجاح نشكرك على ثقتك فى خدمات</string>
     <string name="sas">تم إضافة الخدمة بنجاح</string>
+    <string name="esn">أدخل اسم الخدمة</string>
+    <string name="esd">أدخل تفاصيل الخدمة</string>
+    <string name="ep">أدخل رقم الجوال</string>
+    <string name="inv_ph">رقم جوال غير صحيح</string>
+    <string name="eap">أدخل رقم جوال أخر</string>
+    <string name="ee">أدخل البريد الالكتروني</string>
+    <string name="inv_e">البريد الالكتروني غير صحيح</string>
+    <string name="sl">حدد موقعك</string>
 
 </resources>
