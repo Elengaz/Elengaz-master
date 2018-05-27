@@ -147,5 +147,8 @@
     <string name="inv_e">Invalid email</string>
     <string name="sl">Select your location</string>
     <string name="suss">success</string>
+    <string name="esub">Enter subject</string>
+    <string name="em">Enter message</string>
+    <string name="s">Sending...</string>
 
 </resources>

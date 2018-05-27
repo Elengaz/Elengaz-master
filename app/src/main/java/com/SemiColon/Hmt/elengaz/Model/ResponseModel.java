@@ -9,6 +9,7 @@ import java.io.Serializable;
 public class ResponseModel implements Serializable {
     private int success;
     private String message;
+    private String email;
 
     public ResponseModel() {
     }
@@ -32,5 +33,9 @@ public class ResponseModel implements Serializable {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }

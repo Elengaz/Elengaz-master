@@ -146,5 +146,8 @@
     <string name="inv_e">البريد الالكتروني غير صحيح</string>
     <string name="sl">حدد موقعك</string>
     <string name="suss">تم بنجاح</string>
+    <string name="esub">أدخل الموضوع</string>
+    <string name="em">أدخل الرسالة</string>
+    <string name="s">جار الارسال....</string>
 
 </resources>

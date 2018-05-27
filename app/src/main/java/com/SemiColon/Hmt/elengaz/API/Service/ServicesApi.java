@@ -5,7 +5,6 @@ import com.SemiColon.Hmt.elengaz.Model.AboutUsModel;
 import com.SemiColon.Hmt.elengaz.Model.AddServicesResponse;
 import com.SemiColon.Hmt.elengaz.Model.Bank_Account_Model;
 import com.SemiColon.Hmt.elengaz.Model.Client_Model;
-import com.SemiColon.Hmt.elengaz.Model.ContactModel;
 import com.SemiColon.Hmt.elengaz.Model.DisplayServicesModel;
 import com.SemiColon.Hmt.elengaz.Model.Officces;
 import com.SemiColon.Hmt.elengaz.Model.OfficeDetailsModel1;
@@ -204,10 +203,11 @@ public interface ServicesApi {
 
     @FormUrlEncoded
     @POST("ContactUs")
-    Call<ContactModel> ContactUs(@Field("name") String name,
+    Call<ResponseModel> ContactUs(@Field("name") String name,
                                  @Field("subject") String subject,
                                  @Field("message") String message);
-
+    @GET("ContactUs")
+    Call<ResponseModel> getEmail();
 
     @FormUrlEncoded
     @POST("UpdateClientToken")
