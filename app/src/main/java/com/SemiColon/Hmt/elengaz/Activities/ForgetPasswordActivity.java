@@ -2,8 +2,8 @@ package com.SemiColon.Hmt.elengaz.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,9 +13,7 @@ import android.widget.Toast;
 import com.SemiColon.Hmt.elengaz.API.Service.APIClient;
 import com.SemiColon.Hmt.elengaz.API.Service.ServicesApi;
 import com.SemiColon.Hmt.elengaz.Model.ResponseModel;
-import com.SemiColon.Hmt.elengaz.Model.ResponseModel;
 import com.SemiColon.Hmt.elengaz.R;
-import com.google.firebase.iid.FirebaseInstanceId;
 
 import me.anwarshahriar.calligrapher.Calligrapher;
 import retrofit2.Call;
@@ -101,7 +99,7 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                     {
 
                         if (response.body().getSuccess() == 1) {
-                            Toast.makeText(ForgetPasswordActivity.this, "" +getString(R.string.success), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ForgetPasswordActivity.this, "" +getString(R.string.suss), Toast.LENGTH_SHORT).show();
 
                             finish();
 

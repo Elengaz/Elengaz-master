@@ -145,5 +145,6 @@
     <string name="ee">أدخل البريد الالكتروني</string>
     <string name="inv_e">البريد الالكتروني غير صحيح</string>
     <string name="sl">حدد موقعك</string>
+    <string name="suss">تم بنجاح</string>
 
 </resources>

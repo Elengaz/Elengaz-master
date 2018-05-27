@@ -146,5 +146,6 @@
     <string name="ee">Enter email</string>
     <string name="inv_e">Invalid email</string>
     <string name="sl">Select your location</string>
+    <string name="suss">success</string>
 
 </resources>
