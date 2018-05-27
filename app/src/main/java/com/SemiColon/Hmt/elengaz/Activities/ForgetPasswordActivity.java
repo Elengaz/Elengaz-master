@@ -101,7 +101,9 @@ public class ForgetPasswordActivity extends AppCompatActivity implements View.On
                     {
 
                         if (response.body().getSuccess() == 1) {
+                            Toast.makeText(ForgetPasswordActivity.this, "" +getString(R.string.success), Toast.LENGTH_SHORT).show();
 
+                            finish();
 
                         } else {
                             Toast.makeText(ForgetPasswordActivity.this, "" +getString(R.string.faild), Toast.LENGTH_SHORT).show();
